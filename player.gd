@@ -66,16 +66,20 @@ func _physics_process(delta):
 			#AnimatedSprite.play("fall")
 
 	#horizontal flipping
-	if velocity.x < 0:
+	if direction < 0:
 		AnimatedSprite.flip_h = true
 		Sparks1.position = Vector2(34,10)
 		Sparks2.position = Vector2(34,10)
-	elif velocity.x > 0:
+	elif direction > 0:
 		AnimatedSprite.flip_h = false
 		Sparks1.position = Vector2(-34,10)
 		Sparks2.position = Vector2(-34,10)
 
-
+	#skid detection
+	if direction > 0 and velocity.x < 0 or direction < 0 and velocity.x < 0:
+		#skidding
+	else:
+		#not skidding
 
 
 #####################################################
