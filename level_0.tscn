@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://rkblyng5yuy3"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_puvvf"]
+[ext_resource type="Texture2D" uid="uid://coo15cdj14nna" path="res://assets/graphics/placeholderplay.png" id="2_bbmo6"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_puvvf")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("2_bbmo6")
+
+[connection signal="pressed" from="Button" to="." method="switch_to_next_level"]

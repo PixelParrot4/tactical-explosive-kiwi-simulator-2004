@@ -1,0 +1,250 @@
+[gd_scene load_steps=22 format=3 uid="uid://68egir1faxek"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_tv7mn"]
+[ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="2_tcfql"]
+[ext_resource type="Texture2D" uid="uid://byj635h116y4p" path="res://assets/graphics/walk x4.png" id="3_7cabf"]
+[ext_resource type="Script" path="res://ui.gd" id="4_rnbcp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5yo8"]
+atlas = ExtResource("2_tcfql")
+region = Rect2(0, 0, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbntq"]
+atlas = ExtResource("2_tcfql")
+region = Rect2(76, 0, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo2gf"]
+atlas = ExtResource("2_tcfql")
+region = Rect2(0, 0, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr4f6"]
+atlas = ExtResource("2_tcfql")
+region = Rect2(152, 0, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wbmd"]
+atlas = ExtResource("3_7cabf")
+region = Rect2(0, 0, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t6cv"]
+atlas = ExtResource("3_7cabf")
+region = Rect2(76, 0, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15i5g"]
+atlas = ExtResource("3_7cabf")
+region = Rect2(0, 60, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xyf1"]
+atlas = ExtResource("3_7cabf")
+region = Rect2(76, 60, 72, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lq2vb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5yo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbntq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo2gf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr4f6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wbmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t6cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15i5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xyf1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_80y7r"]
+radius = 27.0
+height = 56.0
+
+[sub_resource type="Curve" id="Curve_bwjpd"]
+max_value = 20.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 5), 0.0, 0.0, 0, 0, Vector2(1, 19.3962), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_uwlo7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.729008, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.486792), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_2mj5e"]
+offsets = PackedFloat32Array(0, 0.758929, 1)
+colors = PackedColorArray(1, 1, 0.501961, 1, 0.811765, 0.356863, 0.141176, 1, 1, 0.027451, 0.133333, 1)
+
+[sub_resource type="Curve" id="Curve_s1xdu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.782443, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.516981), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_655su"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.501887), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vk86p"]
+curve = SubResource("Curve_655su")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yhdwe"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 150.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 98, 0)
+scale_min = 4.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_vk86p")
+color = Color(1, 1, 0.345098, 1)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_tv7mn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lq2vb")
+animation = &"walk"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_80y7r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_rnbcp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/UI"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 70.0
+offset_right = 130.0
+offset_bottom = 254.0
+grow_horizontal = 2
+
+[node name="SpeedLabel" type="Label" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+text = "Speed: 600"
+
+[node name="SpeedHSlider" type="HSlider" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+min_value = 300.0
+max_value = 1300.0
+value = 300.0
+allow_greater = true
+allow_lesser = true
+
+[node name="JumpLabel" type="Label" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+text = "j"
+
+[node name="JumpHSlider" type="HSlider" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+min_value = 100.0
+max_value = 1000.0
+value = 100.0
+
+[node name="GravityLabel" type="Label" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+text = "g"
+
+[node name="GravityHSlider" type="HSlider" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+max_value = 2000.0
+allow_greater = true
+
+[node name="ExtraGravityLabel" type="Label" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExraGravityHSlider" type="HSlider" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+allow_greater = true
+
+[node name="FrictionLabel" type="Label" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="FrictionHSlider" type="HSlider" parent="Camera2D/UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Sparks1" type="CPUParticles2D" parent="."]
+position = Vector2(-34, 10)
+amount = 3
+lifetime = 0.5
+direction = Vector2(-1, 0)
+spread = 60.0
+gravity = Vector2(0, 20)
+initial_velocity_max = 100.0
+damping_max = 5.0
+damping_curve = SubResource("Curve_bwjpd")
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_uwlo7")
+color = Color(1, 1, 0.607843, 1)
+color_ramp = SubResource("Gradient_2mj5e")
+
+[node name="Sparks2" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-33, 10)
+amount = 10
+lifetime = 0.5
+lifetime_randomness = 0.1
+direction = Vector2(-1, 1)
+spread = 30.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 50.0
+initial_velocity_max = 110.0
+damping_max = 30.0
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_s1xdu")
+
+[node name="Explosion" type="GPUParticles2D" parent="."]
+position = Vector2(-16, -5)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_yhdwe")
+one_shot = true
+explosiveness = 0.8
+randomness = 0.1
+
+[node name="Fuse" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[connection signal="value_changed" from="Camera2D/UI/VBoxContainer/SpeedHSlider" to="Camera2D/UI" method="_on_speed_h_slider_value_changed"]
+[connection signal="value_changed" from="Camera2D/UI/VBoxContainer/JumpHSlider" to="Camera2D/UI" method="_on_jump_h_slider_value_changed"]
+[connection signal="value_changed" from="Camera2D/UI/VBoxContainer/GravityHSlider" to="Camera2D/UI" method="_on_gravity_h_slider_value_changed"]
+[connection signal="value_changed" from="Camera2D/UI/VBoxContainer/ExraGravityHSlider" to="Camera2D/UI" method="_on_exra_gravity_h_slider_value_changed"]
+[connection signal="value_changed" from="Camera2D/UI/VBoxContainer/FrictionHSlider" to="Camera2D/UI" method="_on_friction_h_slider_value_changed"]
+[connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
