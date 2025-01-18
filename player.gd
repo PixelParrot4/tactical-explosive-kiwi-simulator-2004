@@ -1,4 +1,3 @@
-#script adapted from Wiho does Puzzle-Platfroming (unreleased)
 extends CharacterBody2D
 
 @onready var AnimatedSprite = $AnimatedSprite2D
@@ -10,12 +9,12 @@ var MAX_SPEED = 1000
 var JUMP_VELOCITY = -775
 var EXTRA_FALL_GRAVITY = 37
 var GRAVITY = 1000
-var FRICTION = 70
+var FRICTION = 0
 var WARNING_BEFORE_DETONATION = 5
 var times_timer_timedout = 0
+var skidding = false
 
-
-#gravity and jump (using videos "Pixel Platformer Tutorial [...]"* parts 1+2 by HeartBeast)
+#gravity and jump (adapted from Wiho does Puzzle-Platfroming (unreleased))
 func _physics_process(delta):
 	velocity.y += 10 #downward accelaration due to gravity
 	move_and_slide() #handles player movement i think
@@ -47,17 +46,25 @@ func _physics_process(delta):
 	if direction:
 		#NOTE TO SELF: move_toward(from, to, delta)
 		velocity.x = move_toward(velocity.x, direction * MAX_SPEED, 40)
-	else:
-		velocity.x = move_toward(velocity.x, 0, FRICTION)
+	elif skidding == false:
+		velocity.x = move_toward(velocity.x, 0, MAX_SPEED)
 
 
 
-#animation
+#animations
+#func _input(event: InputEvent) -> void:
 	if is_on_floor():
 		if velocity.x == 0:
 			AnimatedSprite.play("idle")
-		else:
+		elif Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 			AnimatedSprite.play("walk")
+
+
+		if Input.is_action_pressed("left") and Input.is_action_pressed("right"):
+			velocity.x = move_toward(velocity.x, 0, FRICTION)
+			skidding = true
+		else:
+			skidding = false
 
 	#else:
 		#if velocity.y < 0:
@@ -66,18 +73,18 @@ func _physics_process(delta):
 			#AnimatedSprite.play("fall")
 
 	#horizontal flipping
-	if velocity.x < 0:
-		AnimatedSprite.flip_h = true
-		Sparks1.position = Vector2(34,10)
-		Sparks2.position = Vector2(34,10)
-	elif velocity.x > 0:
+	if velocity.x > 0:
 		AnimatedSprite.flip_h = false
 		Sparks1.position = Vector2(-34,10)
 		Sparks2.position = Vector2(-34,10)
+	elif velocity.x < 0:
+		AnimatedSprite.flip_h = true
+		Sparks1.position = Vector2(34,10)
+		Sparks2.position = Vector2(34,10)
 
 
 
-
+	print(skidding)
 #####################################################
 
 
