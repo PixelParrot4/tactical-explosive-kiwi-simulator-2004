@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1wycrtpc1w2a"]
+[gd_scene load_steps=5 format=3 uid="uid://d1wycrtpc1w2a"]
 
 [ext_resource type="Script" path="res://destructable_2d.gd" id="1_nad6q"]
 [ext_resource type="Texture2D" uid="uid://bng5us2jnlgsr" path="res://assets/graphics/placeholdertiles.png" id="2_8bcx4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8dgx"]
 size = Vector2(72, 72)
+
+[sub_resource type="Curve" id="Curve_06xti"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.751908, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.501887), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Destructable2D" type="StaticBody2D"]
 script = ExtResource("1_nad6q")
@@ -26,5 +30,24 @@ position = Vector2(36, 36)
 scale = Vector2(0.99, 0.99)
 shape = SubResource("RectangleShape2D_r8dgx")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(36, 36)
+emitting = false
+amount = 3
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 40)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 11.0
+scale_amount_max = 11.0
+scale_amount_curve = SubResource("Curve_06xti")
+color = Color(0.504355, 0.366864, 0.128039, 1)
+
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

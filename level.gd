@@ -1,7 +1,6 @@
 #script adapted from Untitled Game (unreleased yet)
 extends Node
 var level_number
-var current_scene_file
 
 #takes you to next level
 	#made using https://youtu.be/GZrALMvOwY8
