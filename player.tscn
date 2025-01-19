@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://68egir1faxek"]
+[gd_scene load_steps=23 format=3 uid="uid://68egir1faxek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tv7mn"]
 [ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="2_tcfql"]
@@ -112,6 +112,9 @@ scale_min = 4.0
 scale_max = 4.0
 scale_curve = SubResource("CurveTexture_vk86p")
 color = Color(1, 1, 0.345098, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bwpld"]
+radius = 98.326
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_tv7mn")
@@ -240,6 +243,11 @@ randomness = 0.1
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="BlastRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlastRadius"]
+shape = SubResource("CircleShape2D_bwpld")
 
 [connection signal="value_changed" from="Camera2D/UI/VBoxContainer/SpeedHSlider" to="Camera2D/UI" method="_on_speed_h_slider_value_changed"]
 [connection signal="value_changed" from="Camera2D/UI/VBoxContainer/JumpHSlider" to="Camera2D/UI" method="_on_jump_h_slider_value_changed"]

@@ -14,6 +14,9 @@ var WARNING_BEFORE_DETONATION = 5
 var times_timer_timedout = 0
 var skidding = false
 
+signal detonate
+
+
 #gravity and jump (adapted from Wiho does Puzzle-Platfroming (unreleased))
 func _physics_process(delta):
 	velocity.y += 10 #downward accelaration due to gravity
@@ -40,23 +43,23 @@ func _physics_process(delta):
 
 
 
-#walk (using video * part2 by HeartBeast)
+#walk (adapted from Wiho does Puzzle-Platfroming (unreleased))
 	var direction = Input.get_axis("left", "right")
 	
 	if direction:
 		#NOTE TO SELF: move_toward(from, to, delta)
 		velocity.x = move_toward(velocity.x, direction * MAX_SPEED, 40)
-	elif skidding == false:
+	#elif skidding == false:
+	else:
 		velocity.x = move_toward(velocity.x, 0, MAX_SPEED)
 
 
 
 #animations
-#func _input(event: InputEvent) -> void:
 	if is_on_floor():
 		if velocity.x == 0:
 			AnimatedSprite.play("idle")
-		elif Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+		elif direction:
 			AnimatedSprite.play("walk")
 
 
@@ -66,11 +69,6 @@ func _physics_process(delta):
 		else:
 			skidding = false
 
-	#else:
-		#if velocity.y < 0:
-			#AnimatedSprite.play("jump")
-		#else:
-			#AnimatedSprite.play("fall")
 
 	#horizontal flipping
 	if direction < 0:
@@ -81,18 +79,17 @@ func _physics_process(delta):
 		AnimatedSprite.flip_h = false
 		Sparks1.position = Vector2(-34,10)
 		Sparks2.position = Vector2(-34,10)
-	elif velocity.x < 0:
-		AnimatedSprite.flip_h = true
-		Sparks1.position = Vector2(34,10)
-		Sparks2.position = Vector2(34,10)
+
+
 
 	#skid detection
-	if direction > 0 and velocity.x < 0 or direction < 0 and velocity.x < 0:
-		pass #skidding
-	else:
-		pass #not skidding
+	#if direction > 0 and velocity.x < 0 or direction < 0 and velocity.x < 0:
+		##velocity.x = move_toward(velocity.x, 0, FRICTION)
+		#skidding = true
+	#else:
+		#skidding = false
 
-	print(skidding)
+
 #####################################################
 
 
@@ -115,3 +112,4 @@ func explode():
 	Sparks2.visible = false
 	$Explosion.emitting = true
 	AnimatedSprite.visible = false
+	detonate.emit()
