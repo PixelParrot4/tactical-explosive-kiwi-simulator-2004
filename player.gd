@@ -9,7 +9,7 @@ var MAX_SPEED = 1000
 var JUMP_VELOCITY = -775
 var EXTRA_FALL_GRAVITY = 37
 var GRAVITY = 1000
-var FRICTION = 0
+var FRICTION = 50
 var WARNING_BEFORE_DETONATION = 5
 var times_timer_timedout = 0
 var skidding = false #isnt currently used
@@ -49,9 +49,8 @@ func _physics_process(delta):
 	if direction:
 		#NOTE TO SELF: move_toward(from, to, delta)
 		velocity.x = move_toward(velocity.x, direction * MAX_SPEED, 40)
-	#elif skidding == false:
 	else:
-		velocity.x = move_toward(velocity.x, 0, MAX_SPEED)
+		velocity.x = move_toward(velocity.x, 0, FRICTION)
 
 
 
@@ -61,14 +60,6 @@ func _physics_process(delta):
 			AnimatedSprite.play("idle")
 		elif direction:
 			AnimatedSprite.play("walk")
-
-
-		if Input.is_action_pressed("left") and Input.is_action_pressed("right"):
-			velocity.x = move_toward(velocity.x, 0, FRICTION)
-			skidding = true
-		else:
-			skidding = false
-
 
 	#horizontal flipping
 	if direction < 0:
@@ -82,14 +73,12 @@ func _physics_process(delta):
 		Sparks2.position = Vector2(-34,10)
 		Sparks2.direction.x = -1
 
-
-
 	#skid detection
-	#if direction > 0 and velocity.x < 0 or direction < 0 and velocity.x < 0:
-		##velocity.x = move_toward(velocity.x, 0, FRICTION)
-		#skidding = true
-	#else:
-		#skidding = false
+	if direction > 0 and velocity.x < 0 or direction < 0 and velocity.x > 0:
+		skidding = true
+		print("Skid")
+	else:
+		skidding = false
 
 
 #so that their initial velocity is relative
