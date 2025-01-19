@@ -1,14 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://rkblyng5yuy3"]
+[gd_scene load_steps=10 format=3 uid="uid://rkblyng5yuy3"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_puvvf"]
 [ext_resource type="Texture2D" uid="uid://coo15cdj14nna" path="res://assets/graphics/placeholderplay.png" id="2_bbmo6"]
+[ext_resource type="AudioStream" uid="uid://cp2g14nn3hnhj" path="res://assets/audio/Title.ogg" id="3_fam5o"]
+[ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="4_203as"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukeai"]
+atlas = ExtResource("4_203as")
+region = Rect2(0, 0, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecven"]
+atlas = ExtResource("4_203as")
+region = Rect2(76, 0, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81sge"]
+atlas = ExtResource("4_203as")
+region = Rect2(0, 0, 72, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yexy"]
+atlas = ExtResource("4_203as")
+region = Rect2(152, 0, 72, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lal0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukeai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecven")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81sge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yexy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_puvvf")
 
-[node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fam5o")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -56.0
+offset_right = 80.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
 icon = ExtResource("2_bbmo6")
 
-[connection signal="pressed" from="Button" to="." method="switch_to_next_level"]
+[node name="Kiwi" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 240)
+sprite_frames = SubResource("SpriteFrames_lal0m")
+autoplay = "default"
+frame = 1
+frame_progress = 0.361732
+
+[node name="Kiwi2" type="AnimatedSprite2D" parent="."]
+position = Vector2(448, 368)
+sprite_frames = SubResource("SpriteFrames_lal0m")
+autoplay = "default"
+frame = 3
+
+[node name="Kiwi3" type="AnimatedSprite2D" parent="."]
+position = Vector2(704, 360)
+sprite_frames = SubResource("SpriteFrames_lal0m")
+autoplay = "default"
+frame = 2
+flip_h = true
+
+[connection signal="pressed" from="Control/Button" to="." method="switch_to_next_level"]

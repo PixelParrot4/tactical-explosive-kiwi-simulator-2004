@@ -12,7 +12,7 @@ var GRAVITY = 1000
 var FRICTION = 0
 var WARNING_BEFORE_DETONATION = 5
 var times_timer_timedout = 0
-var skidding = false
+var skidding = false #isnt currently used
 
 signal detonate
 
@@ -75,10 +75,12 @@ func _physics_process(delta):
 		AnimatedSprite.flip_h = true
 		Sparks1.position = Vector2(34,10)
 		Sparks2.position = Vector2(34,10)
+		Sparks2.direction.x = 1
 	elif direction > 0:
 		AnimatedSprite.flip_h = false
 		Sparks1.position = Vector2(-34,10)
 		Sparks2.position = Vector2(-34,10)
+		Sparks2.direction.x = -1
 
 
 
@@ -90,6 +92,25 @@ func _physics_process(delta):
 		#skidding = false
 
 
+	Sparks1.initial_velocity_max += velocity.x
+	Sparks1.initial_velocity_min += velocity.x
+	Sparks2.initial_velocity_max += velocity.x
+	Sparks2.initial_velocity_min += velocity.x
+
+
+
+	var reducing_time_before_detonation = true
+	if Input.is_action_pressed("speed-up-fuse"):
+		Sparks2.visible = true
+#BUG doesnt work
+		#if Fuse.wait_time >= 10:
+			#Fuse.wait_time -= 10
+	elif reducing_time_before_detonation == true:
+		reducing_time_before_detonation = false
+		if times_timer_timedout < 1:
+			Sparks2.visible = false
+
+
 #####################################################
 
 
@@ -99,7 +120,6 @@ func _on_fuse_timeout() -> void:
 
 	if times_timer_timedout == 1:
 		Fuse.wait_time = WARNING_BEFORE_DETONATION
-		Sparks1.visible = false
 		Sparks2.visible = true
 		Fuse.start()
 
@@ -109,7 +129,9 @@ func _on_fuse_timeout() -> void:
 
 
 func explode():
+	Sparks1.visible = false
 	Sparks2.visible = false
 	$Explosion.emitting = true
 	AnimatedSprite.visible = false
+	$Camera2D.position_smoothing_speed = 0 #stops it from moving
 	detonate.emit()

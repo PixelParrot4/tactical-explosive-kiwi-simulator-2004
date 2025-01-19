@@ -122,6 +122,7 @@ script = ExtResource("1_tv7mn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lq2vb")
 animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_80y7r")
@@ -197,6 +198,11 @@ layout_mode = 2
 
 [node name="FrictionHSlider" type="HSlider" parent="Camera2D/UI/VBoxContainer"]
 layout_mode = 2
+
+[node name="TimeLeft" type="Label" parent="Camera2D/UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="Sparks1" type="CPUParticles2D" parent="."]
 position = Vector2(-34, 10)

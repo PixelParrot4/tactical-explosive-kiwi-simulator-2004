@@ -23,6 +23,7 @@ func on_player_detonation():
 		TimerNode.wait_time = Particles.lifetime
 		TimerNode.start()
 		Particles.emitting = true
+		$Sprite2D.visible = false
 
 func _on_timer_timeout() -> void:
 	queue_free()
