@@ -37,10 +37,10 @@ func _on_exra_gravity_h_slider_value_changed(value: float) -> void:
 
 func _on_friction_h_slider_value_changed(value: float) -> void:
 	Player.FRICTION = value
-	FrictionLabel.text = "Fricion: " + str(value)
+	FrictionLabel.text = "Friction: " + str(value)
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float):
 	var time_left:int = $"../../Fuse".time_left
 	$TimeLeft.text = str(time_left)

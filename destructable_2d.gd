@@ -5,6 +5,11 @@ var in_blast_radius = false
 @onready var Player = $"../Player"
 @onready var Particles =$CPUParticles2D
 @onready var TimerNode = $Timer
+@export var GoalIsToDestroyThis = false
+
+signal important_object_destroyed
+
+
 
 func _ready() -> void:
 	Player.detonate.connect(on_player_detonation)
@@ -20,10 +25,21 @@ func _on_area_2d_area_exited(_area: Area2D) -> void:
 
 func on_player_detonation():
 	if in_blast_radius == true:
-		TimerNode.wait_time = Particles.lifetime
+
+		if GoalIsToDestroyThis == false:
+			$Sprite2D.visible = false#because the others use an AnimatedSprite
+			TimerNode.wait_time = Particles.lifetime
+		else:
+			$AnimatedSprite2D.play("broken")
+
+#apply to both
 		TimerNode.start()
 		Particles.emitting = true
-		$Sprite2D.visible = false
+
+
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	if GoalIsToDestroyThis == false:
+		queue_free()
+	else:
+		important_object_destroyed.emit()

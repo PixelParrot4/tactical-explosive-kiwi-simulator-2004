@@ -92,19 +92,23 @@ func _physics_process(delta):
 		#skidding = false
 
 
-	Sparks1.initial_velocity_max += velocity.x
-	Sparks1.initial_velocity_min += velocity.x
-	Sparks2.initial_velocity_max += velocity.x
-	Sparks2.initial_velocity_min += velocity.x
+#so that their initial velocity is relative
+#BUG doesnt work as intended as of now
+	#Sparks1.initial_velocity_max = 100 - velocity.x
+	#Sparks1.initial_velocity_min = velocity.x *-1
+	#Sparks2.initial_velocity_max = 100 - velocity.x
+	#Sparks2.initial_velocity_min = velocity.x *-1
 
 
 
 	var reducing_time_before_detonation = true
-	if Input.is_action_pressed("speed-up-fuse"):
+	if Input.is_action_pressed("speed-up-fuse") and times_timer_timedout == 0:
 		Sparks2.visible = true
-#BUG doesnt work
-		#if Fuse.wait_time >= 10:
-			#Fuse.wait_time -= 10
+		#without following line, Timer never times-out/behaves unexpectedly
+		if Fuse.time_left > 1:
+			Fuse.start(Fuse.time_left - 0.2)
+
+#responsible for putting out sparks
 	elif reducing_time_before_detonation == true:
 		reducing_time_before_detonation = false
 		if times_timer_timedout < 1:
@@ -133,5 +137,5 @@ func explode():
 	Sparks2.visible = false
 	$Explosion.emitting = true
 	AnimatedSprite.visible = false
-	$Camera2D.position_smoothing_speed = 0 #stops it from moving
+	$Camera2D.position_smoothing_speed = -10 #stops it from moving
 	detonate.emit()
