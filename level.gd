@@ -21,13 +21,34 @@ func _ready() -> void:
 		$ImportantObject.important_object_destroyed.connect(on_important_object_destroyed)
 
 
+
+#level-related keybinds
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_released("reset level"):
+		reset_level()
+	if Input.is_action_just_released("skip level (dev only)"):
+		switch_to_next_level()
+
+
+
+
 func on_important_object_destroyed():
 	important_objects_destroyed += 1
 	if important_objects_destroyed >= NUMBER_OF_OBJECTS_TO_DESTROY:
 		pass #make end screen visible
 
 
+#connect next button to this
 func switch_to_next_level():
 	var next_level_number = level_number + 1
 	var next_level_path = "res://level_" + str(next_level_number) + ".tscn"
 	get_tree().change_scene_to_file(next_level_path)
+
+
+
+
+
+
+#connect retry button to this
+func reset_level() -> void:
+	get_tree().reload_current_scene()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://68egir1faxek"]
+[gd_scene load_steps=24 format=3 uid="uid://68egir1faxek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tv7mn"]
 [ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="2_tcfql"]
 [ext_resource type="Texture2D" uid="uid://byj635h116y4p" path="res://assets/graphics/walk x4.png" id="3_7cabf"]
 [ext_resource type="Script" path="res://ui.gd" id="4_rnbcp"]
+[ext_resource type="Texture2D" uid="uid://bjo0d1dgx7g2s" path="res://assets/graphics/icon.svg" id="5_e80b4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5yo8"]
 atlas = ExtResource("2_tcfql")
@@ -223,6 +224,67 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "d u m b a s s"
 
+[node name="EndScreenUnderlay" type="ColorRect" parent="Camera2D/UI"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.384229, 0.384229, 0.384229, 0.121569)
+
+[node name="EndScreen" type="VBoxContainer" parent="Camera2D/UI"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -192.0
+offset_right = 304.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Stars" type="HBoxContainer" parent="Camera2D/UI/EndScreen"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/EndScreen/Stars"]
+position = Vector2(48, -70)
+texture = ExtResource("5_e80b4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/UI/EndScreen/Stars"]
+position = Vector2(304, -70)
+texture = ExtResource("5_e80b4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Camera2D/UI/EndScreen/Stars"]
+position = Vector2(560, -70)
+texture = ExtResource("5_e80b4")
+
+[node name="Label" type="Label" parent="Camera2D/UI/EndScreen"]
+layout_mode = 2
+text = "[Final Time]"
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="Camera2D/UI/EndScreen"]
+layout_mode = 2
+text = "Retry"
+
+[node name="Next" type="Button" parent="Camera2D/UI/EndScreen"]
+layout_mode = 2
+text = "Next"
+
+[node name="Back" type="Button" parent="Camera2D/UI/EndScreen"]
+layout_mode = 2
+text = "Back
+"
+
 [node name="Sparks1" type="CPUParticles2D" parent="."]
 position = Vector2(-34, 10)
 amount = 3
@@ -279,4 +341,5 @@ shape = SubResource("CircleShape2D_bwpld")
 [connection signal="value_changed" from="Camera2D/UI/VBoxContainer/GravityHSlider" to="Camera2D/UI" method="_on_gravity_h_slider_value_changed"]
 [connection signal="value_changed" from="Camera2D/UI/VBoxContainer/ExraGravityHSlider" to="Camera2D/UI" method="_on_exra_gravity_h_slider_value_changed"]
 [connection signal="value_changed" from="Camera2D/UI/VBoxContainer/FrictionHSlider" to="Camera2D/UI" method="_on_friction_h_slider_value_changed"]
+[connection signal="pressed" from="Camera2D/UI/EndScreen/Retry" to="." method="_on_retry_pressed"]
 [connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
