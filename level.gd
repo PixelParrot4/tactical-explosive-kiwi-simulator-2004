@@ -1,8 +1,9 @@
 #script adapted from Untitled Game (unreleased yet)
 extends Node
-var level_number
+var level_number:float
 @export var NUMBER_OF_OBJECTS_TO_DESTROY:int = 1
 var important_objects_destroyed = 0
+var kiwi_death_count = 0 #will be used to switch between kiwis
 
 
 #takes you to next level
@@ -23,7 +24,7 @@ func _ready() -> void:
 func on_important_object_destroyed():
 	important_objects_destroyed += 1
 	if important_objects_destroyed >= NUMBER_OF_OBJECTS_TO_DESTROY:
-		switch_to_next_level()
+		pass #make end screen visible
 
 
 func switch_to_next_level():

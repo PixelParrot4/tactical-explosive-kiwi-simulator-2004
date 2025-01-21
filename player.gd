@@ -1,18 +1,23 @@
 extends CharacterBody2D
+class_name player
 
 @onready var AnimatedSprite = $AnimatedSprite2D
 @onready var Sparks1=$Sparks1
 @onready var Sparks2=$Sparks2
 @onready var Fuse =$Fuse
 
-var MAX_SPEED = 1000
+var MAX_SPEED = 900
 var JUMP_VELOCITY = -775
 var EXTRA_FALL_GRAVITY = 37
 var GRAVITY = 1000
-var FRICTION = 50
+var FRICTION = 70
 var WARNING_BEFORE_DETONATION = 5
 var times_timer_timedout = 0
 var skidding = false #isnt currently used
+
+#following ones will be used to switch between kiwis
+@export var how_many_kiwi_deaths_before_active:int = 0 #set to negative if never active
+var active = true
 
 signal detonate
 
@@ -28,7 +33,7 @@ func _physics_process(delta):
 
 	#jump
 	if is_on_floor():
-		if Input.is_action_just_pressed("up"):
+		if Input.is_action_just_pressed("up") and active == true:
 			velocity.y = JUMP_VELOCITY
 	else:
 		#variable jump height
@@ -42,13 +47,26 @@ func _physics_process(delta):
 	velocity.y = min(velocity.y, 1500)
 
 
+#disables all movement except gravity
+	#exception will be required for a small animation I'm planning
+	if active == false:
+		return
+
 
 #walk (adapted from Wiho does Puzzle-Platfroming (unreleased))
 	var direction = Input.get_axis("left", "right")
-	
 	if direction:
 		#NOTE TO SELF: move_toward(from, to, delta)
 		velocity.x = move_toward(velocity.x, direction * MAX_SPEED, 40)
+
+
+#invading footstep SFX code (template from Potion Blaster)
+		#if timer_footstep.time_left <= 0:
+			#footstep_audio.pitch_scale = randf_range(0.8, 1.2)
+			#footstep_audio.play()
+			#timer_footstep.start(0.5)
+
+
 	else:
 		velocity.x = move_toward(velocity.x, 0, FRICTION)
 
@@ -76,12 +94,12 @@ func _physics_process(delta):
 	#skid detection
 	if direction > 0 and velocity.x < 0 or direction < 0 and velocity.x > 0:
 		skidding = true
-		print("Skid")
+		#print("Skid")
 	else:
 		skidding = false
 
 
-#so that their initial velocity is relative
+#so that particles' initial velocity is relative to player's
 #BUG doesnt work as intended as of now
 	#Sparks1.initial_velocity_max = 100 - velocity.x
 	#Sparks1.initial_velocity_min = velocity.x *-1
@@ -128,3 +146,4 @@ func explode():
 	AnimatedSprite.visible = false
 	$Camera2D.position_smoothing_speed = -10 #stops it from moving
 	detonate.emit()
+	active = false #disables movement
