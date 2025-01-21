@@ -130,6 +130,7 @@ sprite_frames = SubResource("SpriteFrames_h7wiw")
 shape = SubResource("RectangleShape2D_72p7t")
 
 [node name="Timer" type="Timer" parent="ImportantObject"]
+one_shot = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ImportantObject"]
 visible = false

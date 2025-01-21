@@ -20,6 +20,11 @@ func _ready() -> void:
 	if $ImportantObject2 != null:#if more than one ImportantObject present
 		$ImportantObject.important_object_destroyed.connect(on_important_object_destroyed)
 
+	if $Player != null:
+		$"Player/Camera2D/UI/EndScreen/Next".pressed.connect(switch_to_next_level)
+		$"Player/Camera2D/UI/EndScreen/Retry".pressed.connect(reset_level)
+		$"Player/Camera2D/UI/EndScreen/Back".pressed.connect(switch_to_main_menu)
+
 
 
 #level-related keybinds
@@ -34,21 +39,19 @@ func _input(_event: InputEvent) -> void:
 
 func on_important_object_destroyed():
 	important_objects_destroyed += 1
+	print("Objective: "+str(important_objects_destroyed)+"/"+str(NUMBER_OF_OBJECTS_TO_DESTROY))
 	if important_objects_destroyed >= NUMBER_OF_OBJECTS_TO_DESTROY:
-		pass #make end screen visible
+		$"Player/Camera2D/UI/EndScreen".visible = true
 
 
-#connect next button to this
+#following 3 func connected to end screen buttons
 func switch_to_next_level():
 	var next_level_number = level_number + 1
 	var next_level_path = "res://level_" + str(next_level_number) + ".tscn"
 	get_tree().change_scene_to_file(next_level_path)
 
-
-
-
-
-
-#connect retry button to this
 func reset_level() -> void:
 	get_tree().reload_current_scene()
+
+func switch_to_main_menu():
+	get_tree().change_scene_to_file("res://level_0.tscn")

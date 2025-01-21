@@ -16,6 +16,7 @@ func _ready() -> void:
 	Player.detonate.connect(on_player_detonation)
 	Area.area_entered.connect(_on_area_2d_area_entered)
 	Area.area_exited.connect(_on_area_2d_area_exited)
+	TimerNode.timeout.connect(_on_timer_timeout)
 
 
 
@@ -30,7 +31,7 @@ func _on_area_2d_area_exited(_area: Area2D) -> void:
 
 func on_player_detonation():
 	if in_blast_radius == true:
-		print("yes")
+		print("Destructible2D is in blast radius")
 		if GoalIsToDestroyThis == false:
 			$Sprite2D.visible = false#because the others use an AnimatedSprite
 			TimerNode.wait_time = Particles.lifetime
@@ -47,4 +48,5 @@ func _on_timer_timeout() -> void:
 	if GoalIsToDestroyThis == false:
 		queue_free()
 	else:
+		print("imp obj destroyed")
 		important_object_destroyed.emit()
