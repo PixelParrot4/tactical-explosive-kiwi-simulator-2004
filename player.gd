@@ -5,6 +5,8 @@ class_name player
 @onready var Sparks1=$Sparks1
 @onready var Sparks2=$Sparks2
 @onready var Fuse =$Fuse
+@onready var Level =$".."
+var ui_scene = preload("res://ui.tscn")
 
 var MAX_SPEED = 900
 var JUMP_VELOCITY = -775
@@ -17,9 +19,14 @@ var skidding = false #isnt currently used
 
 #following ones will be used to switch between kiwis
 @export var how_many_kiwi_deaths_before_active:int = 0 #set to negative if never active
-var active = true
+var active = false
 
 signal detonate
+
+
+
+################### movement and animations ###################
+
 
 
 #gravity and jump (adapted from Wiho does Puzzle-Platfroming (unreleased))
@@ -122,7 +129,9 @@ func _physics_process(delta):
 			Sparks2.visible = false
 
 
-#####################################################
+
+
+################### stuff not in func _process ###################
 
 
 
@@ -147,3 +156,23 @@ func explode():
 	$Camera2D.position_smoothing_speed = -10 #stops it from moving
 	detonate.emit()
 	active = false #disables movement
+	Level.kiwi_death_count += 1
+	get_tree().call_group("PlayableCharacters", "should_this_kiwi_be_active")
+
+	ui_scene.queue_free()
+
+
+
+func _ready():
+	add_to_group("PlayableCharacters")
+	should_this_kiwi_be_active()
+
+func should_this_kiwi_be_active():
+	if Level.kiwi_death_count!=how_many_kiwi_deaths_before_active:
+		return
+
+	active = true
+
+#gives newly-active kiwi Camera2D and GUI
+	var ui_instance = ui_scene.instantiate()
+	add_child(ui_instance)
