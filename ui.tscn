@@ -160,6 +160,15 @@ layout_mode = 2
 text = "Back
 "
 
+[node name="Objective" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 36.0
+offset_right = 291.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 25
+text = "Objective: destroy the Godot logo"
+
 [connection signal="value_changed" from="UI/VBoxContainer/SpeedHSlider" to="UI" method="_on_speed_h_slider_value_changed"]
 [connection signal="value_changed" from="UI/VBoxContainer/JumpHSlider" to="UI" method="_on_jump_h_slider_value_changed"]
 [connection signal="value_changed" from="UI/VBoxContainer/GravityHSlider" to="UI" method="_on_gravity_h_slider_value_changed"]

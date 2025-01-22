@@ -6,7 +6,7 @@ class_name player
 @onready var Sparks2=$Sparks2
 @onready var Fuse =$Fuse
 @onready var Level =$".."
-var ui_scene = preload("res://ui.tscn")
+
 
 var MAX_SPEED = 900
 var JUMP_VELOCITY = -775
@@ -158,8 +158,9 @@ func explode():
 	active = false #disables movement
 	Level.kiwi_death_count += 1
 	get_tree().call_group("PlayableCharacters", "should_this_kiwi_be_active")
+	$CollisionShape2D.disabled = true
 
-	ui_scene.queue_free()
+	$Camera2D.queue_free()
 
 
 
@@ -174,5 +175,6 @@ func should_this_kiwi_be_active():
 	active = true
 
 #gives newly-active kiwi Camera2D and GUI
+	var ui_scene = preload("res://ui.tscn")
 	var ui_instance = ui_scene.instantiate()
 	add_child(ui_instance)

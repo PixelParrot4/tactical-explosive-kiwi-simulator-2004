@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://68egir1faxek"]
+[gd_scene load_steps=22 format=3 uid="uid://68egir1faxek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tv7mn"]
 [ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="2_tcfql"]
 [ext_resource type="Texture2D" uid="uid://byj635h116y4p" path="res://assets/graphics/walk x4.png" id="3_7cabf"]
-[ext_resource type="PackedScene" uid="uid://cxftaaq3npdhc" path="res://ui.tscn" id="4_kmqoj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5yo8"]
 atlas = ExtResource("2_tcfql")
@@ -126,8 +125,6 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_80y7r")
-
-[node name="Camera2D" parent="." groups=["PlayableCharacters"] instance=ExtResource("4_kmqoj")]
 
 [node name="Sparks1" type="CPUParticles2D" parent="."]
 position = Vector2(-34, 10)
