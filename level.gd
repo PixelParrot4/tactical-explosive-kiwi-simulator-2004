@@ -15,16 +15,24 @@ func _ready() -> void:
 
 
 #assigns signal to following function
-	if $ImportantObject != null:
-		$ImportantObject.important_object_destroyed.connect(on_important_object_destroyed)
-	if $ImportantObject2 != null:#if more than one ImportantObject present
-		$ImportantObject.important_object_destroyed.connect(on_important_object_destroyed)
+	#translated from code by secay on PS Discord server
+	var ImportantObjects:Array[Node] = get_tree().get_nodes_in_group("ImportantObjects")
+	for ImportantObject:Node in ImportantObjects:
+		ImportantObject.important_object_destroyed.connect(on_important_object_destroyed)
+
 
 	if $Player != null:
 		$"Player/Camera2D/UI/EndScreen/Next".pressed.connect(switch_to_next_level)
 		$"Player/Camera2D/UI/EndScreen/Retry".pressed.connect(reset_level)
 		$"Player/Camera2D/UI/EndScreen/Back".pressed.connect(switch_to_main_menu)
-
+	if $"Player2/Camera2D" != null:
+		$"Player2/Camera2D/UI/EndScreen/Next".pressed.connect(switch_to_next_level)
+		$"Player2/Camera2D/UI/EndScreen/Retry".pressed.connect(reset_level)
+		$"Player2/Camera2D/UI/EndScreen/Back".pressed.connect(switch_to_main_menu)
+	if $Player3 != null:
+		$"Player3/Camera2D/UI/EndScreen/Next".pressed.connect(switch_to_next_level)
+		$"Player3/Camera2D/UI/EndScreen/Retry".pressed.connect(reset_level)
+		$"Player3/Camera2D/UI/EndScreen/Back".pressed.connect(switch_to_main_menu)
 
 
 #level-related keybinds

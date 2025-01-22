@@ -55,6 +55,11 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": false,
+"name": &"sign of explosion",
+"speed": 0.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2wbmd")
@@ -128,6 +133,7 @@ shape = SubResource("CapsuleShape2D_80y7r")
 
 [node name="Sparks1" type="CPUParticles2D" parent="."]
 position = Vector2(-34, 10)
+emitting = false
 amount = 3
 lifetime = 0.5
 direction = Vector2(-1, 0)
@@ -170,11 +176,13 @@ randomness = 0.1
 [node name="Fuse" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
-autostart = true
 
 [node name="BlastRadius" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlastRadius"]
 shape = SubResource("CircleShape2D_bwpld")
 
+[node name="FootstepTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
+[connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]

@@ -115,7 +115,7 @@ tile_set = SubResource("TileSet_a2rp3")
 [node name="Destructable2D" parent="." instance=ExtResource("4_pnh8c")]
 position = Vector2(-197, -1)
 
-[node name="ImportantObject" type="StaticBody2D" parent="."]
+[node name="ImportantObject" type="StaticBody2D" parent="." groups=["ImportantObjects"]]
 z_index = -1
 position = Vector2(367, 8)
 script = ExtResource("5_rgmtd")

@@ -6,7 +6,7 @@ class_name player
 @onready var Sparks2=$Sparks2
 @onready var Fuse =$Fuse
 @onready var Level =$".."
-
+@onready var FootstepTimer=$FootstepTimer
 
 var MAX_SPEED = 900
 var JUMP_VELOCITY = -775
@@ -29,8 +29,14 @@ signal detonate
 
 
 
-#gravity and jump (adapted from Wiho does Puzzle-Platfroming (unreleased))
 func _physics_process(delta):
+#disables all movement
+	if active == false:
+		return
+
+
+
+#gravity and jump (adapted from Wiho does Puzzle-Platfroming (unreleased))
 	velocity.y += 10 #downward accelaration due to gravity
 	move_and_slide() #handles player movement i think
 	if not is_on_floor():
@@ -54,11 +60,6 @@ func _physics_process(delta):
 	velocity.y = min(velocity.y, 1500)
 
 
-#disables all movement except gravity
-	#exception will be required for a small animation I'm planning
-	if active == false:
-		return
-
 
 #walk (adapted from Wiho does Puzzle-Platfroming (unreleased))
 	var direction = Input.get_axis("left", "right")
@@ -68,10 +69,10 @@ func _physics_process(delta):
 
 
 #invading footstep SFX code (template from Potion Blaster)
-		#if timer_footstep.time_left <= 0:
+		#if FootstepTimer.time_left <= 0:
 			#footstep_audio.pitch_scale = randf_range(0.8, 1.2)
 			#footstep_audio.play()
-			#timer_footstep.start(0.5)
+			#FootstepTimer.start(0.5)
 
 
 	else:
@@ -139,12 +140,20 @@ func _on_fuse_timeout() -> void:
 	times_timer_timedout += 1
 
 	if times_timer_timedout == 1:
-		Fuse.wait_time = WARNING_BEFORE_DETONATION
 		Sparks2.visible = true
-		Fuse.start()
+		Fuse.start(WARNING_BEFORE_DETONATION)
 
-	elif times_timer_timedout > 1:
+	elif times_timer_timedout == 2:
 		explode()
+
+#after a short delay, player controls next kiwi
+#it may not be entirely deleted so that sign of explosion is visible
+	elif times_timer_timedout == 3:
+		detonate.emit()
+		if is_on_floor():
+			$Camera2D.queue_free()
+		else:
+			queue_free()
 
 
 
@@ -153,14 +162,15 @@ func explode():
 	Sparks2.visible = false
 	$Explosion.emitting = true
 	AnimatedSprite.visible = false
-	$Camera2D.position_smoothing_speed = -10 #stops it from moving
-	detonate.emit()
 	active = false #disables movement
 	Level.kiwi_death_count += 1
 	get_tree().call_group("PlayableCharacters", "should_this_kiwi_be_active")
 	$CollisionShape2D.disabled = true
+	FootstepTimer.stop()
+	if is_on_floor():
+		AnimatedSprite.play("sign of explosion")
+	Fuse.start(1.5) #approp. nodes are deleted after timeout
 
-	$Camera2D.queue_free()
 
 
 
@@ -173,8 +183,18 @@ func should_this_kiwi_be_active():
 		return
 
 	active = true
+	FootstepTimer.start()
+	Sparks1.emitting = true
+	Fuse.start()
 
 #gives newly-active kiwi Camera2D and GUI
 	var ui_scene = preload("res://ui.tscn")
 	var ui_instance = ui_scene.instantiate()
 	add_child(ui_instance)
+
+
+
+
+func _on_footstep_timer_timeout() -> void:
+	if active==true:
+		FootstepTimer.start()
