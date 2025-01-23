@@ -16,10 +16,7 @@ var FRICTION = 70
 var WARNING_BEFORE_DETONATION = 5
 var times_timer_timedout = 0
 var skidding = false #isnt currently used
-
-#following ones will be used to switch between kiwis
-@export var how_many_kiwi_deaths_before_active:int = 0 #set to negative if never active
-var active = false
+var active = true #disables movement when is false
 
 signal detonate
 
@@ -46,7 +43,7 @@ func _physics_process(delta):
 
 	#jump
 	if is_on_floor():
-		if Input.is_action_just_pressed("up") and active == true:
+		if Input.is_action_just_pressed("up"):
 			velocity.y = JUMP_VELOCITY
 	else:
 		#variable jump height
@@ -150,10 +147,10 @@ func _on_fuse_timeout() -> void:
 #it may not be entirely deleted so that sign of explosion is visible
 	elif times_timer_timedout == 3:
 		detonate.emit()
-		if is_on_floor():
-			$Camera2D.queue_free()
-		else:
-			queue_free()
+		#if is_on_floor():
+			#$Camera2D.queue_free()
+		#else:
+			#queue_free()
 
 
 
@@ -167,31 +164,12 @@ func explode():
 	get_tree().call_group("PlayableCharacters", "should_this_kiwi_be_active")
 	$CollisionShape2D.disabled = true
 	FootstepTimer.stop()
+	Fuse.start(1.5)#delay b4 switch to respawned kiwi
+
 	if is_on_floor():
-		AnimatedSprite.play("sign of explosion")
-	Fuse.start(1.5) #approp. nodes are deleted after timeout
-
-
-
-
-func _ready():
-	add_to_group("PlayableCharacters")
-	should_this_kiwi_be_active()
-
-func should_this_kiwi_be_active():
-	if Level.kiwi_death_count!=how_many_kiwi_deaths_before_active:
-		return
-
-	active = true
-	FootstepTimer.start()
-	Sparks1.emitting = true
-	Fuse.start()
-
-#gives newly-active kiwi Camera2D and GUI
-	var ui_scene = preload("res://ui.tscn")
-	var ui_instance = ui_scene.instantiate()
-	add_child(ui_instance)
-
+		var sign_of_explosion = preload("res://sign_of_explosion.tscn")
+		var sign_of_explosion_instance = sign_of_explosion.instantiate()
+		Level.add_child(sign_of_explosion_instance)
 
 
 

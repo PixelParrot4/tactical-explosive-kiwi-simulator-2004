@@ -158,9 +158,5 @@ shape = SubResource("RectangleShape2D_8ju3k")
 [node name="Timer" type="Timer" parent="DeathPit"]
 one_shot = true
 
-[node name="Player2" parent="." groups=["PlayableCharacters"] instance=ExtResource("1_6mrkf")]
-position = Vector2(-189, -147)
-how_many_kiwi_deaths_before_active = 1
-
 [connection signal="body_entered" from="DeathPit" to="DeathPit" method="_on_body_entered"]
 [connection signal="timeout" from="DeathPit/Timer" to="." method="reset_level"]
