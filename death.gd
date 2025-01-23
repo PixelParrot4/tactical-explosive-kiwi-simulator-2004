@@ -3,4 +3,4 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body is player:
 		$Timer.start()
-		$"../Player/Camera2D/UI/Death".visible = true
+		$"../Camera2D/UI/Death".visible = true

@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://68egir1faxek"]
+[gd_scene load_steps=22 format=3 uid="uid://68egir1faxek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tv7mn"]
 [ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="2_tcfql"]
 [ext_resource type="Texture2D" uid="uid://byj635h116y4p" path="res://assets/graphics/walk x4.png" id="3_7cabf"]
-[ext_resource type="PackedScene" uid="uid://cxftaaq3npdhc" path="res://ui.tscn" id="4_b3paa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5yo8"]
 atlas = ExtResource("2_tcfql")
@@ -186,8 +185,6 @@ shape = SubResource("CircleShape2D_bwpld")
 [node name="FootstepTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
-
-[node name="Camera2D" parent="." instance=ExtResource("4_b3paa")]
 
 [connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]

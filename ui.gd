@@ -1,6 +1,6 @@
 extends Control
 
-@onready var Player = $"../.."
+@onready var Player = $"../../Player"
 @onready var SpeedLabel = $VBoxContainer/SpeedLabel
 @onready var JumpLabel = $VBoxContainer/JumpLabel
 @onready var GravityLabel = $VBoxContainer/GravityLabel
@@ -42,5 +42,5 @@ func _on_friction_h_slider_value_changed(value: float) -> void:
 
 
 func _process(_delta: float):
-	var time_left:int = $"../../Fuse".time_left
+	var time_left:int = $"../../Player/Fuse".time_left
 	$TimeLeft.text = str(time_left)
