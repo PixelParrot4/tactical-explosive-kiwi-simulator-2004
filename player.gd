@@ -19,6 +19,7 @@ var times_timer_timedout = 0
 var skidding = false #isnt currently used
 var active = true #disables movement when is false
 var direction#used for movement and to check for movement
+var was_on_floor:bool
 
 signal detonate
 
@@ -42,6 +43,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta #downward accelaration due to gravity
 
+#invading footstep sfx code (1/3)
+		was_on_floor = false
+		FootstepTimer.stop()
 
 
 	#jump
@@ -50,11 +54,18 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			$Jump.pitch_scale = randf_range(0.8,1.2)
 			$Jump.play()
+
+#invading footstep sfx code (2/3)
+		if was_on_floor == false: #to prevent repetition
+			FootstepTimer.start()
+			FootstepSFX.play()
+			was_on_floor = true
+
 	else:
 		#variable jump height
 #		if Input.is_action_just_released("ui_up") and velocity.y < -60:
 #			velocity.y = -60
-	
+
 	#fast falling
 		if velocity.y > 0:
 			velocity.y += EXTRA_FALL_GRAVITY
@@ -167,6 +178,7 @@ func explode():
 
 
 
+#footstep sfx code (3/3)
 func _on_footstep_timer_timeout() -> void:
 	if active==false:
 		return
