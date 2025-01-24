@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://68egir1faxek"]
+[gd_scene load_steps=26 format=3 uid="uid://68egir1faxek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tv7mn"]
 [ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="2_tcfql"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cbg1c68oi1jxk" path="res://assets/audio/step1.wav" id="4_s7ib2"]
 [ext_resource type="AudioStream" uid="uid://drekobs5cffpe" path="res://assets/audio/explosion.wav" id="5_abd7j"]
 [ext_resource type="AudioStream" uid="uid://t5u88364rpvo" path="res://assets/audio/jump.wav" id="6_a0gbg"]
+[ext_resource type="AudioStream" uid="uid://dnrd7ohhp8a57" path="res://assets/audio/skidloop.wav" id="7_r3nyc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5yo8"]
 atlas = ExtResource("2_tcfql")
@@ -134,6 +135,20 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_80y7r")
 
+[node name="SkidParticle" type="CPUParticles2D" parent="."]
+position = Vector2(0, 20)
+scale = Vector2(2, 2)
+lifetime = 0.5
+direction = Vector2(-1, 0)
+spread = 60.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+damping_max = 5.0
+damping_curve = SubResource("Curve_bwjpd")
+scale_amount_min = 8.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_uwlo7")
+
 [node name="Sparks1" type="CPUParticles2D" parent="."]
 position = Vector2(-34, 10)
 amount = 3
@@ -186,7 +201,7 @@ autostart = true
 shape = SubResource("CircleShape2D_bwpld")
 
 [node name="FootstepTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.15
 one_shot = true
 autostart = true
 
@@ -201,6 +216,9 @@ volume_db = 5.0
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_a0gbg")
 volume_db = -1.0
+
+[node name="Skid" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_r3nyc")
 
 [connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]
