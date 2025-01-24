@@ -167,5 +167,5 @@ script = ExtResource("10_jwxxm")
 wait_time = 0.001
 
 [connection signal="body_entered" from="DeathPit" to="DeathPit" method="_on_body_entered"]
-[connection signal="timeout" from="DeathPit/Timer" to="." method="on_kiwi_death"]
+[connection signal="timeout" from="DeathPit/Timer" to="DeathPit" method="_on_timer_timeout"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

@@ -56,7 +56,7 @@ func on_important_object_destroyed():
 func on_kiwi_death():
 	kiwi_death_count += 1
 	$Camera2D/UI/Death.visible = false
-	if kiwi_death_count >= RESPAWN_LIMIT:
+	if kiwi_death_count >= RESPAWN_LIMIT: #BUG
 		level_complete_or_failed()
 	else:
 		respawn_player()
@@ -70,7 +70,7 @@ func level_complete_or_failed():
 
 
 func respawn_player():
-	remove_child(Player)
+	remove_child(Player)#suggested by ameliaaa on PS server
 	var player_scene = preload("res://player.tscn")
 	var player_scene_instance = player_scene.instantiate()
 	add_child(player_scene_instance)

@@ -7,6 +7,7 @@ class_name player
 @onready var Fuse =$Fuse
 @onready var Level =$".."
 @onready var FootstepTimer=$FootstepTimer
+@onready var FootstepSFX=$Footsteps
 
 var MAX_SPEED = 900
 var JUMP_VELOCITY = -775
@@ -17,13 +18,12 @@ var WARNING_BEFORE_DETONATION = 5
 var times_timer_timedout = 0
 var skidding = false #isnt currently used
 var active = true #disables movement when is false
+var direction#used for movement and to check for movement
 
 signal detonate
 
 
-#func _ready() -> void:
-	#name = "Player"
-	#print(str(name))
+
 
 ################### movement and animations ###################
 
@@ -48,6 +48,8 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_just_pressed("up"):
 			velocity.y = JUMP_VELOCITY
+			$Jump.pitch_scale = randf_range(0.8,1.2)
+			$Jump.play()
 	else:
 		#variable jump height
 #		if Input.is_action_just_released("ui_up") and velocity.y < -60:
@@ -62,19 +64,10 @@ func _physics_process(delta):
 
 
 #walk (adapted from Wiho does Puzzle-Platfroming (unreleased))
-	var direction = Input.get_axis("left", "right")
+	direction = Input.get_axis("left", "right")
 	if direction:
 		#NOTE TO SELF: move_toward(from, to, delta)
 		velocity.x = move_toward(velocity.x, direction * MAX_SPEED, 40)
-
-
-#invading footstep SFX code (template from Potion Blaster)
-		#if FootstepTimer.time_left <= 0:
-			#footstep_audio.pitch_scale = randf_range(0.8, 1.2)
-			#footstep_audio.play()
-			#FootstepTimer.start(0.5)
-
-
 	else:
 		velocity.x = move_toward(velocity.x, 0, FRICTION)
 
@@ -163,6 +156,9 @@ func explode():
 	$CollisionShape2D.disabled = true
 	FootstepTimer.stop()
 	Fuse.start(1.5)#delay b4 respawning
+	$ExplosionSFX.pitch_scale = randf_range(0.8,1.2)
+	$ExplosionSFX.play()
+
 
 	if is_on_floor():
 		var sign_of_explosion = preload("res://sign_of_explosion.tscn")
@@ -172,5 +168,10 @@ func explode():
 
 
 func _on_footstep_timer_timeout() -> void:
-	if active==true:
-		FootstepTimer.start()
+	if active==false:
+		return
+
+	FootstepTimer.start()
+	if direction and is_on_floor():
+		FootstepSFX.play()
+		FootstepSFX.pitch_scale = randf_range(0.8, 1.2)
