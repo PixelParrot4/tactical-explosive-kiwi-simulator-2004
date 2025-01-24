@@ -171,6 +171,7 @@ func explode():
 	Fuse.start(1.5)#delay b4 respawning
 	$ExplosionSFX.pitch_scale = randf_range(0.8,1.2)
 	$ExplosionSFX.play()
+	$Sparksloop.playing = false
 
 
 	if is_on_floor():
