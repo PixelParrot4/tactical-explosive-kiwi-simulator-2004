@@ -42,5 +42,7 @@ func _on_friction_h_slider_value_changed(value: float) -> void:
 
 
 func _process(_delta: float):
+	if Player == null:
+		return
 	var time_left:int = $"../../Player/Fuse".time_left
 	$TimeLeft.text = str(time_left)

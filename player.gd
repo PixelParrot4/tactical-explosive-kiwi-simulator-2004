@@ -21,6 +21,9 @@ var active = true #disables movement when is false
 signal detonate
 
 
+#func _ready() -> void:
+	#name = "Player"
+	#print(str(name))
 
 ################### movement and animations ###################
 
@@ -147,10 +150,6 @@ func _on_fuse_timeout() -> void:
 #it may not be entirely deleted so that sign of explosion is visible
 	elif times_timer_timedout == 3:
 		detonate.emit()
-		#if is_on_floor():
-			#$Camera2D.queue_free()
-		#else:
-			#queue_free()
 
 
 
@@ -160,11 +159,10 @@ func explode():
 	$Explosion.emitting = true
 	AnimatedSprite.visible = false
 	active = false #disables movement
-	Level.kiwi_death_count += 1
-	get_tree().call_group("PlayableCharacters", "should_this_kiwi_be_active")
+	#Level.kiwi_death_count += 1
 	$CollisionShape2D.disabled = true
 	FootstepTimer.stop()
-	Fuse.start(1.5)#delay b4 switch to respawned kiwi
+	Fuse.start(1.5)#delay b4 respawning
 
 	if is_on_floor():
 		var sign_of_explosion = preload("res://sign_of_explosion.tscn")

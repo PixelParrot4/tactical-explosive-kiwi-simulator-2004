@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmqvx6g3ivxmc"]
+[gd_scene load_steps=3 format=3 uid="uid://dmqvx6g3ivxmc"]
 
 [ext_resource type="Texture2D" uid="uid://ya1iloc0esc" path="res://assets/graphics/cctv.png" id="1_o8s01"]
+[ext_resource type="Script" path="res://sign_of_explosion.gd" id="2_nrdd1"]
 
 [node name="SignOfExplosion" type="Sprite2D"]
 texture = ExtResource("1_o8s01")
+script = ExtResource("2_nrdd1")

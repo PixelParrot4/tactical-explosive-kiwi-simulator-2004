@@ -3,11 +3,13 @@ extends Node
 var level_number:float
 @export var NUMBER_OF_OBJECTS_TO_DESTROY:int = 1
 var important_objects_destroyed = 0
-var kiwi_death_count = 0 #will be used to switch between kiwis
+var kiwi_death_count = 0
+@export var RESPAWN_LIMIT:int = 2
+var has_level_been_completed = false
+var Player:CharacterBody2D #not @onready since main menu has no player scene
 
 
 #takes you to next level
-	#made using https://youtu.be/GZrALMvOwY8
 func _ready() -> void:
 	var current_scene_file = get_tree().current_scene.scene_file_path
 	level_number = current_scene_file.to_int()
@@ -25,6 +27,9 @@ func _ready() -> void:
 	for ImportantObject:Node in ImportantObjects:
 		ImportantObject.important_object_destroyed.connect(on_important_object_destroyed)
 
+	if $Player != null:
+		Player = $Player
+		$Player.detonate.connect(on_kiwi_death)
 
 
 
@@ -42,9 +47,33 @@ func _input(_event: InputEvent) -> void:
 func on_important_object_destroyed():
 	important_objects_destroyed += 1
 	print("Objective: "+str(important_objects_destroyed)+"/"+str(NUMBER_OF_OBJECTS_TO_DESTROY))
-	if important_objects_destroyed >= NUMBER_OF_OBJECTS_TO_DESTROY:
-		$"Camera2D/UI/EndScreen".visible = true
-		$"Camera2D/UI/EndScreenUnderlay".visible = true
+	if important_objects_destroyed >= NUMBER_OF_OBJECTS_TO_DESTROY: #if level completed
+		has_level_been_completed = true
+		level_complete_or_failed()
+
+
+
+func on_kiwi_death():
+	kiwi_death_count += 1
+	$Camera2D/UI/Death.visible = false
+	if kiwi_death_count >= RESPAWN_LIMIT:
+		level_complete_or_failed()
+	else:
+		respawn_player()
+
+
+
+func level_complete_or_failed():
+	$"Camera2D/UI/EndScreen".visible = true
+	$"Camera2D/UI/EndScreenUnderlay".visible = true
+
+
+
+func respawn_player():
+	remove_child(Player)
+	var player_scene = preload("res://player.tscn")
+	var player_scene_instance = player_scene.instantiate()
+	add_child(player_scene_instance)
 
 
 #following 3 func connected to end screen buttons
