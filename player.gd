@@ -78,7 +78,7 @@ func _physics_process(delta):
 	direction = Input.get_axis("left", "right")
 	if direction:
 		#NOTE TO SELF: move_toward(from, to, delta)
-		velocity.x = move_toward(velocity.x, direction * MAX_SPEED, 40)
+		velocity.x = move_toward(velocity.x, direction * MAX_SPEED, 25)
 	else:
 		velocity.x = move_toward(velocity.x, 0, FRICTION)
 

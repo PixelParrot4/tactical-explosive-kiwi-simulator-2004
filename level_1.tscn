@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://605igjxyiwpx"]
+[gd_scene load_steps=18 format=4 uid="uid://605igjxyiwpx"]
 
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="1_6mrkf"]
 [ext_resource type="Script" path="res://level.gd" id="1_n5rtd"]
@@ -8,8 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bjo0d1dgx7g2s" path="res://assets/graphics/icon.svg" id="6_1jqmy"]
 [ext_resource type="Texture2D" uid="uid://coo15cdj14nna" path="res://assets/graphics/placeholderplay.png" id="6_sguyr"]
 [ext_resource type="Script" path="res://death.gd" id="8_18o1q"]
-[ext_resource type="PackedScene" uid="uid://cxftaaq3npdhc" path="res://ui.tscn" id="9_vpbl6"]
-[ext_resource type="Script" path="res://camera.gd" id="10_jwxxm"]
+[ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="9_ktfjf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mag1c"]
 texture = ExtResource("3_oruod")
@@ -160,11 +159,13 @@ shape = SubResource("RectangleShape2D_8ju3k")
 [node name="Timer" type="Timer" parent="DeathPit"]
 one_shot = true
 
-[node name="Camera2D" parent="." instance=ExtResource("9_vpbl6")]
-script = ExtResource("10_jwxxm")
-
 [node name="LevelTimer" type="Timer" parent="."]
 wait_time = 0.001
+
+[node name="CameraAndUI" parent="." instance=ExtResource("9_ktfjf")]
+collision_layer = 2
+collision_mask = 2
+sync_to_physics = false
 
 [connection signal="body_entered" from="DeathPit" to="DeathPit" method="_on_body_entered"]
 [connection signal="timeout" from="DeathPit/Timer" to="DeathPit" method="_on_timer_timeout"]

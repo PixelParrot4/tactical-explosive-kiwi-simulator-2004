@@ -17,10 +17,10 @@ func _ready() -> void:
 
 
 #assigns signals to following functions
-	if $Camera2D != null:
-		$"Camera2D/UI/EndScreen/Next".pressed.connect(switch_to_next_level)
-		$"Camera2D/UI/EndScreen/Retry".pressed.connect(reset_level)
-		$"Camera2D/UI/EndScreen/Back".pressed.connect(switch_to_main_menu)
+	if $CameraAndUI != null:
+		$"CameraAndUI/UI/EndScreen/Next".pressed.connect(switch_to_next_level)
+		$"CameraAndUI/UI/EndScreen/Retry".pressed.connect(reset_level)
+		$"CameraAndUI/UI/EndScreen/Back".pressed.connect(switch_to_main_menu)
 
 	#translated from code by secay on PS Discord server
 	var ImportantObjects:Array[Node] = get_tree().get_nodes_in_group("ImportantObjects")
@@ -55,7 +55,7 @@ func on_important_object_destroyed():
 
 func on_kiwi_death():
 	kiwi_death_count += 1
-	$Camera2D/UI/Death.visible = false
+	$CameraAndUI/UI/Death.visible = false
 	if kiwi_death_count >= RESPAWN_LIMIT: #BUG
 		level_complete_or_failed()
 	else:
@@ -64,8 +64,8 @@ func on_kiwi_death():
 
 
 func level_complete_or_failed():
-	$"Camera2D/UI/EndScreen".visible = true
-	$"Camera2D/UI/EndScreenUnderlay".visible = true
+	$"CameraAndUI/UI/EndScreen".visible = true
+	$"CameraAndUI/UI/EndScreenUnderlay".visible = true
 
 
 
