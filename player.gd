@@ -8,7 +8,7 @@ class_name player
 @onready var Level =$".."
 @onready var FootstepTimer=$FootstepTimer
 @onready var FootstepSFX=$Footsteps
-@onready var SkidParticle=$SkidParticle
+@onready var SkidParticles=$SkidParticle
 
 var MAX_SPEED = 900
 var JUMP_VELOCITY = -775
@@ -107,10 +107,14 @@ func _physics_process(delta):
 	#skid detection
 	if direction > 0 and velocity.x < 0 or direction < 0 and velocity.x > 0:
 		$Skid.playing = true
-		$SkidParticle.emitting = true
+		SkidParticles.emitting = true
+		if direction < 0 and velocity.x > 0:
+			SkidParticles.direction = Vector2(1,0)
+		else:
+			SkidParticles.direction = Vector2(-1,0)
 	else:
 		$Skid.playing = false
-		$SkidParticle.emitting = false
+		SkidParticles.emitting = false
 
 
 #so that particles' initial velocity is relative to player's
