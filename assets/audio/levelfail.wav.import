@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bsb5ubamthypu"
-path="res://.godot/imported/uihover.wav-1a15e391d08d544a9d0d4b98154c5771.sample"
+uid="uid://xdbjdsxc57nu"
+path="res://.godot/imported/levelfail.wav-40f41632938d024bffcdd82dcacf8a5d.sample"
 
 [deps]
 
-source_file="res://uihover.wav"
-dest_files=["res://.godot/imported/uihover.wav-1a15e391d08d544a9d0d4b98154c5771.sample"]
+source_file="res://assets/audio/levelfail.wav"
+dest_files=["res://.godot/imported/levelfail.wav-40f41632938d024bffcdd82dcacf8a5d.sample"]
 
 [params]
 

@@ -58,7 +58,7 @@ func on_kiwi_death():
 	$CameraAndUI/UI/Death.visible = false
 	if kiwi_death_count >= RESPAWN_LIMIT: #BUG
 		level_complete_or_failed()
-	else:
+	elif has_level_been_completed == false:
 		respawn_player()
 
 
@@ -66,6 +66,10 @@ func on_kiwi_death():
 func level_complete_or_failed():
 	$"CameraAndUI/UI/EndScreen".visible = true
 	$"CameraAndUI/UI/EndScreenUnderlay".visible = true
+	if has_level_been_completed == true:
+		$LevelComplete.play()
+	else:
+		$LevelFailed.play()
 
 
 

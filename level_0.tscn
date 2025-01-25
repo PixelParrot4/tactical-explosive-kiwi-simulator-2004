@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://level.gd" id="1_puvvf"]
 [ext_resource type="Texture2D" uid="uid://coo15cdj14nna" path="res://assets/graphics/placeholderplay.png" id="2_bbmo6"]
-[ext_resource type="AudioStream" uid="uid://cp2g14nn3hnhj" path="res://assets/audio/Title.ogg" id="3_fam5o"]
+[ext_resource type="AudioStream" uid="uid://d1dwg0tp7fce7" path="res://assets/audio/Title.ogg" id="3_fam5o"]
 [ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="4_203as"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukeai"]
