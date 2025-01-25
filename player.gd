@@ -92,6 +92,24 @@ func _physics_process(delta):
 		elif direction:
 			AnimatedSprite.play("walk")
 
+
+	#skid particles (omg this code block sucks)
+		if direction > 0 and velocity.x < 0 or direction < 0 and velocity.x > 0:
+			$Skid.playing = true
+			SkidParticles.emitting = true
+			if direction < 0 and velocity.x > 0:
+				SkidParticles.direction = Vector2(1,0)
+			else:
+				SkidParticles.direction = Vector2(-1,0)
+		else:
+			$Skid.playing = false
+			SkidParticles.emitting = false
+	else:
+		$Skid.playing = false
+		SkidParticles.emitting = false
+
+
+
 	#horizontal flipping
 	if direction < 0:
 		AnimatedSprite.flip_h = true
@@ -103,18 +121,6 @@ func _physics_process(delta):
 		Sparks1.position = Vector2(-34,10)
 		Sparks2.position = Vector2(-34,10)
 		Sparks2.direction.x = -1
-
-	#skid detection
-	if direction > 0 and velocity.x < 0 or direction < 0 and velocity.x > 0:
-		$Skid.playing = true
-		SkidParticles.emitting = true
-		if direction < 0 and velocity.x > 0:
-			SkidParticles.direction = Vector2(1,0)
-		else:
-			SkidParticles.direction = Vector2(-1,0)
-	else:
-		$Skid.playing = false
-		SkidParticles.emitting = false
 
 
 #so that particles' initial velocity is relative to player's

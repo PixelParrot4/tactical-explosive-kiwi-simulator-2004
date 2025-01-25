@@ -149,8 +149,8 @@ initial_velocity_min = 100.0
 initial_velocity_max = 300.0
 damping_max = 5.0
 damping_curve = SubResource("Curve_bwjpd")
-scale_amount_min = 6.0
-scale_amount_max = 6.0
+scale_amount_min = 4.0
+scale_amount_max = 9.0
 scale_amount_curve = SubResource("Curve_uwlo7")
 
 [node name="Sparks1" type="CPUParticles2D" parent="."]
