@@ -9,6 +9,7 @@ class_name player
 @onready var FootstepTimer=$FootstepTimer
 @onready var FootstepSFX=$Footsteps
 @onready var SkidParticles=$SkidParticle
+@onready var SparkSFX=$Sparks
 
 var MAX_SPEED = 900
 var JUMP_VELOCITY = -775
@@ -135,6 +136,8 @@ func _physics_process(delta):
 	var reducing_time_before_detonation = true
 	if Input.is_action_pressed("speed-up-fuse") and times_timer_timedout == 0:
 		Sparks2.visible = true
+		if SparkSFX.playing == false:
+			SparkSFX.playing = true
 		#without following line, Timer never times-out/behaves unexpectedly
 		if Fuse.time_left > 1:
 			Fuse.start(Fuse.time_left - 0.2)
@@ -144,6 +147,7 @@ func _physics_process(delta):
 		reducing_time_before_detonation = false
 		if times_timer_timedout < 1:
 			Sparks2.visible = false
+			SparkSFX.playing = false
 
 
 
@@ -157,6 +161,8 @@ func _on_fuse_timeout() -> void:
 
 	if times_timer_timedout == 1:
 		Sparks2.visible = true
+		if SparkSFX.playing == false:
+			SparkSFX.playing = true
 		Fuse.start(WARNING_BEFORE_DETONATION)
 
 	elif times_timer_timedout == 2:
@@ -172,6 +178,7 @@ func _on_fuse_timeout() -> void:
 func explode():
 	Sparks1.visible = false
 	Sparks2.visible = false
+	SparkSFX.playing = false
 	$Explosion.emitting = true
 	AnimatedSprite.visible = false
 	active = false #disables movement
@@ -181,7 +188,6 @@ func explode():
 	Fuse.start(1.5)#delay b4 respawning
 	$ExplosionSFX.pitch_scale = randf_range(0.8,1.2)
 	$ExplosionSFX.play()
-	$Sparksloop.playing = false
 
 
 	if is_on_floor():

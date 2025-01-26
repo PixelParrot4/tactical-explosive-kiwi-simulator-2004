@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://68egir1faxek"]
+[gd_scene load_steps=27 format=3 uid="uid://68egir1faxek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tv7mn"]
 [ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="2_tcfql"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://drekobs5cffpe" path="res://assets/audio/explosion.wav" id="5_abd7j"]
 [ext_resource type="AudioStream" uid="uid://t5u88364rpvo" path="res://assets/audio/jump.wav" id="6_a0gbg"]
 [ext_resource type="AudioStream" uid="uid://dnrd7ohhp8a57" path="res://assets/audio/skidloop.wav" id="7_r3nyc"]
+[ext_resource type="AudioStream" uid="uid://cg06emo200wxj" path="res://assets/audio/sparksloop.wav" id="8_aheo6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5yo8"]
 atlas = ExtResource("2_tcfql")
@@ -224,6 +225,9 @@ volume_db = -1.0
 [node name="Skid" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_r3nyc")
 volume_db = -8.0
+
+[node name="Sparks" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_aheo6")
 
 [connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]

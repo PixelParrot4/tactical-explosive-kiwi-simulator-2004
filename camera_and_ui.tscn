@@ -8,6 +8,7 @@
 size = Vector2(1152, 648)
 
 [node name="CameraAndUI" type="AnimatableBody2D"]
+sync_to_physics = false
 script = ExtResource("1_fv0yt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
