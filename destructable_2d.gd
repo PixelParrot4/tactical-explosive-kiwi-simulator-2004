@@ -1,6 +1,16 @@
 extends StaticBody2D
 class_name Destructable2D
 
+#INSTRUCTIONS TO SET UP THIS NODE
+#1. Add Destructable2D node to level (ik it's spelt wrong)
+#2. Make sure player.tscn is in same level
+#3. Add Timer child node
+#4. Add Sprite2D or AnimatedSprite2D with their textures
+#5. Add collision and Area2D with collision
+#6. Add CPUParticles2D and set it up (one shot = true)
+#7. When applicable, set GoalIsToDestroyThis = true and put it in ImportantObjects group
+
+
 var in_blast_radius = false
 @onready var Player = $"../Player"
 @onready var Particles =$CPUParticles2D

@@ -10,8 +10,8 @@ func _process(_delta: float) -> void:
 #travel towards player faster when kiwi respawns
 #can be improved by replacing first line with if player is farther from camera than [] 
 	if $"../Player".velocity==Vector2(0,0):
-		x_position_smoothening=40
-		y_position_smoothening=40
+		x_position_smoothening=60
+		y_position_smoothening=60
 	else:
 		x_position_smoothening = 14.5
 		y_position_smoothening = 23

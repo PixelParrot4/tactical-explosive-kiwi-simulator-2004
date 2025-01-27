@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1wycrtpc1w2a"]
 
 [ext_resource type="Script" path="res://destructable_2d.gd" id="1_nad6q"]
-[ext_resource type="Texture2D" uid="uid://bng5us2jnlgsr" path="res://assets/graphics/placeholdertiles.png" id="2_8bcx4"]
+[ext_resource type="Texture2D" uid="uid://dx2po8qs2be2m" path="res://assets/graphics/box-fore.png" id="2_x01ua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8dgx"]
 size = Vector2(72, 72)
@@ -15,8 +15,7 @@ script = ExtResource("1_nad6q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(36, 36)
-scale = Vector2(1, 0.486486)
-texture = ExtResource("2_8bcx4")
+texture = ExtResource("2_x01ua")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36, 36)
