@@ -35,6 +35,10 @@ script = ExtResource("1_3h2h8")
 NUMBER_OF_OBJECTS_TO_DESTROY = 2
 RESPAWN_LIMIT = 3
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
 [node name="Player" parent="." instance=ExtResource("1_cksvk")]
 
 [node name="CameraAndUI" parent="." instance=ExtResource("2_we6mn")]

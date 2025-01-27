@@ -1,12 +1,19 @@
 #script adapted from Untitled Game (unreleased yet)
-extends Node
-var level_number:float
+extends Node2D
+class_name Level2D
+
+@onready var LevelTimer:Timer=$Timer
+var Player:CharacterBody2D #not @onready since main menu has no player scene
+
 @export var NUMBER_OF_OBJECTS_TO_DESTROY:int = 1
+@export var RESPAWN_LIMIT:int = 2
+
+var level_number:float
 var important_objects_destroyed = 0
 var kiwi_death_count = 0
-@export var RESPAWN_LIMIT:int = 2
 var has_level_been_completed = false
-var Player:CharacterBody2D #not @onready since main menu has no player scene
+
+signal new_player_scene_spawned_by_now#otherwise Destructible2Ds cant be blown up by respawned players
 
 
 #takes you to next level
@@ -31,6 +38,8 @@ func _ready() -> void:
 		Player = $Player
 		$Player.detonate.connect(on_kiwi_death)
 
+	LevelTimer.timeout.connect(delay_after_player_respawn)
+	LevelTimer.one_shot = true
 
 
 
@@ -78,6 +87,15 @@ func respawn_player():
 	var player_scene = preload("res://player.tscn")
 	var player_scene_instance = player_scene.instantiate()
 	add_child(player_scene_instance)
+
+	LevelTimer.start(0.01)#timeout connected to following func
+
+
+#BUG?
+func delay_after_player_respawn():
+	$Player.detonate.connect(on_kiwi_death) #POTENTIAL BUG
+	new_player_scene_spawned_by_now.emit()
+
 
 
 #following 3 func connected to end screen buttons

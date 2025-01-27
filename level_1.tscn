@@ -165,14 +165,14 @@ one_shot = true
 wait_time = 0.001
 
 [node name="CameraAndUI" parent="." instance=ExtResource("9_ktfjf")]
-collision_layer = 2
-collision_mask = 2
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_54dja")
 
 [node name="LevelFailed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ixmhh")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="DeathPit" to="DeathPit" method="_on_body_entered"]
 [connection signal="timeout" from="DeathPit/Timer" to="DeathPit" method="_on_timer_timeout"]

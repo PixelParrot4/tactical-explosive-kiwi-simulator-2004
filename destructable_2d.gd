@@ -23,10 +23,19 @@ signal important_object_destroyed
 
 
 func _ready() -> void:
-	Player.detonate.connect(on_player_detonation)
 	Area.area_entered.connect(_on_area_2d_area_entered)
 	Area.area_exited.connect(_on_area_2d_area_exited)
 	TimerNode.timeout.connect(_on_timer_timeout)
+	connect_signal_from_player()
+
+
+#BUG
+#without next 3 lines respawned players wont be able to blow up this node
+	$"..".new_player_scene_spawned_by_now.connect(connect_signal_from_player)
+func connect_signal_from_player():
+	Player.detonate.connect(on_player_detonation)
+
+
 
 
 
