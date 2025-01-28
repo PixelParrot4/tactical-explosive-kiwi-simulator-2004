@@ -29,12 +29,14 @@ func _ready() -> void:
 	connect_signal_from_player()
 
 
-#BUG
+#BUG signal doesnt appear to connect properly
+#BUG runs twice in a row for some reason
 #without next 3 lines respawned players wont be able to blow up this node
 	$"..".new_player_scene_spawned_by_now.connect(connect_signal_from_player)
 func connect_signal_from_player():
 	Player.detonate.connect(on_player_detonation)
-
+	#is displayed before the text that appears when level changed
+	print("player's signal should be connected")
 
 
 
@@ -49,6 +51,7 @@ func _on_area_2d_area_exited(_area: Area2D) -> void:
 
 
 func on_player_detonation():
+	print("according to Destructible2D kiwi died")
 	if in_blast_radius == true:
 		print("Destructible2D is in blast radius")
 		if GoalIsToDestroyThis == false:

@@ -161,9 +161,6 @@ shape = SubResource("RectangleShape2D_8ju3k")
 [node name="Timer" type="Timer" parent="DeathPit"]
 one_shot = true
 
-[node name="LevelTimer" type="Timer" parent="."]
-wait_time = 0.001
-
 [node name="CameraAndUI" parent="." instance=ExtResource("9_ktfjf")]
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="."]
@@ -176,4 +173,3 @@ stream = ExtResource("11_ixmhh")
 
 [connection signal="body_entered" from="DeathPit" to="DeathPit" method="_on_body_entered"]
 [connection signal="timeout" from="DeathPit/Timer" to="DeathPit" method="_on_timer_timeout"]
-[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

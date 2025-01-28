@@ -10,3 +10,5 @@ func _on_timer_timeout() -> void:
 #makes kiwi explode, isnt done directly bcs otherwise itd blow up twice
 	if $"../Player".times_timer_timedout < 2:
 		$"../Player".times_timer_timedout = 2
+		$"../Player/Fuse".stop()
+		$"../Player".explode()

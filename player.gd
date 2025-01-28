@@ -24,12 +24,7 @@ var direction#used for movement and to check for movement
 var was_on_floor:bool
 
 signal detonate
-#signal new_player_scene_spawned
-#
-#
-#func _ready():
-	#new_player_scene_spawned.emit()
-	#self.new_player_scene_spawned.conn
+
 
 
 ################### movement and animations ###################

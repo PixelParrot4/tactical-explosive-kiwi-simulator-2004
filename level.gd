@@ -1,4 +1,14 @@
-#script adapted from Untitled Game (unreleased yet)
+#parts of script adapted from Untitled Game (unreleased yet)
+
+#INSTRUCTIONS TO ADD NEW LEVEL
+#1. Create new scene named level_[number] with the only node being a Level2D
+#2. Add a Timer as child node to level
+#If this isnt a playable level (like level_0.tscn), you're done!
+#3. Connect Player, CameraAndUI and tile map layer scenes
+#4. Add some objects required to be destroyed by following instructions in destructable_2d.gd
+#5. Set level's export variables with 'Inspector' tab in editor
+#6. Add any additional Destructable2D's and Sprite2D's
+
 extends Node2D
 class_name Level2D
 
@@ -65,8 +75,9 @@ func on_important_object_destroyed():
 func on_kiwi_death():
 	kiwi_death_count += 1
 	$CameraAndUI/UI/Death.visible = false
-	if kiwi_death_count >= RESPAWN_LIMIT: #BUG
+	if kiwi_death_count >= RESPAWN_LIMIT:
 		level_complete_or_failed()
+	#BUG: this runs before has_level_been_completed can be set to true
 	elif has_level_been_completed == false:
 		respawn_player()
 
@@ -79,6 +90,7 @@ func level_complete_or_failed():
 		$LevelComplete.play()
 	else:
 		$LevelFailed.play()
+		$"CameraAndUI/UI/EndScreen/Next".visible = false
 
 
 
