@@ -6,6 +6,7 @@ extends Control
 @onready var GravityLabel = $VBoxContainer/GravityLabel
 @onready var ExtraGravityLabel =$VBoxContainer/ExtraGravityLabel
 @onready var FrictionLabel = $VBoxContainer/FrictionLabel
+var time_spent_in_level=0
 
 func _ready() -> void:
 	_on_speed_h_slider_value_changed(Player.MAX_SPEED)
@@ -41,8 +42,14 @@ func _on_friction_h_slider_value_changed(value: float) -> void:
 
 
 
-func _process(_delta: float):
-	if Player == null:
-		return
-	var time_left:int = $"../../Player/Fuse".time_left
-	$TimeLeft.text = str(time_left)
+#to be used only for debugging
+#func _process(_delta: float):
+	#if Player == null:
+		#return
+	#var time_left:int = $"../../Player/Fuse".time_left
+	#$TimeLeft.text = str(time_left)
+
+
+func _on_stopwatch_timer_timeout() -> void:
+	time_spent_in_level+=0.1
+	$Stopwatch.text=str(time_spent_in_level)+" s"

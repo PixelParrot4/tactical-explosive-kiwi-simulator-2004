@@ -86,6 +86,10 @@ func on_kiwi_death():
 func level_complete_or_failed():
 	$"CameraAndUI/UI/EndScreen".visible = true
 	$"CameraAndUI/UI/EndScreenUnderlay".visible = true
+	$"CameraAndUI/UI/EndScreen/FinalTime".text = str($"CameraAndUI/UI".time_spent_in_level)+" seconds"
+	$"CameraAndUI/UI/Objective".visible=false
+	$"CameraAndUI/UI/TimeLeft".visible=false
+	$"CameraAndUI/UI/StopwatchTimer".stop()
 	if has_level_been_completed == true:
 		$LevelComplete.play()
 	else:
