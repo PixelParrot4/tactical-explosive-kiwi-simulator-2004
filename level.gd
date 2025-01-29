@@ -23,8 +23,6 @@ var important_objects_destroyed = 0
 var kiwi_death_count = 0
 var has_level_been_completed = false
 
-signal new_player_scene_spawned_by_now#otherwise Destructible2Ds cant be blown up by respawned players
-
 
 #takes you to next level
 func _ready() -> void:
@@ -44,12 +42,12 @@ func _ready() -> void:
 	for ImportantObject:Node in ImportantObjects:
 		ImportantObject.important_object_destroyed.connect(on_important_object_destroyed)
 
-	if $Player != null:
+	if $Player != null: #instead of @onready since main menu has no player
 		Player = $Player
-		$Player.detonate.connect(on_kiwi_death)
 
-	LevelTimer.timeout.connect(delay_after_player_respawn)
-	LevelTimer.one_shot = true
+	GlobalScene.player_detonated.connect(on_kiwi_death)
+	#LevelTimer.timeout.connect(delay_after_player_death)
+	#LevelTimer.one_shot = true
 
 
 
@@ -75,9 +73,11 @@ func on_important_object_destroyed():
 func on_kiwi_death():
 	kiwi_death_count += 1
 	$CameraAndUI/UI/Death.visible = false
+#BUG: this runs before has_level_been_completed can be set to true
+	#LevelTimer.start(0.001)
+#func delay_after_player_death():
 	if kiwi_death_count >= RESPAWN_LIMIT:
 		level_complete_or_failed()
-	#BUG: this runs before has_level_been_completed can be set to true
 	elif has_level_been_completed == false:
 		respawn_player()
 
@@ -92,6 +92,7 @@ func level_complete_or_failed():
 	$"CameraAndUI/UI/StopwatchTimer".stop()
 	if has_level_been_completed == true:
 		$LevelComplete.play()
+		$"CameraAndUI/UI/EndScreen/Next".visible = true #failsafe
 	else:
 		$LevelFailed.play()
 		$"CameraAndUI/UI/EndScreen/Next".visible = false
@@ -104,13 +105,7 @@ func respawn_player():
 	var player_scene_instance = player_scene.instantiate()
 	add_child(player_scene_instance)
 
-	LevelTimer.start(0.01)#timeout connected to following func
 
-
-#BUG?
-func delay_after_player_respawn():
-	$Player.detonate.connect(on_kiwi_death) #POTENTIAL BUG
-	new_player_scene_spawned_by_now.emit()
 
 
 

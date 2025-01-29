@@ -171,6 +171,7 @@ func _on_fuse_timeout() -> void:
 #it may not be entirely deleted so that sign of explosion is visible
 	elif times_timer_timedout == 3:
 		detonate.emit()
+		GlobalScene.player_detonated.emit()
 
 
 
@@ -181,7 +182,6 @@ func explode():
 	$Explosion.emitting = true
 	AnimatedSprite.visible = false
 	active = false #disables movement
-	#Level.kiwi_death_count += 1
 	$CollisionShape2D.disabled = true
 	FootstepTimer.stop()
 	Fuse.start(1.5)#delay b4 respawning

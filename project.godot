@@ -16,6 +16,10 @@ run/main_scene="res://level_0.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/graphics/icon.svg"
 
+[autoload]
+
+GlobalScene="*res://global.tscn"
+
 [global_group]
 
 ImportantObjects="objective is to destroy them"

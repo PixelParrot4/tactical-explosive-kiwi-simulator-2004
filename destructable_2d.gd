@@ -26,19 +26,7 @@ func _ready() -> void:
 	Area.area_entered.connect(_on_area_2d_area_entered)
 	Area.area_exited.connect(_on_area_2d_area_exited)
 	TimerNode.timeout.connect(_on_timer_timeout)
-	connect_signal_from_player()
-
-
-#BUG signal doesnt appear to connect properly
-#BUG runs twice in a row for some reason
-#without next 3 lines respawned players wont be able to blow up this node
-	$"..".new_player_scene_spawned_by_now.connect(connect_signal_from_player)
-func connect_signal_from_player():
-	Player.detonate.connect(on_player_detonation)
-	#is displayed before the text that appears when level changed
-	print("player's signal should be connected")
-
-
+	GlobalScene.player_detonated.connect(on_player_detonation)
 
 
 #when Player's Area2D enters
@@ -51,24 +39,17 @@ func _on_area_2d_area_exited(_area: Area2D) -> void:
 
 
 func on_player_detonation():
-	print("according to Destructible2D kiwi died")
 	if in_blast_radius == true:
-		print("Destructible2D is in blast radius")
+		Particles.emitting = true
 		if GoalIsToDestroyThis == false:
 			$Sprite2D.visible = false#because the others use an AnimatedSprite
-			TimerNode.wait_time = Particles.lifetime
+			TimerNode.start(Particles.lifetime)
 		else:
 			$AnimatedSprite2D.play("broken")
-
-#apply to both
-		TimerNode.start()
-		Particles.emitting = true
+			important_object_destroyed.emit()
 
 
 
 func _on_timer_timeout() -> void:
 	if GoalIsToDestroyThis == false:
 		queue_free()
-	else:
-		print("imp obj destroyed")
-		important_object_destroyed.emit()
