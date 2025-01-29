@@ -52,4 +52,6 @@ func _on_friction_h_slider_value_changed(value: float) -> void:
 
 func _on_stopwatch_timer_timeout() -> void:
 	time_spent_in_level+=0.1
+#rounding to negate rounding imprecision (thx cookie1170 in PS discord server)
+	time_spent_in_level=snappedf(time_spent_in_level, 0.1)
 	$Stopwatch.text=str(time_spent_in_level)+" s"
