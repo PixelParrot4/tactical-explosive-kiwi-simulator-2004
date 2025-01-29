@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://605igjxyiwpx"]
+[gd_scene load_steps=21 format=4 uid="uid://605igjxyiwpx"]
 
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="1_6mrkf"]
 [ext_resource type="Script" path="res://level.gd" id="1_n5rtd"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="9_ktfjf"]
 [ext_resource type="AudioStream" uid="uid://t0q487agrej1" path="res://assets/audio/levelwin.wav" id="10_54dja"]
 [ext_resource type="AudioStream" uid="uid://xdbjdsxc57nu" path="res://assets/audio/levelfail.wav" id="11_ixmhh"]
+[ext_resource type="PackedScene" uid="uid://dxjssjil3ab16" path="res://LevelMusic.tscn" id="12_4vw0s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mag1c"]
 texture = ExtResource("3_oruod")
@@ -170,6 +171,8 @@ stream = ExtResource("10_54dja")
 stream = ExtResource("11_ixmhh")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="LevelMusic" parent="." instance=ExtResource("12_4vw0s")]
 
 [connection signal="body_entered" from="DeathPit" to="DeathPit" method="_on_body_entered"]
 [connection signal="timeout" from="DeathPit/Timer" to="DeathPit" method="_on_timer_timeout"]

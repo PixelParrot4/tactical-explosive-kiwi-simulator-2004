@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://n2vg3yv3kaox"]
+[gd_scene load_steps=42 format=4 uid="uid://n2vg3yv3kaox"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_3h2h8"]
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="1_cksvk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c2k7qtmgjcvqg" path="res://assets/graphics/computer1-broken.png" id="6_s4q00"]
 [ext_resource type="Texture2D" uid="uid://ogpn2h7hoiq8" path="res://assets/graphics/computer1.png" id="7_pob14"]
 [ext_resource type="PackedScene" uid="uid://bsxsradwonl6o" path="res://computer1.tscn" id="8_q61ux"]
+[ext_resource type="PackedScene" uid="uid://dxjssjil3ab16" path="res://LevelMusic.tscn" id="9_s5w0y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jxat3"]
 atlas = ExtResource("6_s4q00")
@@ -270,3 +271,5 @@ shape = SubResource("RectangleShape2D_u1sfx")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Computer1"]
 
 [node name="Computer2" parent="." instance=ExtResource("8_q61ux")]
+
+[node name="LevelMusic" parent="." instance=ExtResource("9_s5w0y")]

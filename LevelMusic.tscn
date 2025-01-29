@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxjssjil3ab16"]
+
+[ext_resource type="AudioStream" uid="uid://d3l4ncy24bnjc" path="res://assets/audio/Stage.ogg" id="1_stl6a"]
+[ext_resource type="Script" path="res://level_music_player.gd" id="2_xefwm"]
+
+[node name="LevelMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_stl6a")
+volume_db = -1.0
+autoplay = true
+parameters/looping = false
+script = ExtResource("2_xefwm")
