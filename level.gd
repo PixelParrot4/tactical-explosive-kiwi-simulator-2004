@@ -46,8 +46,6 @@ func _ready() -> void:
 		Player = $Player
 
 	GlobalScene.player_detonated.connect(on_kiwi_death)
-	#LevelTimer.timeout.connect(delay_after_player_death)
-	#LevelTimer.one_shot = true
 
 
 
@@ -73,9 +71,6 @@ func on_important_object_destroyed():
 func on_kiwi_death():
 	kiwi_death_count += 1
 	$CameraAndUI/UI/Death.visible = false
-#BUG: this runs before has_level_been_completed can be set to true
-	#LevelTimer.start(0.001)
-#func delay_after_player_death():
 	if kiwi_death_count >= RESPAWN_LIMIT:
 		level_complete_or_failed()
 	elif has_level_been_completed == false:

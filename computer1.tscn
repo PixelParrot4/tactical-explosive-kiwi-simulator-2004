@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bsxsradwonl6o"]
+[gd_scene load_steps=38 format=3 uid="uid://bsxsradwonl6o"]
 
 [ext_resource type="Script" path="res://destructable_2d.gd" id="1_yimcg"]
 [ext_resource type="Texture2D" uid="uid://c2k7qtmgjcvqg" path="res://assets/graphics/computer1-broken.png" id="2_3xg56"]
@@ -230,8 +230,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1sfx"]
 size = Vector2(160, 112)
 
+[sub_resource type="Curve" id="Curve_ysdhg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.844828, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.486792), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_l32y0"]
+offsets = PackedFloat32Array(0, 0.753968)
+colors = PackedColorArray(1, 1, 0.501961, 1, 0.960022, 0.521276, 0.336115, 1)
+
 [node name="Computer2" type="StaticBody2D" groups=["ImportantObjects"]]
-position = Vector2(-1424, 304)
 script = ExtResource("1_yimcg")
 GoalIsToDestroyThis = true
 
@@ -239,8 +246,8 @@ GoalIsToDestroyThis = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5sfcq")
+animation = &"broken"
 autoplay = "default"
-frame_progress = 0.510066
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -248,3 +255,18 @@ frame_progress = 0.510066
 shape = SubResource("RectangleShape2D_u1sfx")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(8, 20)
+amount = 2
+lifetime = 0.5
+explosiveness = 0.3
+lifetime_randomness = 0.2
+direction = Vector2(1, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 100.0
+damping_max = 20.0
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_ysdhg")
+color_ramp = SubResource("Gradient_l32y0")

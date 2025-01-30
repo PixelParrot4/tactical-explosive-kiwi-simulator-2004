@@ -64,8 +64,8 @@ func _physics_process(delta):
 
 	else:
 		#variable jump height
-#		if Input.is_action_just_released("ui_up") and velocity.y < -60:
-#			velocity.y = -60
+		if Input.is_action_just_released("up") and velocity.y < -100:
+			velocity.y = -100
 
 	#fast falling
 		if velocity.y > 0:
@@ -123,15 +123,6 @@ func _physics_process(delta):
 		Sparks2.direction.x = -1
 
 
-#so that particles' initial velocity is relative to player's
-#BUG doesnt work as intended as of now
-	#Sparks1.initial_velocity_max = 100 - velocity.x
-	#Sparks1.initial_velocity_min = velocity.x *-1
-	#Sparks2.initial_velocity_max = 100 - velocity.x
-	#Sparks2.initial_velocity_min = velocity.x *-1
-
-
-
 	var reducing_time_before_detonation = true
 	if Input.is_action_pressed("speed-up-fuse") and times_timer_timedout == 0:
 		Sparks2.visible = true
@@ -167,8 +158,7 @@ func _on_fuse_timeout() -> void:
 	elif times_timer_timedout == 2:
 		explode()
 
-#after a short delay, player controls next kiwi
-#it may not be entirely deleted so that sign of explosion is visible
+
 	elif times_timer_timedout == 3:
 		detonate.emit()
 		GlobalScene.player_detonated.emit()
