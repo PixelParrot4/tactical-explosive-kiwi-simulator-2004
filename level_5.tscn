@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqfqu5jibg28l"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_656ii"]
+[ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="2_256d4"]
+[ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="3_q5s2e"]
+[ext_resource type="PackedScene" uid="uid://cxpwmerqyiawe" path="res://terrain.tscn" id="4_2ko8p"]
+[ext_resource type="PackedScene" uid="uid://j1b5p86sdmes" path="res://background.tscn" id="5_1i3ui"]
+[ext_resource type="PackedScene" uid="uid://bsxsradwonl6o" path="res://computer1.tscn" id="6_k4nam"]
+
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_656ii")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_256d4")]
+
+[node name="CameraAndUI" parent="." instance=ExtResource("3_q5s2e")]
+
+[node name="Terrain" parent="." instance=ExtResource("4_2ko8p")]
+
+[node name="Background" parent="." instance=ExtResource("5_1i3ui")]
+
+[node name="Computer" parent="." instance=ExtResource("6_k4nam")]
+position = Vector2(817, -141)
+
+[node name="Computer2" parent="." instance=ExtResource("6_k4nam")]
+position = Vector2(428, -379)
+
+[node name="Computer3" parent="." instance=ExtResource("6_k4nam")]
+position = Vector2(499, -112)
