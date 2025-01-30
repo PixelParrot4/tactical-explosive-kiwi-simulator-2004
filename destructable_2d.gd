@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 class_name Destructable2D
 
 #INSTRUCTIONS TO SET UP THIS NODE
@@ -44,6 +44,8 @@ func on_player_detonation():
 		if GoalIsToDestroyThis == false:
 			$Sprite2D.visible = false#because the others use an AnimatedSprite
 			TimerNode.start(Particles.lifetime)
+			if $CollisionShape2D != null:
+				$CollisionShape2D.disabled=true
 		else:
 			$AnimatedSprite2D.play("broken")
 			important_object_destroyed.emit()

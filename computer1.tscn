@@ -238,7 +238,7 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.753968)
 colors = PackedColorArray(1, 1, 0.501961, 1, 0.960022, 0.521276, 0.336115, 1)
 
-[node name="Computer2" type="StaticBody2D" groups=["ImportantObjects"]]
+[node name="Computer" type="Node2D" groups=["ImportantObjects"]]
 script = ExtResource("1_yimcg")
 GoalIsToDestroyThis = true
 
@@ -246,7 +246,6 @@ GoalIsToDestroyThis = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5sfcq")
-animation = &"broken"
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -256,6 +255,7 @@ shape = SubResource("RectangleShape2D_u1sfx")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(8, 20)
+emitting = false
 amount = 2
 lifetime = 0.5
 explosiveness = 0.3

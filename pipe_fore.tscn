@@ -1,21 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1wycrtpc1w2a"]
+[gd_scene load_steps=6 format=3 uid="uid://7s75j456v5ec"]
 
-[ext_resource type="Script" path="res://destructable_2d.gd" id="1_nad6q"]
-[ext_resource type="Texture2D" uid="uid://dx2po8qs2be2m" path="res://assets/graphics/box-fore.png" id="2_x01ua"]
+[ext_resource type="Script" path="res://destructable_2d.gd" id="1_n7hrn"]
+[ext_resource type="Texture2D" uid="uid://cikdd5dnqggi6" path="res://assets/graphics/pipe-fore.png" id="2_nm1x0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8dgx"]
+size = Vector2(72, 56.5657)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drcyy"]
 size = Vector2(72, 72)
 
 [sub_resource type="Curve" id="Curve_06xti"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.751908, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.501887), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Box-Fore" type="StaticBody2D"]
-script = ExtResource("1_nad6q")
+[node name="Pipe-Fore" type="StaticBody2D"]
+script = ExtResource("1_n7hrn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(36, 36)
-texture = ExtResource("2_x01ua")
+texture = ExtResource("2_nm1x0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36, 36)
@@ -27,7 +30,7 @@ shape = SubResource("RectangleShape2D_r8dgx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(36, 36)
 scale = Vector2(0.99, 0.99)
-shape = SubResource("RectangleShape2D_r8dgx")
+shape = SubResource("RectangleShape2D_drcyy")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(36, 36)
