@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfl77krwhbif"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_w4bbh"]
+[ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="2_1u2af"]
+[ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="3_ue1ct"]
+[ext_resource type="PackedScene" uid="uid://cxpwmerqyiawe" path="res://terrain.tscn" id="4_qvl6c"]
+[ext_resource type="PackedScene" uid="uid://j1b5p86sdmes" path="res://background.tscn" id="5_4rr8j"]
+[ext_resource type="PackedScene" uid="uid://bsxsradwonl6o" path="res://computer1.tscn" id="6_a8hgs"]
+
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_w4bbh")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_1u2af")]
+
+[node name="CameraAndUI" parent="." instance=ExtResource("3_ue1ct")]
+
+[node name="Terrain" parent="." instance=ExtResource("4_qvl6c")]
+
+[node name="Background" parent="." instance=ExtResource("5_4rr8j")]
+
+[node name="Computer" parent="." instance=ExtResource("6_a8hgs")]
+
+[node name="Computer2" parent="." instance=ExtResource("6_a8hgs")]
+
+[node name="Computer3" parent="." instance=ExtResource("6_a8hgs")]
