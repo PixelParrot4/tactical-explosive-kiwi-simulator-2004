@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3gfjcoverls3"]
+
+[ext_resource type="Script" path="res://death.gd" id="1_7k7s0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ju3k"]
+size = Vector2(0, 212)
+
+[node name="OutOfBounds" type="Area2D"]
+position = Vector2(288, 228)
+script = ExtResource("1_7k7s0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8ju3k")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

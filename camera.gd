@@ -2,7 +2,7 @@ extends Node2D
 var x_position_smoothening = 14.5
 var y_position_smoothening = 23
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var PlayerPos = $"../Player".global_position
 	global_position.x = move_toward(global_position.x, PlayerPos.x, x_position_smoothening)
 	global_position.y = move_toward(global_position.y, PlayerPos.y, y_position_smoothening)

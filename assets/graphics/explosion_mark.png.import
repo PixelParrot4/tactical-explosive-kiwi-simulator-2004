@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yecitimaot7a"
-path="res://.godot/imported/box-back.png-72d175dcd952288bc194b7c3d42b46b7.ctex"
+uid="uid://btisah1djyfpj"
+path="res://.godot/imported/explosion_mark.png-06b6ae10d84d6180c9b1580c4bdd6ef8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/box-back.png"
-dest_files=["res://.godot/imported/box-back.png-72d175dcd952288bc194b7c3d42b46b7.ctex"]
+source_file="res://assets/graphics/explosion_mark.png"
+dest_files=["res://.godot/imported/explosion_mark.png-06b6ae10d84d6180c9b1580c4bdd6ef8.ctex"]
 
 [params]
 

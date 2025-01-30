@@ -239,6 +239,7 @@ offsets = PackedFloat32Array(0, 0.753968)
 colors = PackedColorArray(1, 1, 0.501961, 1, 0.960022, 0.521276, 0.336115, 1)
 
 [node name="Computer" type="Node2D" groups=["ImportantObjects"]]
+z_index = -1
 script = ExtResource("1_yimcg")
 GoalIsToDestroyThis = true
 

@@ -26,6 +26,8 @@ var was_on_floor:bool
 signal detonate
 
 
+func _ready():
+	Fuse.start(Level.TIME_BEFORE_KIWI_DETONATES)
 
 ################### movement and animations ###################
 
