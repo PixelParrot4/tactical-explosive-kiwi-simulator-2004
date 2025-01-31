@@ -41,6 +41,8 @@ func _on_area_2d_area_exited(_area: Area2D) -> void:
 func on_player_detonation():
 	if in_blast_radius == true:
 		Particles.emitting = true
+		if $AudioStreamPlayer2D != null:
+			$AudioStreamPlayer2D.play()
 		if GoalIsToDestroyThis == false:
 			$Sprite2D.visible = false#because the others use an AnimatedSprite
 			TimerNode.start(Particles.lifetime)
