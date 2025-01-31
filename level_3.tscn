@@ -30,8 +30,23 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 25
 text = "There was going to be more levels
 and features but there was too much
-backlash after the kiwi-exploding was
-leaked tothe public."
+backlash after public found out
+about the kiwi-exploding."
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 184.0
+offset_top = 528.0
+offset_right = 346.0
+offset_bottom = 551.0
+text = "UAvain - coder, artist"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 944.0
+offset_top = 532.0
+offset_right = 1137.0
+offset_bottom = 555.0
+text = "PotaJoe - sound engineer"

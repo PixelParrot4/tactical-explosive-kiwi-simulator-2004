@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://rkblyng5yuy3"]
+[gd_scene load_steps=19 format=3 uid="uid://rkblyng5yuy3"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_puvvf"]
 [ext_resource type="Script" path="res://main_menu.gd" id="3_c4t0u"]
 [ext_resource type="AudioStream" uid="uid://d1dwg0tp7fce7" path="res://assets/audio/Title.ogg" id="3_fam5o"]
-[ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="4_203as"]
 [ext_resource type="Texture2D" uid="uid://8i3uq7nwttq0" path="res://assets/graphics/main_menu_buttons.png" id="4_wfcis"]
+[ext_resource type="Texture2D" uid="uid://dgftuf3k7kgx0" path="res://assets/graphics/bombless-idle.png" id="5_rvou8"]
+[ext_resource type="AudioStream" uid="uid://bsb5ubamthypu" path="res://assets/audio/uihover.wav" id="6_30xlq"]
+[ext_resource type="AudioStream" uid="uid://ccm1euwj63qwp" path="res://assets/audio/uiselect.wav" id="7_ijq0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_746au"]
 atlas = ExtResource("4_wfcis")
@@ -60,36 +62,36 @@ animations = [{
 "speed": 0.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ukeai"]
-atlas = ExtResource("4_203as")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1njo1"]
+atlas = ExtResource("5_rvou8")
 region = Rect2(0, 0, 72, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ecven"]
-atlas = ExtResource("4_203as")
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4lvc"]
+atlas = ExtResource("5_rvou8")
 region = Rect2(76, 0, 72, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_81sge"]
-atlas = ExtResource("4_203as")
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2x6y"]
+atlas = ExtResource("5_rvou8")
 region = Rect2(0, 0, 72, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0yexy"]
-atlas = ExtResource("4_203as")
+[sub_resource type="AtlasTexture" id="AtlasTexture_232ba"]
+atlas = ExtResource("5_rvou8")
 region = Rect2(152, 0, 72, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lal0m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ukeai")
+"texture": SubResource("AtlasTexture_1njo1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ecven")
+"texture": SubResource("AtlasTexture_d4lvc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_81sge")
+"texture": SubResource("AtlasTexture_b2x6y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0yexy")
+"texture": SubResource("AtlasTexture_232ba")
 }],
 "loop": true,
 "name": &"default",
@@ -151,7 +153,10 @@ offset_right = 48.0
 offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
+toggle_mode = true
+action_mode = 0
 button_mask = 3
+keep_pressed_outside = true
 flat = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Lore"]
@@ -161,25 +166,29 @@ sprite_frames = SubResource("SpriteFrames_yyht2")
 [node name="LoreLabel" type="Label" parent="Control"]
 visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "lore"
+offset_left = 112.0
+offset_top = 64.0
+offset_right = 998.0
+offset_bottom = 87.0
+text = "It is the year 2004 (PotaJoe begs you to prentend that this game was made way earlier and  is predicting the future)
+and the New Zealand government science team has made a breakthrough with mind control.
+
+The New Zealand military is going to use explosive kiwis to destroy a terrorist group's important infrastructure."
+horizontal_alignment = 1
 
 [node name="Kiwi" type="AnimatedSprite2D" parent="."]
-position = Vector2(576, 240)
+position = Vector2(400, 376)
 sprite_frames = SubResource("SpriteFrames_lal0m")
 autoplay = "default"
-frame = 1
 frame_progress = 0.361732
 
 [node name="Kiwi2" type="AnimatedSprite2D" parent="."]
-position = Vector2(448, 368)
+position = Vector2(416, 416)
 sprite_frames = SubResource("SpriteFrames_lal0m")
 autoplay = "default"
-frame = 3
 
 [node name="Kiwi3" type="AnimatedSprite2D" parent="."]
-position = Vector2(704, 360)
+position = Vector2(680, 328)
 sprite_frames = SubResource("SpriteFrames_lal0m")
 autoplay = "default"
 frame = 2
@@ -187,8 +196,15 @@ flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="UIHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_30xlq")
+
+[node name="UISelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ijq0g")
+
 [connection signal="button_down" from="Control/Play" to="Control" method="_on_play_button_down"]
 [connection signal="button_up" from="Control/Play" to="Control" method="_on_play_button_up"]
+[connection signal="mouse_entered" from="Control/Play" to="Control" method="_on_mouse_entered_button"]
 [connection signal="pressed" from="Control/Play" to="." method="switch_to_next_level"]
-[connection signal="button_down" from="Control/Lore" to="Control" method="_on_lore_button_down"]
-[connection signal="button_up" from="Control/Lore" to="Control" method="_on_lore_button_up"]
+[connection signal="mouse_entered" from="Control/Lore" to="Control" method="_on_mouse_entered_button"]
+[connection signal="toggled" from="Control/Lore" to="Control" method="_on_lore_toggled"]

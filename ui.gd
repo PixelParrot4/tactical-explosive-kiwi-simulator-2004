@@ -4,6 +4,7 @@ extends Control
 @onready var Retry=$EndScreen/HBoxContainer/Retry/AnimatedSprite2D
 @onready var Next=$EndScreen/HBoxContainer/Next/AnimatedSprite2D
 @onready var Back=$EndScreen/HBoxContainer/Back/AnimatedSprite2D
+@onready var SelectSFX=$UISelect
 var time_spent_in_level:float=0.0
 
 func _on_stopwatch_timer_timeout() -> void:
@@ -14,15 +15,22 @@ func _on_stopwatch_timer_timeout() -> void:
 
 
 
+func _on_mouse_entered_button() -> void:
+	$UIHover.play()
+
 func _on_retry_button_down() -> void:
 	Retry.play("pressed")
+	SelectSFX.play()
 func _on_retry_button_up() -> void:
 	Retry.play("default")
 func _on_next_button_down() -> void:
 	Next.play("pressed")
+	SelectSFX.play()
 func _on_next_button_up() -> void:
 	Next.play("default")
 func _on_back_button_down() -> void:
 	Back.play("pressed")
+	SelectSFX.play()
 func _on_back_button_up() -> void:
 	Back.play("default")
+	SelectSFX.play()

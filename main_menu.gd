@@ -1,13 +1,20 @@
 extends Node
 
+func _on_mouse_entered_button() -> void:
+	$"../UIHover".play()
 
 func _on_play_button_down() -> void:
 	$Play/AnimatedSprite2D.play("pressed")
+	$"../UISelect".play()
 func _on_play_button_up() -> void:
 	$Play/AnimatedSprite2D.play("default")
-func _on_lore_button_down() -> void:
-	$Lore/AnimatedSprite2D.play("pressed")
-	$LoreLabel.visible_ratio=move_toward(0,1,0.5)
-func _on_lore_button_up() -> void:
-	$Lore/AnimatedSprite2D.play("default")
-	$LoreLabel.visible_ratio=move_toward(1,0,0.5)
+
+
+func _on_lore_toggled(toggled_on: bool) -> void:
+	$"../UISelect".play()
+	if toggled_on==true:
+		$Lore/AnimatedSprite2D.play("pressed")
+		$LoreLabel.visible=true
+	else:
+		$Lore/AnimatedSprite2D.play("default")
+		$LoreLabel.visible=false
