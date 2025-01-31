@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://n2vg3yv3kaox"]
+[gd_scene load_steps=13 format=4 uid="uid://n2vg3yv3kaox"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_3h2h8"]
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="1_cksvk"]
+[ext_resource type="PackedScene" uid="uid://c1uqf707mmgoo" path="res://ladder.tscn" id="2_w10h7"]
 [ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="2_we6mn"]
 [ext_resource type="PackedScene" uid="uid://cxpwmerqyiawe" path="res://terrain.tscn" id="3_xm0nf"]
 [ext_resource type="AudioStream" uid="uid://t0q487agrej1" path="res://assets/audio/levelwin.wav" id="7_b32sl"]
@@ -19,6 +20,10 @@ b = Vector2(0, 112)
 script = ExtResource("1_3h2h8")
 NUMBER_OF_OBJECTS_TO_DESTROY = 2
 TIME_BEFORE_KIWI_DETONATES = 5
+
+[node name="Ladder" parent="." instance=ExtResource("2_w10h7")]
+position = Vector2(-504, 144)
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD5/wMAAAAAAAAAAAD5/wQAAAAAAAAAAAD5/wUAAAAAAAAAAAD5/wYAAAAAAAAAAAD+////AAAAAAAAAAA=")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.001
@@ -79,6 +84,13 @@ offset_bottom = 211.0
 theme_override_constants/line_spacing = -3
 text = "hold down jump button
 to jump higher"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -976.0
+offset_top = 724.0
+offset_right = -582.0
+offset_bottom = 747.0
+text = "kiwi legs are too stubby to climb up human ladders"
 
 [connection signal="body_entered" from="OutOfBounds" to="OutOfBounds" method="_on_body_entered"]
 [connection signal="timeout" from="OutOfBounds/Timer" to="OutOfBounds" method="_on_timer_timeout"]
