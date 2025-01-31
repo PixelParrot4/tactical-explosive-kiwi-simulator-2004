@@ -1,8 +1,100 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvp28h5i7cejg"]
+[gd_scene load_steps=17 format=3 uid="uid://cvp28h5i7cejg"]
 
 [ext_resource type="Script" path="res://camera.gd" id="1_fv0yt"]
 [ext_resource type="Script" path="res://ui.gd" id="2_4g4tb"]
 [ext_resource type="Texture2D" uid="uid://bjo0d1dgx7g2s" path="res://assets/graphics/icon.svg" id="3_di54l"]
+[ext_resource type="Texture2D" uid="uid://b5fgmuti81xci" path="res://assets/graphics/end_menu_buttons.png" id="4_fqviq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmgkm"]
+atlas = ExtResource("4_fqviq")
+region = Rect2(0, 216, 180, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7b8k"]
+atlas = ExtResource("4_fqviq")
+region = Rect2(184, 216, 180, 104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_arxs6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmgkm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7b8k")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 0.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypyt8"]
+atlas = ExtResource("4_fqviq")
+region = Rect2(0, 0, 180, 104)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5cghi"]
+load_path = "res://.godot/imported/end_menu_buttons.png-a58deedb3d9eee358d1474db9cfa3b6b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gchm"]
+atlas = SubResource("CompressedTexture2D_5cghi")
+region = Rect2(184, 0, 180, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emvnj"]
+atlas = ExtResource("4_fqviq")
+region = Rect2(184, 0, 180, 104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rpg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypyt8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gchm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emvnj")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 0.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkkaf"]
+atlas = ExtResource("4_fqviq")
+region = Rect2(0, 108, 180, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80hg1"]
+atlas = ExtResource("4_fqviq")
+region = Rect2(184, 108, 180, 104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_otlb7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkkaf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80hg1")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 0.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yqyg"]
 size = Vector2(1152, 648)
@@ -138,7 +230,7 @@ offset_right = 304.0
 offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 75
 alignment = 1
 
 [node name="Stars" type="HBoxContainer" parent="UI/EndScreen"]
@@ -163,18 +255,39 @@ theme_override_font_sizes/font_size = 30
 text = "[Final Time]"
 horizontal_alignment = 1
 
-[node name="Retry" type="Button" parent="UI/EndScreen"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/EndScreen"]
 layout_mode = 2
-text = "Retry"
+theme_override_constants/separation = 70
+alignment = 1
 
-[node name="Next" type="Button" parent="UI/EndScreen"]
+[node name="Retry" type="Button" parent="UI/EndScreen/HBoxContainer"]
+custom_minimum_size = Vector2(180, 100)
 layout_mode = 2
-text = "Next"
+flat = true
 
-[node name="Back" type="Button" parent="UI/EndScreen"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/EndScreen/HBoxContainer/Retry"]
+position = Vector2(90, 50)
+sprite_frames = SubResource("SpriteFrames_arxs6")
+
+[node name="Next" type="Button" parent="UI/EndScreen/HBoxContainer"]
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
-text = "Back
-"
+button_mask = 3
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/EndScreen/HBoxContainer/Next"]
+position = Vector2(77, 48)
+sprite_frames = SubResource("SpriteFrames_7rpg8")
+
+[node name="Back" type="Button" parent="UI/EndScreen/HBoxContainer"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+button_mask = 3
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/EndScreen/HBoxContainer/Back"]
+position = Vector2(77, 48)
+sprite_frames = SubResource("SpriteFrames_otlb7")
 
 [node name="Objective" type="Label" parent="UI"]
 layout_mode = 0
@@ -199,6 +312,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-24, 0)
 shape = SubResource("RectangleShape2D_6yqyg")
 
 [connection signal="value_changed" from="UI/VBoxContainer/SpeedHSlider" to="UI" method="_on_speed_h_slider_value_changed"]
@@ -206,4 +320,10 @@ shape = SubResource("RectangleShape2D_6yqyg")
 [connection signal="value_changed" from="UI/VBoxContainer/GravityHSlider" to="UI" method="_on_gravity_h_slider_value_changed"]
 [connection signal="value_changed" from="UI/VBoxContainer/ExraGravityHSlider" to="UI" method="_on_exra_gravity_h_slider_value_changed"]
 [connection signal="value_changed" from="UI/VBoxContainer/FrictionHSlider" to="UI" method="_on_friction_h_slider_value_changed"]
+[connection signal="button_down" from="UI/EndScreen/HBoxContainer/Retry" to="UI" method="_on_retry_button_down"]
+[connection signal="button_up" from="UI/EndScreen/HBoxContainer/Retry" to="UI" method="_on_retry_button_up"]
+[connection signal="button_down" from="UI/EndScreen/HBoxContainer/Next" to="UI" method="_on_next_button_down"]
+[connection signal="button_up" from="UI/EndScreen/HBoxContainer/Next" to="UI" method="_on_next_button_up"]
+[connection signal="button_down" from="UI/EndScreen/HBoxContainer/Back" to="UI" method="_on_back_button_down"]
+[connection signal="button_up" from="UI/EndScreen/HBoxContainer/Back" to="UI" method="_on_back_button_up"]
 [connection signal="timeout" from="UI/StopwatchTimer" to="UI" method="_on_stopwatch_timer_timeout"]

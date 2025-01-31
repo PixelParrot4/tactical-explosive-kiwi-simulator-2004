@@ -34,9 +34,9 @@ func _ready() -> void:
 
 #assigns signals to following functions
 	if $CameraAndUI != null:
-		$"CameraAndUI/UI/EndScreen/Next".pressed.connect(switch_to_next_level)
-		$"CameraAndUI/UI/EndScreen/Retry".pressed.connect(reset_level)
-		$"CameraAndUI/UI/EndScreen/Back".pressed.connect(switch_to_main_menu)
+		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".pressed.connect(switch_to_next_level)
+		$"CameraAndUI/UI/EndScreen/HBoxContainer/Retry".pressed.connect(reset_level)
+		$"CameraAndUI/UI/EndScreen/HBoxContainer/Back".pressed.connect(switch_to_main_menu)
 
 	#translated from code by secay on PS Discord server
 	var ImportantObjects:Array[Node] = get_tree().get_nodes_in_group("ImportantObjects")
@@ -88,10 +88,10 @@ func level_complete_or_failed():
 	$"CameraAndUI/UI/StopwatchTimer".stop()
 	if has_level_been_completed == true:
 		$LevelComplete.play()
-		$"CameraAndUI/UI/EndScreen/Next".visible = true #failsafe
+		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".visible = true #failsafe
 	else:
 		$LevelFailed.play()
-		$"CameraAndUI/UI/EndScreen/Next".visible = false
+		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".visible = false
 
 
 

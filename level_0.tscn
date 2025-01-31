@@ -1,9 +1,64 @@
-[gd_scene load_steps=10 format=3 uid="uid://rkblyng5yuy3"]
+[gd_scene load_steps=17 format=3 uid="uid://rkblyng5yuy3"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_puvvf"]
-[ext_resource type="Texture2D" uid="uid://coo15cdj14nna" path="res://assets/graphics/placeholderplay.png" id="2_bbmo6"]
+[ext_resource type="Script" path="res://main_menu.gd" id="3_c4t0u"]
 [ext_resource type="AudioStream" uid="uid://d1dwg0tp7fce7" path="res://assets/audio/Title.ogg" id="3_fam5o"]
 [ext_resource type="Texture2D" uid="uid://cewokd3xo7d08" path="res://assets/graphics/idlex4.png" id="4_203as"]
+[ext_resource type="Texture2D" uid="uid://8i3uq7nwttq0" path="res://assets/graphics/main_menu_buttons.png" id="4_wfcis"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_746au"]
+atlas = ExtResource("4_wfcis")
+region = Rect2(0, 0, 172, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o58yd"]
+atlas = ExtResource("4_wfcis")
+region = Rect2(0, 108, 172, 104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhgg6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_746au")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o58yd")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 0.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plv27"]
+atlas = ExtResource("4_wfcis")
+region = Rect2(176, 0, 172, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdg0u"]
+atlas = ExtResource("4_wfcis")
+region = Rect2(176, 108, 172, 104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yyht2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plv27")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdg0u")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 0.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukeai"]
 atlas = ExtResource("4_203as")
@@ -61,8 +116,9 @@ offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_c4t0u")
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Play" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -70,12 +126,44 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -80.0
-offset_top = -56.0
+offset_top = -44.0
 offset_right = 80.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
-icon = ExtResource("2_bbmo6")
+button_mask = 3
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Play"]
+position = Vector2(80, 48)
+sprite_frames = SubResource("SpriteFrames_dhgg6")
+
+[node name="Lore" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = 68.0
+offset_right = 48.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+button_mask = 3
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Lore"]
+position = Vector2(80, 48)
+sprite_frames = SubResource("SpriteFrames_yyht2")
+
+[node name="LoreLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "lore"
 
 [node name="Kiwi" type="AnimatedSprite2D" parent="."]
 position = Vector2(576, 240)
@@ -99,4 +187,8 @@ flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="pressed" from="Control/Button" to="." method="switch_to_next_level"]
+[connection signal="button_down" from="Control/Play" to="Control" method="_on_play_button_down"]
+[connection signal="button_up" from="Control/Play" to="Control" method="_on_play_button_up"]
+[connection signal="pressed" from="Control/Play" to="." method="switch_to_next_level"]
+[connection signal="button_down" from="Control/Lore" to="Control" method="_on_lore_button_down"]
+[connection signal="button_up" from="Control/Lore" to="Control" method="_on_lore_button_up"]
