@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvp28h5i7cejg"]
+[gd_scene load_steps=17 format=3 uid="uid://cvp28h5i7cejg"]
 
 [ext_resource type="Script" path="res://camera.gd" id="1_fv0yt"]
 [ext_resource type="Script" path="res://ui.gd" id="2_4g4tb"]
-[ext_resource type="Texture2D" uid="uid://bjo0d1dgx7g2s" path="res://assets/graphics/icon.svg" id="3_di54l"]
 [ext_resource type="Texture2D" uid="uid://b5fgmuti81xci" path="res://assets/graphics/end_menu_buttons.png" id="4_fqviq"]
 [ext_resource type="AudioStream" uid="uid://bsb5ubamthypu" path="res://assets/audio/uihover.wav" id="5_m3bdl"]
 [ext_resource type="AudioStream" uid="uid://ccm1euwj63qwp" path="res://assets/audio/uiselect.wav" id="6_wmuq5"]
@@ -105,6 +104,7 @@ script = ExtResource("1_fv0yt")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,69 +116,6 @@ offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_4g4tb")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
-visible = false
-z_index = 2
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -130.0
-offset_top = 70.0
-offset_right = 130.0
-offset_bottom = 254.0
-grow_horizontal = 2
-
-[node name="SpeedLabel" type="Label" parent="UI/VBoxContainer"]
-layout_mode = 2
-text = "Speed: 600"
-
-[node name="SpeedHSlider" type="HSlider" parent="UI/VBoxContainer"]
-layout_mode = 2
-min_value = 300.0
-max_value = 1300.0
-value = 300.0
-allow_greater = true
-allow_lesser = true
-
-[node name="JumpLabel" type="Label" parent="UI/VBoxContainer"]
-layout_mode = 2
-text = "j"
-
-[node name="JumpHSlider" type="HSlider" parent="UI/VBoxContainer"]
-layout_mode = 2
-min_value = 100.0
-max_value = 1000.0
-value = 100.0
-
-[node name="GravityLabel" type="Label" parent="UI/VBoxContainer"]
-layout_mode = 2
-text = "g"
-
-[node name="GravityHSlider" type="HSlider" parent="UI/VBoxContainer"]
-layout_mode = 2
-max_value = 2000.0
-allow_greater = true
-
-[node name="ExtraGravityLabel" type="Label" parent="UI/VBoxContainer"]
-layout_mode = 2
-
-[node name="ExraGravityHSlider" type="HSlider" parent="UI/VBoxContainer"]
-layout_mode = 2
-allow_greater = true
-
-[node name="FrictionLabel" type="Label" parent="UI/VBoxContainer"]
-layout_mode = 2
-
-[node name="FrictionHSlider" type="HSlider" parent="UI/VBoxContainer"]
-layout_mode = 2
-
-[node name="TimeLeft" type="Label" parent="UI"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [node name="Death" type="Label" parent="UI"]
 visible = false
@@ -215,13 +152,12 @@ color = Color(0.384314, 0.384314, 0.384314, 0.313726)
 visible = false
 layout_mode = 2
 offset_left = 456.0
-offset_top = 212.0
+offset_top = 156.0
 offset_right = 704.0
-offset_bottom = 252.0
+offset_bottom = 324.0
 color = Color(0.254902, 0.254902, 0.254902, 0.74902)
 
 [node name="EndScreen" type="VBoxContainer" parent="UI"]
-visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -238,26 +174,16 @@ grow_vertical = 2
 theme_override_constants/separation = 75
 alignment = 1
 
-[node name="Stars" type="HBoxContainer" parent="UI/EndScreen"]
-visible = false
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/EndScreen/Stars"]
-position = Vector2(48, -70)
-texture = ExtResource("3_di54l")
-
-[node name="Sprite2D2" type="Sprite2D" parent="UI/EndScreen/Stars"]
-position = Vector2(304, -70)
-texture = ExtResource("3_di54l")
-
-[node name="Sprite2D3" type="Sprite2D" parent="UI/EndScreen/Stars"]
-position = Vector2(560, -70)
-texture = ExtResource("3_di54l")
-
 [node name="FinalTime" type="Label" parent="UI/EndScreen"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "[Final Time]"
+horizontal_alignment = 1
+
+[node name="UAvianHighscore" type="Label" parent="UI/EndScreen"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Dev Highscore "
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/EndScreen"]
@@ -322,11 +248,6 @@ stream = ExtResource("5_m3bdl")
 [node name="UISelect" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("6_wmuq5")
 
-[connection signal="value_changed" from="UI/VBoxContainer/SpeedHSlider" to="UI" method="_on_speed_h_slider_value_changed"]
-[connection signal="value_changed" from="UI/VBoxContainer/JumpHSlider" to="UI" method="_on_jump_h_slider_value_changed"]
-[connection signal="value_changed" from="UI/VBoxContainer/GravityHSlider" to="UI" method="_on_gravity_h_slider_value_changed"]
-[connection signal="value_changed" from="UI/VBoxContainer/ExraGravityHSlider" to="UI" method="_on_exra_gravity_h_slider_value_changed"]
-[connection signal="value_changed" from="UI/VBoxContainer/FrictionHSlider" to="UI" method="_on_friction_h_slider_value_changed"]
 [connection signal="button_down" from="UI/EndScreen/HBoxContainer/Retry" to="UI" method="_on_retry_button_down"]
 [connection signal="button_up" from="UI/EndScreen/HBoxContainer/Retry" to="UI" method="_on_retry_button_up"]
 [connection signal="mouse_entered" from="UI/EndScreen/HBoxContainer/Retry" to="UI" method="_on_mouse_entered_button"]

@@ -16,7 +16,7 @@ class_name Level2D
 var Player:CharacterBody2D #not @onready since main menu has no player scene
 
 @export var NUMBER_OF_OBJECTS_TO_DESTROY:int = 1
-@export var RESPAWN_LIMIT:int = 3
+@export var RESPAWN_LIMIT:int = 2
 @export var TIME_BEFORE_KIWI_DETONATES = 10#should be -5 the actual amount
 
 var level_number:float
@@ -85,7 +85,6 @@ func level_complete_or_failed():
 	$"CameraAndUI/UI/ColorRect".visible = true
 	$"CameraAndUI/UI/EndScreen/FinalTime".text = str($"CameraAndUI/UI".time_spent_in_level)+" seconds"
 	$"CameraAndUI/UI/Objective".visible=false
-	$"CameraAndUI/UI/TimeLeft".visible=false
 	$"CameraAndUI/UI/StopwatchTimer".stop()
 	if has_level_been_completed == true:
 		$LevelComplete.play()

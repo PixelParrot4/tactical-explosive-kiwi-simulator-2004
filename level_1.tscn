@@ -87,7 +87,6 @@ sources/0 = SubResource("TileSetAtlasSource_oyojm")
 [node name="Level1" type="Node2D"]
 position = Vector2(-320, 32)
 script = ExtResource("1_n5rtd")
-RESPAWN_LIMIT = 4
 TIME_BEFORE_KIWI_DETONATES = 3
 
 [node name="Box-Fore2" parent="." instance=ExtResource("4_pnh8c")]
