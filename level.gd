@@ -96,11 +96,17 @@ func level_complete_or_failed():
 
 
 
+#thanks cookie1170 in PS discord server for helping identifying the problems regarding a bug in here
+#using only queue_free() somehow messes with the referencing
+#not using it somehow makes viewport freeze after func is run twice
 func respawn_player():
+	Player.queue_free()
 	remove_child(Player)#suggested by ameliaaa on PS server
 	var player_scene = preload("res://player.tscn")
 	var player_scene_instance = player_scene.instantiate()
-	add_child(player_scene_instance)
+	self.add_child(player_scene_instance)
+#running func x2 without this results in error "Cannot call method queue_free on a previously freed instance."
+	Player = player_scene_instance
 
 
 
