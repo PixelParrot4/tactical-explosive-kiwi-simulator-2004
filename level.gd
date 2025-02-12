@@ -22,10 +22,16 @@ var level_number:float
 var important_objects_destroyed = 0
 var kiwi_death_count = 0
 var has_level_been_completed = false
+#without it, levelwin sfx plays twice if last available kiwi completes the level
+var level_completed_check_done_already = false
 
 
-#takes you to next level
+
+
+
+
 func _ready() -> void:
+#used to take you to next level
 	var current_scene_file = get_tree().current_scene.scene_file_path
 	level_number = current_scene_file.to_int()
 	print("######### Level " + str(level_number) +" #########")
@@ -49,6 +55,9 @@ func _ready() -> void:
 		LevelTimer=$Timer
 
 	GlobalScene.delayed_player_detonated.connect(on_kiwi_death)
+
+
+
 
 
 
@@ -82,6 +91,11 @@ func on_kiwi_death():
 
 
 func level_complete_or_failed():
+#without it, levelwin sfx plays twice if last available kiwi completes the level
+	if level_completed_check_done_already == true:
+		return
+	level_completed_check_done_already = true
+
 	$"CameraAndUI/UI/EndScreen".visible = true
 	$"CameraAndUI/UI/EndScreenUnderlay".visible = true
 	$"CameraAndUI/UI/ColorRect".visible = true
