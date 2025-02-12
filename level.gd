@@ -2,17 +2,16 @@
 
 #INSTRUCTIONS TO ADD NEW LEVEL
 #1. Create new scene named level_[number] with the only node being a Level2D
-#2. Add a Timer as child node to level
 #If this isnt a playable level (like level_0.tscn), you're done!
-#3. Connect Player, CameraAndUI, LevelMusic and tile map layer scenes
-#4. Add some objects required to be destroyed by following instructions in destructable_2d.gd
-#5. Set level's export variables with 'Inspector' tab in editor
-#6. Add any additional Destructable2D's and Sprite2D's
+#2. Connect Player, CameraAndUI, LevelMusic and tile map layer scenes
+#3. Add some objects required to be destroyed by following instructions in destructable_2d.gd
+#4. Set level's export variables with 'Inspector' tab in editor
+#5. Add any additional Destructable2D's and Sprite2D's
 
 extends Node2D
 class_name Level2D
 
-@onready var LevelTimer:Timer=$Timer
+var LevelTimer:Timer#currently unused
 var Player:CharacterBody2D #not @onready since main menu has no player scene
 
 @export var NUMBER_OF_OBJECTS_TO_DESTROY:int = 1
@@ -46,7 +45,10 @@ func _ready() -> void:
 	if $Player != null: #instead of @onready since main menu has no player
 		Player = $Player
 
-	GlobalScene.player_detonated.connect(on_kiwi_death)
+	if $Timer != null: #currently unused
+		LevelTimer=$Timer
+
+	GlobalScene.delayed_player_detonated.connect(on_kiwi_death)
 
 
 

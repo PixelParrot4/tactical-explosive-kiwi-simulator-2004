@@ -1,2 +1,3 @@
 extends Node
 signal player_detonated
+signal delayed_player_detonated

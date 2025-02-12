@@ -159,11 +159,14 @@ func _on_fuse_timeout() -> void:
 
 	elif times_timer_timedout == 2:
 		explode()
+		#recieved by destructibles
+		GlobalScene.player_detonated.emit()
 
 
 	elif times_timer_timedout == 3:
 		detonate.emit()
-		GlobalScene.player_detonated.emit()
+		#recieved by level.gd - respawning, end screen
+		GlobalScene.delayed_player_detonated.emit()
 
 
 
