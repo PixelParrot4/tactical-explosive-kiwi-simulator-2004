@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://605igjxyiwpx"]
+[gd_scene load_steps=18 format=4 uid="uid://605igjxyiwpx"]
 
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="1_6mrkf"]
 [ext_resource type="Script" path="res://level.gd" id="1_n5rtd"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dxjssjil3ab16" path="res://LevelMusic.tscn" id="12_4vw0s"]
 [ext_resource type="PackedScene" uid="uid://j1b5p86sdmes" path="res://background.tscn" id="12_oqglt"]
 [ext_resource type="Texture2D" uid="uid://cef67uebhlwch" path="res://assets/graphics/background.png" id="13_1c1j1"]
+[ext_resource type="PackedScene" uid="uid://clls4866wc4vi" path="res://crate.tscn" id="14_2qbeq"]
 [ext_resource type="PackedScene" uid="uid://cxpwmerqyiawe" path="res://terrain.tscn" id="14_8o22d"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fg5kn"]
@@ -88,7 +89,6 @@ sources/0 = SubResource("TileSetAtlasSource_oyojm")
 position = Vector2(-320, 32)
 script = ExtResource("1_n5rtd")
 RESPAWN_LIMIT = 4
-TIME_BEFORE_KIWI_DETONATES = 3
 
 [node name="Box-Fore2" parent="." instance=ExtResource("4_pnh8c")]
 position = Vector2(40, -72)
@@ -112,10 +112,7 @@ position = Vector2(360, 144)
 position = Vector2(656, 16)
 
 [node name="Player" parent="." instance=ExtResource("1_6mrkf")]
-position = Vector2(-120, -256)
-
-[node name="Box-Fore" parent="." instance=ExtResource("4_pnh8c")]
-position = Vector2(72, 0)
+position = Vector2(-112, -250)
 
 [node name="DeathPit" type="Area2D" parent="."]
 position = Vector2(288, 228)
@@ -173,6 +170,8 @@ theme_override_constants/line_spacing = -3
 text = "press W, up arrow or
 space bar to jump"
 horizontal_alignment = 1
+
+[node name="Crate" parent="." instance=ExtResource("14_2qbeq")]
 
 [connection signal="body_entered" from="DeathPit" to="DeathPit" method="_on_body_entered"]
 [connection signal="timeout" from="DeathPit/Timer" to="DeathPit" method="_on_timer_timeout"]

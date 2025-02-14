@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://clls4866wc4vi"]
+
+[ext_resource type="Script" path="res://gravity-for-staticbodies.gd" id="1_5tqa6"]
+[ext_resource type="Script" path="res://destructable_2d.gd" id="2_wsx4d"]
+[ext_resource type="Texture2D" uid="uid://dx2po8qs2be2m" path="res://assets/graphics/box-fore.png" id="3_4svob"]
+[ext_resource type="AudioStream" uid="uid://ddn8iwkd52o21" path="res://assets/audio/break1.wav" id="4_epm6l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w21c"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8dgx"]
+size = Vector2(72, 72)
+
+[sub_resource type="Curve" id="Curve_06xti"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.751908, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.501887), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Crate" type="CharacterBody2D"]
+position = Vector2(72, 0)
+script = ExtResource("1_5tqa6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36, 36)
+shape = SubResource("RectangleShape2D_3w21c")
+
+[node name="Destructable2D" type="Node2D" parent="."]
+script = ExtResource("2_wsx4d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Destructable2D"]
+position = Vector2(36, 36)
+texture = ExtResource("3_4svob")
+
+[node name="Area2D" type="Area2D" parent="Destructable2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable2D/Area2D"]
+position = Vector2(36, 36)
+scale = Vector2(0.99, 0.99)
+shape = SubResource("RectangleShape2D_r8dgx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Destructable2D"]
+position = Vector2(36, 36)
+emitting = false
+amount = 3
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 40)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 11.0
+scale_amount_max = 11.0
+scale_amount_curve = SubResource("Curve_06xti")
+color = Color(0.504355, 0.366864, 0.128039, 1)
+
+[node name="Timer" type="Timer" parent="Destructable2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Destructable2D"]
+stream = ExtResource("4_epm6l")
+max_distance = 300.0
+
+[connection signal="area_entered" from="Destructable2D/Area2D" to="Destructable2D" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Destructable2D/Area2D" to="Destructable2D" method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Destructable2D/Timer" to="Destructable2D" method="_on_timer_timeout"]

@@ -40,7 +40,7 @@ func _physics_process(delta):
 
 
 
-#gravity and jump (adapted from Wiho does Puzzle-Platfroming (unreleased))
+#gravity and jump (adapted from Wiho does Puzzle-Platforming (unreleased))
 	velocity.y += 10 #downward accelaration due to gravity
 	move_and_slide() #handles player movement i think
 	if not is_on_floor():

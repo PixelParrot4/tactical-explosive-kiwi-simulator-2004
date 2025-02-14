@@ -17,6 +17,7 @@ var in_blast_radius = false
 @onready var TimerNode = $Timer
 @export var GoalIsToDestroyThis = false
 @onready var Area = $Area2D
+var collision
 
 signal important_object_destroyed
 
@@ -27,6 +28,11 @@ func _ready() -> void:
 	Area.area_exited.connect(_on_area_2d_area_exited)
 	TimerNode.timeout.connect(_on_timer_timeout)
 	GlobalScene.player_detonated.connect(on_player_detonation)
+
+	if $CollisionShape2D != null:
+		collision=$CollisionShape2D
+	elif $"../CollisionShape2D" != null:
+		collision=$"../CollisionShape2D"
 
 
 #when Player's Area2D enters
@@ -46,8 +52,8 @@ func on_player_detonation():
 		if GoalIsToDestroyThis == false:
 			$Sprite2D.visible = false#because the others use an AnimatedSprite
 			TimerNode.start(Particles.lifetime)
-			if $CollisionShape2D != null:
-				$CollisionShape2D.disabled=true
+			if collision != null:
+				collision.disabled=true
 		else:
 			$AnimatedSprite2D.play("broken")
 			important_object_destroyed.emit()
@@ -56,4 +62,7 @@ func on_player_detonation():
 
 func _on_timer_timeout() -> void:
 	if GoalIsToDestroyThis == false:
-		queue_free()
+		if get_parent() is CharacterBody2D:
+			get_parent().queue_free()
+		else:
+			queue_free()
