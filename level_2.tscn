@@ -19,8 +19,6 @@ b = Vector2(0, 112)
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_3h2h8")
 NUMBER_OF_OBJECTS_TO_DESTROY = 2
-RESPAWN_LIMIT = 2
-TIME_BEFORE_KIWI_DETONATES = 5
 
 [node name="Ladder" parent="." instance=ExtResource("2_w10h7")]
 position = Vector2(-504, 144)

@@ -87,7 +87,8 @@ sources/0 = SubResource("TileSetAtlasSource_oyojm")
 [node name="Level1" type="Node2D"]
 position = Vector2(-320, 32)
 script = ExtResource("1_n5rtd")
-TIME_BEFORE_KIWI_DETONATES = 1
+RESPAWN_LIMIT = 4
+TIME_BEFORE_KIWI_DETONATES = 3
 
 [node name="Box-Fore2" parent="." instance=ExtResource("4_pnh8c")]
 position = Vector2(40, -72)
@@ -131,8 +132,6 @@ stream = ExtResource("10_54dja")
 
 [node name="LevelFailed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ixmhh")
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="LevelMusic" parent="." instance=ExtResource("12_4vw0s")]
 

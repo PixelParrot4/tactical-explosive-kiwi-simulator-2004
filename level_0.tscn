@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://rkblyng5yuy3"]
+[gd_scene load_steps=21 format=3 uid="uid://rkblyng5yuy3"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_puvvf"]
 [ext_resource type="Script" path="res://main_menu.gd" id="3_c4t0u"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dgftuf3k7kgx0" path="res://assets/graphics/bombless-idle.png" id="5_rvou8"]
 [ext_resource type="AudioStream" uid="uid://bsb5ubamthypu" path="res://assets/audio/uihover.wav" id="6_30xlq"]
 [ext_resource type="AudioStream" uid="uid://ccm1euwj63qwp" path="res://assets/audio/uiselect.wav" id="7_ijq0g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rsk15"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_746au"]
 atlas = ExtResource("4_wfcis")
@@ -34,6 +36,8 @@ animations = [{
 "name": &"pressed",
 "speed": 0.0
 }]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nswxl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_plv27"]
 atlas = ExtResource("4_wfcis")
@@ -133,6 +137,7 @@ offset_right = 80.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rsk15")
 button_mask = 3
 flat = true
 
@@ -153,6 +158,7 @@ offset_right = 48.0
 offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nswxl")
 toggle_mode = true
 action_mode = 0
 button_mask = 3
@@ -193,8 +199,6 @@ sprite_frames = SubResource("SpriteFrames_lal0m")
 autoplay = "default"
 frame = 2
 flip_h = true
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="UIHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_30xlq")

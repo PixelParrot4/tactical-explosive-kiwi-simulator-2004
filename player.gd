@@ -16,7 +16,7 @@ var JUMP_VELOCITY = -775
 var EXTRA_FALL_GRAVITY = 37
 var GRAVITY = 1000
 var FRICTION = 70
-var WARNING_BEFORE_DETONATION = 5
+var WARNING_BEFORE_DETONATION = 2
 var times_timer_timedout = 0
 var skidding = false #isnt currently used
 var active = true #disables movement when is false
@@ -27,7 +27,7 @@ signal detonate
 
 
 func _ready():
-	Fuse.start(Level.TIME_BEFORE_KIWI_DETONATES)
+	Fuse.start(Level.TIME_BEFORE_KIWI_DETONATES - WARNING_BEFORE_DETONATION)
 
 ################### movement and animations ###################
 
