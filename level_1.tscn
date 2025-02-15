@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://level.gd" id="1_n5rtd"]
 [ext_resource type="PackedScene" uid="uid://bsxsradwonl6o" path="res://computer1.tscn" id="3_768ac"]
 [ext_resource type="PackedScene" uid="uid://7s75j456v5ec" path="res://pipe_fore.tscn" id="3_vnspv"]
-[ext_resource type="PackedScene" uid="uid://d1wycrtpc1w2a" path="res://box1.tscn" id="4_pnh8c"]
+[ext_resource type="PackedScene" uid="uid://d1wycrtpc1w2a" path="res://crate.tscn" id="4_pnh8c"]
 [ext_resource type="Script" path="res://death.gd" id="8_18o1q"]
 [ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="9_ktfjf"]
 [ext_resource type="AudioStream" uid="uid://t0q487agrej1" path="res://assets/audio/levelwin.wav" id="10_54dja"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dxjssjil3ab16" path="res://LevelMusic.tscn" id="12_4vw0s"]
 [ext_resource type="PackedScene" uid="uid://j1b5p86sdmes" path="res://background.tscn" id="12_oqglt"]
 [ext_resource type="Texture2D" uid="uid://cef67uebhlwch" path="res://assets/graphics/background.png" id="13_1c1j1"]
-[ext_resource type="PackedScene" uid="uid://clls4866wc4vi" path="res://crate.tscn" id="14_2qbeq"]
+[ext_resource type="PackedScene" uid="uid://clls4866wc4vi" path="res://gravity-affected_crate.tscn" id="14_2qbeq"]
 [ext_resource type="PackedScene" uid="uid://cxpwmerqyiawe" path="res://terrain.tscn" id="14_8o22d"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fg5kn"]
@@ -94,7 +94,7 @@ RESPAWN_LIMIT = 4
 position = Vector2(40, -72)
 
 [node name="Box-Fore3" parent="." instance=ExtResource("4_pnh8c")]
-position = Vector2(32, -144)
+position = Vector2(72, 0)
 
 [node name="Pipe-Fore" parent="." instance=ExtResource("3_vnspv")]
 position = Vector2(216, 144)
@@ -172,6 +172,7 @@ space bar to jump"
 horizontal_alignment = 1
 
 [node name="Crate" parent="." instance=ExtResource("14_2qbeq")]
+position = Vector2(32, -144)
 
 [connection signal="body_entered" from="DeathPit" to="DeathPit" method="_on_body_entered"]
 [connection signal="timeout" from="DeathPit/Timer" to="DeathPit" method="_on_timer_timeout"]
