@@ -11,7 +11,6 @@
 extends Node2D
 class_name Level2D
 
-var LevelTimer:Timer#currently unused
 var Player:CharacterBody2D #not @onready since main menu has no player scene
 
 @export var NUMBER_OF_OBJECTS_TO_DESTROY:int = 1
@@ -27,6 +26,7 @@ var has_level_been_completed = false
 #without it, levelwin sfx plays twice if last available kiwi completes the level
 var level_completed_check_done_already = false
 
+signal main_objective_completed #recieved by ui.gd
 
 
 
@@ -45,6 +45,7 @@ func _ready() -> void:
 		$"CameraAndUI/UI/EndScreen/HBoxContainer/Retry".pressed.connect(reset_level)
 		$"CameraAndUI/UI/EndScreen/HBoxContainer/Back".pressed.connect(switch_to_main_menu)
 
+
 	#translated from code by secay on PS Discord server
 	var ImportantObjects:Array[Node] = get_tree().get_nodes_in_group("ImportantObjects")
 	for ImportantObject:Node in ImportantObjects:
@@ -52,9 +53,6 @@ func _ready() -> void:
 
 	if $Player != null: #instead of @onready since main menu has no player
 		Player = $Player
-
-	if $Timer != null: #currently unused
-		LevelTimer=$Timer
 
 	GlobalScene.delayed_player_detonated.connect(on_kiwi_death)
 
@@ -105,20 +103,13 @@ func level_complete_or_failed():
 	$"CameraAndUI/UI/Objective".visible=false
 	$"CameraAndUI/UI/TimeLeft".visible=false
 	$"CameraAndUI/UI/StopwatchTimer".stop()
+	$CameraAndUI/UI/Stopwatch.visible = false
 
 	if has_level_been_completed == true:
 		$LevelComplete.play()
 		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".visible = true #failsafe
-
 		$"CameraAndUI/UI/EndScreen/Stars".visible=true
-		print("main objective success")
-		#main objective complete star
-		if $CameraAndUI/UI.time_spent_in_level <= time_limit_to_get_star:
-			print("time trial success")
-			#time trial star
-		if kiwi_death_count <= respawn_limit_to_get_star:
-			print("efficiency success")
-			#efficiency star
+		main_objective_completed.emit()
 
 	else:
 		$LevelFailed.play()
