@@ -89,6 +89,7 @@ sources/0 = SubResource("TileSetAtlasSource_oyojm")
 position = Vector2(-320, 32)
 script = ExtResource("1_n5rtd")
 RESPAWN_LIMIT = 4
+time_limit_to_get_star = 10.0
 
 [node name="Box-Fore2" parent="." instance=ExtResource("4_pnh8c")]
 position = Vector2(40, -72)
@@ -112,7 +113,7 @@ position = Vector2(360, 144)
 position = Vector2(656, 16)
 
 [node name="Player" parent="." instance=ExtResource("1_6mrkf")]
-position = Vector2(-112, -250)
+position = Vector2(-144, 32)
 
 [node name="DeathPit" type="Area2D" parent="."]
 position = Vector2(288, 228)

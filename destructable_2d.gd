@@ -12,7 +12,6 @@ class_name Destructable2D
 
 
 var in_blast_radius = false
-@onready var Player = $"../Player"
 @onready var Particles =$CPUParticles2D
 @onready var TimerNode = $Timer
 @export var GoalIsToDestroyThis = false

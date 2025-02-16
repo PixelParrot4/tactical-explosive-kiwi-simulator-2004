@@ -19,14 +19,11 @@ b = Vector2(0, 112)
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_3h2h8")
 NUMBER_OF_OBJECTS_TO_DESTROY = 2
+time_limit_to_get_star = 9.0
 
 [node name="Ladder" parent="." instance=ExtResource("2_w10h7")]
 position = Vector2(-504, 144)
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD5/wMAAAAAAAAAAAD5/wQAAAAAAAAAAAD5/wUAAAAAAAAAAAD5/wYAAAAAAAAAAAD+////AAAAAAAAAAA=")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.001
-one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("1_cksvk")]
 

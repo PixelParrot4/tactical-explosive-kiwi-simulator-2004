@@ -5,8 +5,6 @@
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_blkak")
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]

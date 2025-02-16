@@ -17,6 +17,8 @@ var Player:CharacterBody2D #not @onready since main menu has no player scene
 @export var NUMBER_OF_OBJECTS_TO_DESTROY:int = 1
 @export var RESPAWN_LIMIT:int = 3
 @export var TIME_BEFORE_KIWI_DETONATES = 5#must be over Player.WARNING_BEFORE_DETONATION
+@export var time_limit_to_get_star:float
+@export var respawn_limit_to_get_star:int=2
 
 var level_number:float
 var important_objects_destroyed = 0
@@ -103,9 +105,21 @@ func level_complete_or_failed():
 	$"CameraAndUI/UI/Objective".visible=false
 	$"CameraAndUI/UI/TimeLeft".visible=false
 	$"CameraAndUI/UI/StopwatchTimer".stop()
+
 	if has_level_been_completed == true:
 		$LevelComplete.play()
 		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".visible = true #failsafe
+
+		$"CameraAndUI/UI/EndScreen/Stars".visible=true
+		print("main objective success")
+		#main objective complete star
+		if $CameraAndUI/UI.time_spent_in_level <= time_limit_to_get_star:
+			print("time trial success")
+			#time trial star
+		if kiwi_death_count <= respawn_limit_to_get_star:
+			print("efficiency success")
+			#efficiency star
+
 	else:
 		$LevelFailed.play()
 		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".visible = false
