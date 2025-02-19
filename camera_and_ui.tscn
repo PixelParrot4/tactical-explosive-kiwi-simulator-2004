@@ -767,6 +767,33 @@ offset_right = 704.0
 offset_bottom = 296.0
 color = Color(0.254902, 0.254902, 0.254902, 0.74902)
 
+[node name="Star1" type="Label" parent="UI"]
+visible = false
+layout_mode = 2
+offset_left = 232.0
+offset_top = 216.0
+offset_right = 422.0
+offset_bottom = 239.0
+text = "complete main objective"
+
+[node name="Star2" type="Label" parent="UI"]
+visible = false
+layout_mode = 2
+offset_left = 536.0
+offset_top = 216.0
+offset_right = 846.0
+offset_bottom = 239.0
+text = "save [number] kiwis"
+
+[node name="Star3" type="Label" parent="UI"]
+visible = false
+layout_mode = 2
+offset_left = 744.0
+offset_top = 216.0
+offset_right = 944.0
+offset_bottom = 239.0
+text = "complete it within "
+
 [node name="EndScreen" type="VBoxContainer" parent="UI"]
 visible = false
 z_index = 2
@@ -786,10 +813,10 @@ theme_override_constants/separation = 75
 alignment = 1
 
 [node name="Stars" type="HBoxContainer" parent="UI/EndScreen"]
-visible = false
 layout_mode = 2
 
 [node name="MainObjectiveStar" type="AnimatedSprite2D" parent="UI/EndScreen/Stars"]
+visible = false
 z_index = 1
 position = Vector2(60, 0)
 sprite_frames = SubResource("SpriteFrames_oyva0")

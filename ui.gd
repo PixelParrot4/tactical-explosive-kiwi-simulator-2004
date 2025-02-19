@@ -47,6 +47,7 @@ func _ready():
 
 func _on_main_objective_completed():
 	StarSystem.play("level_complete")
+	$EndScreen/Stars/MainObjectiveStar.visible=true
 	$EndScreen/Stars/MainObjectiveStar.play("default")
 	print("main objective success")
 	StarSystemTimer.start()

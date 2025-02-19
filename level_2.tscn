@@ -20,6 +20,7 @@ b = Vector2(0, 112)
 script = ExtResource("1_3h2h8")
 NUMBER_OF_OBJECTS_TO_DESTROY = 2
 time_limit_to_get_star = 9.0
+respawn_limit_to_get_star = 1
 
 [node name="Ladder" parent="." instance=ExtResource("2_w10h7")]
 position = Vector2(-504, 144)
