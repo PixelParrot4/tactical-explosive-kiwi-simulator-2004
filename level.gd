@@ -6,7 +6,8 @@
 #2. Connect Player, CameraAndUI, LevelMusic and tile map layer scenes
 #3. Add some computers scenes
 #4. Set level's export variables with 'Inspector' tab in editor
-#5. Add any additional Destructable2D's and Sprite2D's
+#5. You may add a Marker2D child node - it will act as the player's spawn point
+#6. Add any additional Destructable2D's and Sprite2D's
 
 extends Node2D
 class_name Level2D

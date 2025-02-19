@@ -29,6 +29,10 @@ signal detonate
 func _ready():
 	Fuse.start(Level.TIME_BEFORE_KIWI_DETONATES - WARNING_BEFORE_DETONATION)
 
+#the Marker2D is the kiwi spawn point
+	if $"../Marker2D" != null:
+		global_position = $"../Marker2D".global_position
+
 ################### movement and animations ###################
 
 
