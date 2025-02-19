@@ -46,7 +46,7 @@ initial_velocity_max = 50.0
 scale_amount_min = 11.0
 scale_amount_max = 11.0
 scale_amount_curve = SubResource("Curve_06xti")
-color = Color(0.504355, 0.366864, 0.128039, 1)
+color = Color(0.423148, 0.381222, 0.40217, 1)
 
 [node name="Timer" type="Timer" parent="."]
 

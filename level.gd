@@ -54,10 +54,11 @@ func _ready() -> void:
 	for ImportantObject:Node in ImportantObjects:
 		ImportantObject.important_object_destroyed.connect(on_important_object_destroyed)
 
+	GlobalScene.delayed_player_detonated.connect(on_kiwi_death)
+
 	if $Player != null: #instead of @onready since main menu has no player
 		Player = $Player
 
-	GlobalScene.delayed_player_detonated.connect(on_kiwi_death)
 
 
 

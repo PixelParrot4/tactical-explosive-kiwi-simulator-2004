@@ -1,10 +1,11 @@
-[gd_scene load_steps=85 format=3 uid="uid://cvp28h5i7cejg"]
+[gd_scene load_steps=87 format=3 uid="uid://cvp28h5i7cejg"]
 
 [ext_resource type="Script" path="res://camera.gd" id="1_fv0yt"]
 [ext_resource type="Script" path="res://ui.gd" id="2_4g4tb"]
 [ext_resource type="Texture2D" uid="uid://di5rvn623pf2d" path="res://assets/graphics/3d-rotating-kiwi.png" id="3_sb3p2"]
 [ext_resource type="Texture2D" uid="uid://ch4qklfnq41am" path="res://assets/graphics/starsocket.png" id="4_5ecp3"]
 [ext_resource type="Texture2D" uid="uid://b5fgmuti81xci" path="res://assets/graphics/end_menu_buttons.png" id="4_fqviq"]
+[ext_resource type="Texture2D" uid="uid://bq1x53fbqh500" path="res://assets/graphics/starparticle2.png" id="5_fxg0n"]
 [ext_resource type="AudioStream" uid="uid://bsb5ubamthypu" path="res://assets/audio/uihover.wav" id="5_m3bdl"]
 [ext_resource type="AudioStream" uid="uid://ccm1euwj63qwp" path="res://assets/audio/uiselect.wav" id="6_wmuq5"]
 
@@ -603,6 +604,12 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="Curve" id="Curve_al2da"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 20), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmgkm"]
 atlas = ExtResource("4_fqviq")
 region = Rect2(0, 216, 180, 104)
@@ -795,7 +802,6 @@ offset_bottom = 239.0
 text = "complete it within "
 
 [node name="EndScreen" type="VBoxContainer" parent="UI"]
-visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -847,6 +853,22 @@ texture = ExtResource("4_5ecp3")
 [node name="Sprite2D3" type="Sprite2D" parent="UI/EndScreen/Stars"]
 position = Vector2(560, -15)
 texture = ExtResource("4_5ecp3")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="UI/EndScreen/Stars"]
+position = Vector2(60, -15)
+amount = 3
+lifetime = 0.8
+explosiveness = 1.0
+texture = ExtResource("5_fxg0n")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 90.0
+initial_velocity_max = 150.0
+damping_min = 10.0
+damping_max = 30.0
+angle_max = 40.0
+angle_curve = SubResource("Curve_al2da")
 
 [node name="FinalTime" type="Label" parent="UI/EndScreen"]
 layout_mode = 2
