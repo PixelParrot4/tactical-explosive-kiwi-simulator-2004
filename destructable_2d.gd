@@ -17,6 +17,7 @@ var in_blast_radius = false
 @export var GoalIsToDestroyThis = false
 @onready var Area = $Area2D
 var collision
+var blown_up=false#to fix bug where computer can be blown up multiple times
 
 signal important_object_destroyed
 
@@ -44,7 +45,8 @@ func _on_area_2d_area_exited(_area: Area2D) -> void:
 
 
 func on_player_detonation():
-	if in_blast_radius == true:
+	if in_blast_radius == true and blown_up==false:
+		blown_up=true
 		Particles.emitting = true
 		if $AudioStreamPlayer2D != null:
 			$AudioStreamPlayer2D.play()

@@ -110,7 +110,11 @@ func level_complete_or_failed():
 	$CameraAndUI/UI/Stopwatch.visible = false
 	$CameraAndUI/UI/Star1.visible=true
 	$CameraAndUI/UI/Star2.visible=true
-	$CameraAndUI/UI/Star2.text="save "+str(RESPAWN_LIMIT-respawn_limit_to_get_star)+" kiwis"
+	var number = RESPAWN_LIMIT-respawn_limit_to_get_star-1
+	if number == 1:
+		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwi"
+	else:
+		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwis"
 	$CameraAndUI/UI/Star3.visible=true
 	$CameraAndUI/UI/Star3.text+=str(time_limit_to_get_star)+" secs"
 

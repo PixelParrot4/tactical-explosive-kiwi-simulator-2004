@@ -87,5 +87,13 @@ position = Vector2(-152, -72)
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(112, 40)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -1376.0
+offset_top = -500.0
+offset_right = -1105.0
+offset_bottom = -477.0
+theme_override_font_sizes/font_size = 15
+text = "don't get yourself seen by cameras"
+
 [connection signal="body_entered" from="OutOfBounds" to="OutOfBounds" method="_on_body_entered"]
 [connection signal="timeout" from="OutOfBounds/Timer" to="OutOfBounds" method="_on_timer_timeout"]

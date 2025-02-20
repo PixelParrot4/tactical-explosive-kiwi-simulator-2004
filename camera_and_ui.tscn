@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cvp28h5i7cejg"]
+[gd_scene load_steps=88 format=3 uid="uid://cvp28h5i7cejg"]
 
 [ext_resource type="Script" path="res://camera.gd" id="1_fv0yt"]
 [ext_resource type="Script" path="res://ui.gd" id="2_4g4tb"]
@@ -83,6 +83,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("StarParticles:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("StarParticles:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, -15)]
+}
 
 [sub_resource type="Animation" id="Animation_ntjkk"]
 resource_name = "efficiency_success"
@@ -110,6 +134,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StarParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.14),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StarParticles:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(310, -15)]
 }
 
 [sub_resource type="Animation" id="Animation_g4ndv"]
@@ -139,6 +187,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StarParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.14),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StarParticles:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, -15)]
+}
 
 [sub_resource type="Animation" id="Animation_57xbf"]
 resource_name = "time_trial_success"
@@ -166,6 +238,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StarParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.14),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StarParticles:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(560, -15)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v7jpl"]
@@ -607,8 +703,12 @@ animations = [{
 [sub_resource type="Curve" id="Curve_al2da"]
 min_value = -360.0
 max_value = 360.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 20), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.811, 18), 0.0, 0.0, 0, 0, Vector2(1, 20), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_0d0g0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.434066, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.30566), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmgkm"]
 atlas = ExtResource("4_fqviq")
@@ -802,6 +902,7 @@ offset_bottom = 239.0
 text = "complete it within "
 
 [node name="EndScreen" type="VBoxContainer" parent="UI"]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -854,21 +955,24 @@ texture = ExtResource("4_5ecp3")
 position = Vector2(560, -15)
 texture = ExtResource("4_5ecp3")
 
-[node name="GPUParticles2D" type="CPUParticles2D" parent="UI/EndScreen/Stars"]
+[node name="StarParticles" type="CPUParticles2D" parent="UI/EndScreen/Stars"]
 position = Vector2(60, -15)
+emitting = false
 amount = 3
-lifetime = 0.8
+lifetime = 0.5
+one_shot = true
 explosiveness = 1.0
 texture = ExtResource("5_fxg0n")
 direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 90.0
-initial_velocity_max = 150.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
 damping_min = 10.0
 damping_max = 30.0
-angle_max = 40.0
+angle_max = 10.0
 angle_curve = SubResource("Curve_al2da")
+scale_amount_curve = SubResource("Curve_0d0g0")
 
 [node name="FinalTime" type="Label" parent="UI/EndScreen"]
 layout_mode = 2

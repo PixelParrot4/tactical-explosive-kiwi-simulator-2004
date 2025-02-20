@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://level.gd" id="1_w4bbh"]
 [ext_resource type="Texture2D" uid="uid://bisy7c0uhcdjh" path="res://assets/graphics/itchy.io proofil v2.png" id="2_6egcm"]
 
-[node name="Level3" type="Node2D"]
+[node name="Credits" type="Node2D"]
 script = ExtResource("1_w4bbh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
