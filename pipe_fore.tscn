@@ -7,7 +7,7 @@
 size = Vector2(72, 56.5657)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drcyy"]
-size = Vector2(72, 72)
+size = Vector2(72, 64.6465)
 
 [sub_resource type="Curve" id="Curve_06xti"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.751908, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.501887), 0.0, 0.0, 0, 0]
@@ -26,6 +26,8 @@ scale = Vector2(0.99, 0.99)
 shape = SubResource("RectangleShape2D_r8dgx")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(36, 36)

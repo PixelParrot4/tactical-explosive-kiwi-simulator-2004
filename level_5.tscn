@@ -61,10 +61,10 @@ position = Vector2(792, 432)
 position = Vector2(792, 360)
 
 [node name="Crate3" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(792, 288)
+position = Vector2(793, 288)
 
 [node name="Crate4" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(792, 216)
+position = Vector2(793, 216)
 
 [node name="Pipe-Fore" parent="." instance=ExtResource("11_c8lic")]
 position = Vector2(72, 152)
@@ -82,7 +82,7 @@ position = Vector2(-144, 152)
 position = Vector2(72, 8)
 
 [node name="Crate10" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(0, 80)
+position = Vector2(-8, 80)
 
 [node name="Crate8" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(72, 80)
@@ -90,22 +90,22 @@ position = Vector2(72, 80)
 [node name="CameraAndUI" parent="." instance=ExtResource("12_b3v6c")]
 
 [node name="Pipe-Fore5" parent="." instance=ExtResource("11_c8lic")]
-position = Vector2(360, 264)
+position = Vector2(360, 244)
 
 [node name="Pipe-Fore6" parent="." instance=ExtResource("11_c8lic")]
-position = Vector2(432, 264)
+position = Vector2(432, 244)
 
 [node name="Pipe-Fore7" parent="." instance=ExtResource("11_c8lic")]
-position = Vector2(504, 264)
+position = Vector2(504, 244)
 
 [node name="Pipe-Fore8" parent="." instance=ExtResource("11_c8lic")]
-position = Vector2(576, 264)
+position = Vector2(576, 244)
 
 [node name="Pipe-Fore9" parent="." instance=ExtResource("11_c8lic")]
-position = Vector2(648, 264)
+position = Vector2(648, 244)
 
 [node name="Pipe-Fore10" type="StaticBody2D" parent="."]
-position = Vector2(720, 264)
+position = Vector2(720, 244)
 script = ExtResource("13_ojcly")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pipe-Fore10"]
@@ -143,49 +143,64 @@ color = Color(0.423148, 0.381222, 0.40217, 1)
 [node name="Timer" type="Timer" parent="Pipe-Fore10"]
 
 [node name="Crate15" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(360, 144)
+position = Vector2(360, 172)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate16" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(360, 72)
+position = Vector2(360, 100)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate17" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(432, 144)
+position = Vector2(432, 172)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate18" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(432, 72)
+position = Vector2(432, 100)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate19" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(360, 0)
+position = Vector2(360, 28)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate20" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(432, 0)
+position = Vector2(432, 28)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate21" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(504, 144)
+position = Vector2(504, 172)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate22" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(504, 72)
+position = Vector2(504, 100)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate23" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(504, 0)
+position = Vector2(504, 28)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate24" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(648, 144)
+position = Vector2(648, 172)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate25" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(576, 144)
+position = Vector2(576, 172)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate26" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(576, 72)
+position = Vector2(576, 100)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate27" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(576, 0)
+position = Vector2(576, 28)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate28" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(648, 0)
+position = Vector2(648, 28)
+scale = Vector2(0.99, 0.99)
 
 [node name="Crate29" parent="." instance=ExtResource("10_pds8u")]
-position = Vector2(648, 72)
+position = Vector2(648, 100)
+scale = Vector2(0.99, 0.99)
 
 [connection signal="area_entered" from="Pipe-Fore10/Area2D" to="Pipe-Fore10" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Pipe-Fore10/Area2D" to="Pipe-Fore10" method="_on_area_2d_area_exited"]

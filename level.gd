@@ -28,6 +28,7 @@ var kiwi_death_count = 0
 var has_level_been_completed = false
 #without it, levelwin sfx plays twice if last available kiwi completes the level
 var level_completed_check_done_already = false
+var PlayerSpawnPoint:Marker2D
 
 signal main_objective_completed #recieved by ui.gd
 
@@ -59,6 +60,10 @@ func _ready() -> void:
 	if $Player != null: #instead of @onready since main menu has no player
 		Player = $Player
 
+#so that kiwi always spawns where the OG did
+		PlayerSpawnPoint=Marker2D.new()#thanks to cloudninja in discord
+		add_child(PlayerSpawnPoint)
+		PlayerSpawnPoint.global_position=Player.global_position
 
 
 

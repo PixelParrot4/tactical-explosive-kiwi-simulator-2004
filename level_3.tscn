@@ -84,9 +84,6 @@ stream = ExtResource("14_styiq")
 [node name="Crate2" parent="." instance=ExtResource("8_157rd")]
 position = Vector2(-152, -72)
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(112, 40)
-
 [node name="Label" type="Label" parent="."]
 offset_left = -1376.0
 offset_top = -500.0

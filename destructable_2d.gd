@@ -36,14 +36,15 @@ func _ready() -> void:
 
 
 #when Player's Area2D enters
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.get_parent() == $"../Player":
-		in_blast_radius = true
+func _on_area_2d_area_entered(_area: Area2D) -> void:
+#BUG: player check works but somehow stops self from blowing up
+	#if area.get_parent() == $"../Player":
+	in_blast_radius = true
 
 #when Player's Area2D exits
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	if area.get_parent() == $"../Player":
-		in_blast_radius = false
+func _on_area_2d_area_exited(_area: Area2D) -> void:
+	#if area.get_parent() == $"../Player":
+	in_blast_radius = false
 
 
 func on_player_detonation():
