@@ -5,11 +5,10 @@
 #If this isnt a playable level (like level_0.tscn), you're done!
 #2. Connect Player, CameraAndUI, LevelMusic and tile map layer scenes
 #3. Add AudioStreamPlayer nodes named 'LevelComplete' and 'LevelFailed' and assign
-	#appropriate sound file to it in Inspector
+	#the appropriate sound file to it in Inspector
 #4. Add some computers scenes
 #5. Set level's export variables with 'Inspector' tab in editor
-#6. You may add a Marker2D child node - it will act as the player's spawn point
-#7. Add any additional Destructable2D's and Sprite2D's
+#6. Add any additional Destructable2D's and Sprite2D's
 
 extends Node2D
 class_name Level2D
@@ -115,11 +114,14 @@ func level_complete_or_failed():
 	$CameraAndUI/UI/Stopwatch.visible = false
 	$CameraAndUI/UI/Star1.visible=true
 	$CameraAndUI/UI/Star2.visible=true
+	
 	var number = RESPAWN_LIMIT-respawn_limit_to_get_star-1
-	if number == 1:
-		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwi"
+	if number < 0:
+		number = 0
+	if number != 1:
+		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwis" 
 	else:
-		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwis"
+		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwi"
 	$CameraAndUI/UI/Star3.visible=true
 	$CameraAndUI/UI/Star3.text+=str(time_limit_to_get_star)+" secs"
 
