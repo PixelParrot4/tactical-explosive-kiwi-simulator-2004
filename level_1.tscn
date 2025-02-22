@@ -90,7 +90,6 @@ position = Vector2(-320, 32)
 script = ExtResource("1_n5rtd")
 RESPAWN_LIMIT = 4
 time_limit_to_get_star = 10.0
-respawn_limit_to_get_star = 1
 
 [node name="Box-Fore2" parent="." instance=ExtResource("4_pnh8c")]
 position = Vector2(40, -72)

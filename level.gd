@@ -115,10 +115,10 @@ func level_complete_or_failed():
 	$CameraAndUI/UI/Star1.visible=true
 	$CameraAndUI/UI/Star2.visible=true
 	
-	var number = RESPAWN_LIMIT-respawn_limit_to_get_star-1
-	if number < 0:
-		number = 0
+	var number = RESPAWN_LIMIT-respawn_limit_to_get_star
 	if number != 1:
+		if number < 0:
+			number = 0
 		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwis" 
 	else:
 		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwi"

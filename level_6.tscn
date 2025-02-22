@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca2wn34qaupk7"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_texdu"]
+[ext_resource type="Texture2D" uid="uid://bisy7c0uhcdjh" path="res://assets/graphics/itchy.io proofil v2.png" id="2_igiyk"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_texdu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "There was going to be more levels
+and features but there was too much
+backlash after public found out
+about the kiwi-exploding."
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 184.0
+offset_top = 528.0
+offset_right = 346.0
+offset_bottom = 551.0
+text = "UAvain - coder, artist"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 944.0
+offset_top = 532.0
+offset_right = 1137.0
+offset_bottom = 555.0
+text = "PotaJoe - sound engineer"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(264, 456)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_igiyk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
