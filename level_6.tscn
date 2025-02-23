@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca2wn34qaupk7"]
+[gd_scene load_steps=5 format=3 uid="uid://ca2wn34qaupk7"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_texdu"]
 [ext_resource type="Texture2D" uid="uid://bisy7c0uhcdjh" path="res://assets/graphics/itchy.io proofil v2.png" id="2_igiyk"]
+[ext_resource type="AudioStream" uid="uid://d1dwg0tp7fce7" path="res://assets/audio/Title.ogg" id="3_vmpqe"]
+[ext_resource type="Script" path="res://level-selection.gd" id="3_yvfd1"]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_texdu")
@@ -23,36 +25,70 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -256.0
+offset_top = -84.0
+offset_right = 258.0
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
-text = "There was going to be more levels
-and features but there was too much
-backlash after public found out
-about the kiwi-exploding."
+text = "The public found out about the kiwis.
+Now endangered, the backlash against the
+New Zealand government forced them
+to cease using their cutest weapon."
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="."]
-offset_left = 184.0
-offset_top = 528.0
-offset_right = 346.0
-offset_bottom = 551.0
+offset_left = 112.0
+offset_top = 520.0
+offset_right = 274.0
+offset_bottom = 543.0
 text = "UAvain - coder, artist"
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 944.0
-offset_top = 532.0
-offset_right = 1137.0
-offset_bottom = 555.0
+offset_left = 864.0
+offset_top = 516.0
+offset_right = 1057.0
+offset_bottom = 539.0
 text = "PotaJoe - sound engineer"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(264, 456)
+position = Vector2(192, 448)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_igiyk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 296.0
+offset_top = 136.0
+offset_right = 856.0
+offset_bottom = 152.0
+max_value = 6.0
+value = 6.0
+tick_count = 6
+script = ExtResource("3_yvfd1")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 392.0
+offset_top = 92.0
+offset_right = 526.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 20
+text = "Level Selector"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vmpqe")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 624.0
+offset_top = 92.0
+offset_right = 780.0
+offset_bottom = 123.0
+text = "go to selected level"
+
+[connection signal="value_changed" from="HSlider" to="HSlider" method="_on_value_changed"]
+[connection signal="pressed" from="Button" to="HSlider" method="_on_button_pressed"]

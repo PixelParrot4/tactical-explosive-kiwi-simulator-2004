@@ -165,6 +165,7 @@ scale = Vector2(0.99, 0.99)
 [node name="OutOfBounds" type="Area2D" parent="."]
 position = Vector2(-680, 360)
 script = ExtResource("15_j6au2")
+death_message = "f   a   i   l   u   r   e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBounds"]
 shape = SubResource("RectangleShape2D_8ju3k")
