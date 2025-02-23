@@ -6,12 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://ddn8iwkd52o21" path="res://assets/audio/break1.wav" id="4_epm6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3w21c"]
+size = Vector2(64.5715, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18stp"]
 size = Vector2(72, 72)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8dgx"]
-size = Vector2(72, 72)
-
-[sub_resource type="Curve" id="Curve_06xti"]
+[sub_resource type="Curve" id="Curve_5j6ji"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.751908, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.501887), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -21,6 +21,7 @@ script = ExtResource("1_5tqa6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36, 36)
+scale = Vector2(0.98, 0.98)
 shape = SubResource("RectangleShape2D_3w21c")
 
 [node name="Destructable2D" type="Node2D" parent="."]
@@ -37,7 +38,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable2D/Area2D"]
 position = Vector2(36, 36)
 scale = Vector2(0.99, 0.99)
-shape = SubResource("RectangleShape2D_r8dgx")
+shape = SubResource("RectangleShape2D_18stp")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Destructable2D"]
 position = Vector2(36, 36)
@@ -52,7 +53,7 @@ initial_velocity_min = 50.0
 initial_velocity_max = 50.0
 scale_amount_min = 11.0
 scale_amount_max = 11.0
-scale_amount_curve = SubResource("Curve_06xti")
+scale_amount_curve = SubResource("Curve_5j6ji")
 color = Color(0.504355, 0.366864, 0.128039, 1)
 
 [node name="Timer" type="Timer" parent="Destructable2D"]
