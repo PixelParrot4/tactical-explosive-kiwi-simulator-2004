@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://605igjxyiwpx"]
+[gd_scene load_steps=33 format=4 uid="uid://605igjxyiwpx"]
 
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="1_6mrkf"]
 [ext_resource type="Script" path="res://level.gd" id="1_n5rtd"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://clls4866wc4vi" path="res://gravity-affected_crate.tscn" id="14_2qbeq"]
 [ext_resource type="PackedScene" uid="uid://cxpwmerqyiawe" path="res://terrain.tscn" id="14_8o22d"]
 [ext_resource type="PackedScene" uid="uid://d3gfjcoverls3" path="res://death_pit_template.tscn" id="15_d8l8a"]
+[ext_resource type="Texture2D" uid="uid://beaydxeknk8pa" path="res://assets/graphics/tutorial-Sheet.png" id="16_m8kny"]
+[ext_resource type="Texture2D" uid="uid://brfi2hcbm3ccn" path="res://assets/graphics/howto2.png" id="17_ny6ia"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fg5kn"]
 a = Vector2(144, 0)
@@ -86,6 +88,92 @@ terrain_set_0/terrain_1/name = "Pipe"
 terrain_set_0/terrain_1/color = Color(0.250855, 0.371153, 0.919798, 1)
 sources/0 = SubResource("TileSetAtlasSource_oyojm")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hleap"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(192, 0, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rkpm"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(288, 0, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6sm7"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(0, 0, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8kmm"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(96, 0, 92, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6au38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hleap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rkpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6sm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8kmm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi2d1"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(384, 0, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jaqm"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(0, 104, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eat8f"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(96, 104, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcgts"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(192, 104, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51lna"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(288, 104, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2mxy"]
+atlas = ExtResource("16_m8kny")
+region = Rect2(384, 104, 92, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5i2mv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi2d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jaqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eat8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcgts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51lna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2mxy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Level1" type="Node2D"]
 position = Vector2(-320, 32)
 script = ExtResource("1_n5rtd")
@@ -146,15 +234,19 @@ tile_map_data = PackedByteArray("AAD9//j/AAABAAAAAAD9//n/AAABAAAAAAD9//r/AAABAAA
 tile_set = SubResource("TileSet_51qyg")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -520.0
-offset_top = -32.0
-offset_right = -251.0
-offset_bottom = 17.0
-text = "use A and D or
-arrow keys to move"
-horizontal_alignment = 2
+visible = false
+offset_left = -428.0
+offset_top = -31.0
+offset_right = -192.0
+offset_bottom = 32.0
+theme_override_constants/line_spacing = -3
+text = "use A and D
+or arrow keys
+to move"
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
+visible = false
 offset_left = -152.0
 offset_top = 148.0
 offset_right = 84.0
@@ -165,10 +257,11 @@ blow up to destroy them"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
-offset_left = 200.0
-offset_top = 160.0
-offset_right = 436.0
-offset_bottom = 209.0
+visible = false
+offset_left = 438.0
+offset_top = 154.0
+offset_right = 674.0
+offset_bottom = 203.0
 theme_override_constants/line_spacing = -3
 text = "press W, up arrow or
 space bar to jump"
@@ -180,6 +273,20 @@ position = Vector2(32, -144)
 [node name="OutOfBounds" parent="." instance=ExtResource("15_d8l8a")]
 position = Vector2(2238, -38)
 death_message = "y o u   m e s s e d   u p"
+
+[node name="HowToMove" type="AnimatedSprite2D" parent="."]
+position = Vector2(-311, -6)
+sprite_frames = SubResource("SpriteFrames_6au38")
+autoplay = "default"
+
+[node name="HowToJump" type="AnimatedSprite2D" parent="."]
+position = Vector2(519, 201)
+sprite_frames = SubResource("SpriteFrames_5i2mv")
+autoplay = "default"
+
+[node name="HowToExplodeThings" type="Sprite2D" parent="."]
+position = Vector2(-51, 177)
+texture = ExtResource("17_ny6ia")
 
 [connection signal="body_entered" from="DeathPit" to="DeathPit" method="_on_body_entered"]
 [connection signal="timeout" from="DeathPit/Timer" to="DeathPit" method="_on_timer_timeout"]
