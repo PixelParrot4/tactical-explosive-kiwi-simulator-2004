@@ -109,6 +109,7 @@ script = ExtResource("1_puvvf")
 stream = ExtResource("3_fam5o")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="Control" type="Control" parent="."]
@@ -182,6 +183,42 @@ and the New Zealand government science team has made a breakthrough with mind co
 The New Zealand military is going to use explosive kiwis to destroy a terrorist group's important infrastructure."
 horizontal_alignment = 1
 
+[node name="MusicVolume" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_right = 235.0
+offset_bottom = 16.0
+max_value = 1.0
+step = 0.001
+value = 0.7
+
+[node name="Label" type="Label" parent="Control/MusicVolume"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 61.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 20
+text = "Music"
+
+[node name="SFXVolume" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 2.0
+offset_right = 513.0
+offset_bottom = 18.0
+max_value = 1.5
+step = 0.001
+value = 1.0
+
+[node name="Label" type="Label" parent="Control/SFXVolume"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 120.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 20
+text = "Sound Effects"
+
 [node name="Kiwi" type="AnimatedSprite2D" parent="."]
 position = Vector2(400, 376)
 sprite_frames = SubResource("SpriteFrames_lal0m")
@@ -202,9 +239,11 @@ flip_h = true
 
 [node name="UIHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_30xlq")
+bus = &"Sound Effects"
 
 [node name="UISelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ijq0g")
+bus = &"Sound Effects"
 
 [connection signal="button_down" from="Control/Play" to="Control" method="_on_play_button_down"]
 [connection signal="button_up" from="Control/Play" to="Control" method="_on_play_button_up"]

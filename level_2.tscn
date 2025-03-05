@@ -145,9 +145,11 @@ position = Vector2(-1136, 304)
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_b32sl")
+bus = &"Sound Effects"
 
 [node name="LevelFailed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_5ontn")
+bus = &"Sound Effects"
 
 [node name="OutOfBounds" type="Area2D" parent="."]
 position = Vector2(568, 228)

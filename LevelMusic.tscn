@@ -7,5 +7,6 @@
 stream = ExtResource("1_stl6a")
 volume_db = -1.0
 autoplay = true
-parameters/looping = false
+bus = &"Music"
+parameters/looping = true
 script = ExtResource("2_xefwm")

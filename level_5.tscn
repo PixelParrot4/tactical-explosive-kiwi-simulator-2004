@@ -65,9 +65,11 @@ respawn_limit_to_get_star = 4
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_k4eoi")
+bus = &"Sound Effects"
 
 [node name="LevelFail" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_kopmn")
+bus = &"Sound Effects"
 
 [node name="Player" parent="." instance=ExtResource("2_661dv")]
 position = Vector2(0, -408)

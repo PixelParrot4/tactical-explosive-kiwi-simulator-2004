@@ -216,9 +216,11 @@ one_shot = true
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_54dja")
+bus = &"Sound Effects"
 
 [node name="LevelFailed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ixmhh")
+bus = &"Sound Effects"
 
 [node name="LevelMusic" parent="." instance=ExtResource("12_4vw0s")]
 

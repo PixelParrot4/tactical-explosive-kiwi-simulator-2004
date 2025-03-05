@@ -38,6 +38,23 @@ New Zealand government forced them
 to cease using their cutest weapon."
 horizontal_alignment = 1
 
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Control"]
+offset_left = 296.0
+offset_top = 136.0
+offset_right = 856.0
+offset_bottom = 152.0
+max_value = 6.0
+value = 6.0
+tick_count = 7
+script = ExtResource("3_yvfd1")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+offset_left = 624.0
+offset_top = 92.0
+offset_right = 780.0
+offset_bottom = 123.0
+text = "go to selected level"
+
 [node name="Label" type="Label" parent="."]
 offset_left = 112.0
 offset_top = 520.0
@@ -59,16 +76,6 @@ texture = ExtResource("2_igiyk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 
-[node name="HSlider" type="HSlider" parent="."]
-offset_left = 296.0
-offset_top = 136.0
-offset_right = 856.0
-offset_bottom = 152.0
-max_value = 6.0
-value = 6.0
-tick_count = 6
-script = ExtResource("3_yvfd1")
-
 [node name="Label3" type="Label" parent="."]
 offset_left = 392.0
 offset_top = 92.0
@@ -81,14 +88,8 @@ text = "Level Selector"
 stream = ExtResource("3_vmpqe")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
-[node name="Button" type="Button" parent="."]
-offset_left = 624.0
-offset_top = 92.0
-offset_right = 780.0
-offset_bottom = 123.0
-text = "go to selected level"
-
-[connection signal="value_changed" from="HSlider" to="HSlider" method="_on_value_changed"]
-[connection signal="pressed" from="Button" to="HSlider" method="_on_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Control/HSlider" to="CanvasLayer/Control/HSlider" method="_on_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/HSlider" method="_on_button_pressed"]

@@ -1037,9 +1037,11 @@ autostart = true
 
 [node name="UIHover" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("5_m3bdl")
+bus = &"Sound Effects"
 
 [node name="UISelect" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("6_wmuq5")
+bus = &"Sound Effects"
 
 [node name="StarSystemTimer" type="Timer" parent="UI"]
 wait_time = 0.7

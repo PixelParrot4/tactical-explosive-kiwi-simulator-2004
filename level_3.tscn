@@ -91,9 +91,11 @@ one_shot = true
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_c8f7v")
+bus = &"Sound Effects"
 
 [node name="LevelFailed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_styiq")
+bus = &"Sound Effects"
 
 [node name="Crate2" parent="." instance=ExtResource("8_157rd")]
 position = Vector2(-152, -72)

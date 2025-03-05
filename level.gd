@@ -5,7 +5,7 @@
 #If this isnt a playable level (like level_0.tscn), you're done!
 #2. Connect Player, CameraAndUI, LevelMusic and tile map layer scenes
 #3. Add AudioStreamPlayer nodes named 'LevelComplete' and 'LevelFailed' and assign
-	#the appropriate sound file to it in Inspector
+	#the appropriate sound file and the 'Sound Effects' audio bus to them in Inspector
 #4. Add some computers scenes
 #5. Set level's export variables with 'Inspector' tab in editor
 #6. Add any additional Destructable2D's and Sprite2D's

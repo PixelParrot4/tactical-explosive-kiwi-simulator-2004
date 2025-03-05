@@ -28,9 +28,11 @@ position = Vector2(-104, 52)
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_r10wh")
+bus = &"Sound Effects"
 
 [node name="LevelFailed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_xu3rv")
+bus = &"Sound Effects"
 
 [node name="LevelMusic" parent="." instance=ExtResource("3_5euup")]
 
