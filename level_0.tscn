@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://rkblyng5yuy3"]
 
-[ext_resource type="Script" path="res://level.gd" id="1_puvvf"]
-[ext_resource type="Script" path="res://main_menu.gd" id="3_c4t0u"]
+[ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_puvvf"]
+[ext_resource type="Script" uid="uid://ddy4wed6lidxa" path="res://main_menu.gd" id="3_c4t0u"]
 [ext_resource type="AudioStream" uid="uid://d1dwg0tp7fce7" path="res://assets/audio/Title.ogg" id="3_fam5o"]
 [ext_resource type="Texture2D" uid="uid://8i3uq7nwttq0" path="res://assets/graphics/main_menu_buttons.png" id="4_wfcis"]
 [ext_resource type="Texture2D" uid="uid://dgftuf3k7kgx0" path="res://assets/graphics/bombless-idle.png" id="5_rvou8"]

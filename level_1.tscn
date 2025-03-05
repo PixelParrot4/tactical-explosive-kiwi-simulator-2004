@@ -1,11 +1,11 @@
 [gd_scene load_steps=33 format=4 uid="uid://605igjxyiwpx"]
 
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="1_6mrkf"]
-[ext_resource type="Script" path="res://level.gd" id="1_n5rtd"]
+[ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_n5rtd"]
 [ext_resource type="PackedScene" uid="uid://bsxsradwonl6o" path="res://computer1.tscn" id="3_768ac"]
 [ext_resource type="PackedScene" uid="uid://7s75j456v5ec" path="res://pipe_fore.tscn" id="3_vnspv"]
 [ext_resource type="PackedScene" uid="uid://d1wycrtpc1w2a" path="res://crate.tscn" id="4_pnh8c"]
-[ext_resource type="Script" path="res://death.gd" id="8_18o1q"]
+[ext_resource type="Script" uid="uid://b51tbia4ryir6" path="res://death.gd" id="8_18o1q"]
 [ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="9_ktfjf"]
 [ext_resource type="AudioStream" uid="uid://t0q487agrej1" path="res://assets/audio/levelwin.wav" id="10_54dja"]
 [ext_resource type="AudioStream" uid="uid://xdbjdsxc57nu" path="res://assets/audio/levelfail.wav" id="11_ixmhh"]
@@ -178,7 +178,6 @@ animations = [{
 position = Vector2(-320, 32)
 script = ExtResource("1_n5rtd")
 RESPAWN_LIMIT = 4
-time_limit_to_get_star = 10.0
 
 [node name="Box-Fore2" parent="." instance=ExtResource("4_pnh8c")]
 position = Vector2(40, -72)

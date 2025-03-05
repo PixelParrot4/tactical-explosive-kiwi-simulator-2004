@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://7s75j456v5ec"]
 
-[ext_resource type="Script" path="res://destructable_2d.gd" id="1_n7hrn"]
+[ext_resource type="Script" uid="uid://b1nf6kl4jbtrg" path="res://destructable_2d.gd" id="1_n7hrn"]
 [ext_resource type="Texture2D" uid="uid://cikdd5dnqggi6" path="res://assets/graphics/pipe-fore.png" id="2_nm1x0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8dgx"]

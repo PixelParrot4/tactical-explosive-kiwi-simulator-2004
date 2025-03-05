@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://dmwgdtrgfpnsa"]
 
-[ext_resource type="Script" path="res://level.gd" id="1_2o6w4"]
+[ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_2o6w4"]
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="2_661dv"]
 [ext_resource type="PackedScene" uid="uid://dxjssjil3ab16" path="res://LevelMusic.tscn" id="3_5euup"]
 [ext_resource type="PackedScene" uid="uid://d1wycrtpc1w2a" path="res://crate.tscn" id="3_ldunw"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://clls4866wc4vi" path="res://gravity-affected_crate.tscn" id="10_pds8u"]
 [ext_resource type="PackedScene" uid="uid://7s75j456v5ec" path="res://pipe_fore.tscn" id="11_c8lic"]
 [ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="12_b3v6c"]
-[ext_resource type="Script" path="res://death.gd" id="15_j6au2"]
+[ext_resource type="Script" uid="uid://b51tbia4ryir6" path="res://death.gd" id="15_j6au2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ju3k"]
 size = Vector2(0, 144)
@@ -21,7 +21,6 @@ size = Vector2(0, 144)
 script = ExtResource("1_2o6w4")
 NUMBER_OF_OBJECTS_TO_DESTROY = 2
 RESPAWN_LIMIT = 4
-time_limit_to_get_star = 17.0
 respawn_limit_to_get_star = 4
 
 [node name="Player" parent="." instance=ExtResource("2_661dv")]

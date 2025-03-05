@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://bsxsradwonl6o"]
 
-[ext_resource type="Script" path="res://destructable_2d.gd" id="1_yimcg"]
+[ext_resource type="Script" uid="uid://b1nf6kl4jbtrg" path="res://destructable_2d.gd" id="1_yimcg"]
 [ext_resource type="Texture2D" uid="uid://c2k7qtmgjcvqg" path="res://assets/graphics/computer1-broken.png" id="2_3xg56"]
 [ext_resource type="Texture2D" uid="uid://ogpn2h7hoiq8" path="res://assets/graphics/computer1.png" id="3_excwv"]
 [ext_resource type="AudioStream" uid="uid://c4cci8fpbmclb" path="res://assets/audio/computerbreak.wav" id="4_1e1m6"]

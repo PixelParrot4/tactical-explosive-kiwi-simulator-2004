@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmqvx6g3ivxmc"]
 
 [ext_resource type="Texture2D" uid="uid://btisah1djyfpj" path="res://assets/graphics/explosion_mark.png" id="1_n8k1a"]
-[ext_resource type="Script" path="res://sign_of_explosion.gd" id="2_nrdd1"]
+[ext_resource type="Script" uid="uid://bdn1gq52m731" path="res://sign_of_explosion.gd" id="2_nrdd1"]
 
 [node name="SignOfExplosion" type="Sprite2D"]
 texture = ExtResource("1_n8k1a")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1wycrtpc1w2a"]
 
-[ext_resource type="Script" path="res://destructable_2d.gd" id="1_nad6q"]
+[ext_resource type="Script" uid="uid://b1nf6kl4jbtrg" path="res://destructable_2d.gd" id="1_nad6q"]
 [ext_resource type="Texture2D" uid="uid://dx2po8qs2be2m" path="res://assets/graphics/box-fore.png" id="2_x01ua"]
 [ext_resource type="AudioStream" uid="uid://ddn8iwkd52o21" path="res://assets/audio/break1.wav" id="3_q77da"]
 

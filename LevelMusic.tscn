@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxjssjil3ab16"]
 
 [ext_resource type="AudioStream" uid="uid://d3l4ncy24bnjc" path="res://assets/audio/Stage.ogg" id="1_stl6a"]
-[ext_resource type="Script" path="res://level_music_player.gd" id="2_xefwm"]
+[ext_resource type="Script" uid="uid://d2th46jnr1d5n" path="res://level_music_player.gd" id="2_xefwm"]
 
 [node name="LevelMusic" type="AudioStreamPlayer"]
 stream = ExtResource("1_stl6a")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ca2wn34qaupk7"]
 
-[ext_resource type="Script" path="res://level.gd" id="1_texdu"]
+[ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_texdu"]
 [ext_resource type="Texture2D" uid="uid://bisy7c0uhcdjh" path="res://assets/graphics/itchy.io proofil v2.png" id="2_igiyk"]
 [ext_resource type="AudioStream" uid="uid://d1dwg0tp7fce7" path="res://assets/audio/Title.ogg" id="3_vmpqe"]
-[ext_resource type="Script" path="res://level-selection.gd" id="3_yvfd1"]
+[ext_resource type="Script" uid="uid://ddhnic1bcn4n6" path="res://level-selection.gd" id="3_yvfd1"]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_texdu")

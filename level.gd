@@ -18,10 +18,10 @@ var Player:CharacterBody2D #not @onready since main menu has no player scene
 @export var NUMBER_OF_OBJECTS_TO_DESTROY:int = 1
 @export var RESPAWN_LIMIT:int = 3
 @export var TIME_BEFORE_KIWI_DETONATES = 5#must be over Player.WARNING_BEFORE_DETONATION
-@export var time_limit_to_get_star:float
+@export var time_limit_to_get_star:int
 @export var respawn_limit_to_get_star:int=2
 
-var level_number:float
+var level_number:int
 var important_objects_destroyed = 0
 var kiwi_death_count = 0
 var has_level_been_completed = false
@@ -155,7 +155,7 @@ func respawn_player():
 
 #following 3 func connected to end screen buttons
 func switch_to_next_level():
-	var next_level_number = level_number + 1
+	var next_level_number:int = level_number + 1
 	var next_level_path = "res://level_" + str(next_level_number) + ".tscn"
 	get_tree().change_scene_to_file(next_level_path)
 

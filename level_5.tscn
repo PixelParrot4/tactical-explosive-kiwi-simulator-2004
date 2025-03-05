@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=4 uid="uid://caoxbsr52lh6x"]
 
-[ext_resource type="Script" path="res://level.gd" id="1_2o6w4"]
+[ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_2o6w4"]
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="2_661dv"]
 [ext_resource type="PackedScene" uid="uid://dxjssjil3ab16" path="res://LevelMusic.tscn" id="3_5euup"]
 [ext_resource type="AudioStream" uid="uid://t0q487agrej1" path="res://assets/audio/levelwin.wav" id="3_k4eoi"]
@@ -14,10 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://7s75j456v5ec" path="res://pipe_fore.tscn" id="11_c8lic"]
 [ext_resource type="PackedScene" uid="uid://d3gfjcoverls3" path="res://death_pit_template.tscn" id="11_tbcac"]
 [ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="12_b3v6c"]
-[ext_resource type="Script" path="res://destructable_2d.gd" id="13_ojcly"]
+[ext_resource type="Script" uid="uid://b1nf6kl4jbtrg" path="res://destructable_2d.gd" id="13_ojcly"]
 [ext_resource type="Texture2D" uid="uid://mthp30jssgof" path="res://assets/graphics/pipe-ul.png" id="14_x8t2r"]
 [ext_resource type="Texture2D" uid="uid://cag8pc1hcgh5n" path="res://assets/graphics/pipe-dr.png" id="15_wr42h"]
-[ext_resource type="Script" path="res://gravity-for-staticbodies.gd" id="19_1pgx8"]
+[ext_resource type="Script" uid="uid://bn7b1yr6m641t" path="res://gravity-for-staticbodies.gd" id="19_1pgx8"]
 [ext_resource type="Texture2D" uid="uid://dx2po8qs2be2m" path="res://assets/graphics/box-fore.png" id="20_cx1wa"]
 [ext_resource type="AudioStream" uid="uid://ddn8iwkd52o21" path="res://assets/audio/break1.wav" id="21_kbofk"]
 
@@ -59,7 +59,6 @@ script = ExtResource("1_2o6w4")
 NUMBER_OF_OBJECTS_TO_DESTROY = 3
 RESPAWN_LIMIT = 6
 TIME_BEFORE_KIWI_DETONATES = 2
-time_limit_to_get_star = 23.0
 respawn_limit_to_get_star = 4
 
 [node name="LevelMusic" parent="." instance=ExtResource("3_5euup")]

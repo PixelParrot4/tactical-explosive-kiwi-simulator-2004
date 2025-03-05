@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://dr0lbub8tx4ig"]
 
-[ext_resource type="Script" path="res://level.gd" id="1_blkak"]
+[ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_blkak"]
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="2_knipl"]
 [ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="3_ym7fs"]
 [ext_resource type="PackedScene" uid="uid://cxpwmerqyiawe" path="res://terrain.tscn" id="4_c7ti7"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cikdd5dnqggi6" path="res://assets/graphics/pipe-fore.png" id="9_kaaah"]
 [ext_resource type="PackedScene" uid="uid://dxjssjil3ab16" path="res://LevelMusic.tscn" id="10_v07d4"]
 [ext_resource type="PackedScene" uid="uid://c1uqf707mmgoo" path="res://ladder.tscn" id="11_hmgbi"]
-[ext_resource type="Script" path="res://death.gd" id="12_rkepe"]
+[ext_resource type="Script" uid="uid://b51tbia4ryir6" path="res://death.gd" id="12_rkepe"]
 [ext_resource type="AudioStream" uid="uid://t0q487agrej1" path="res://assets/audio/levelwin.wav" id="13_c8f7v"]
 [ext_resource type="AudioStream" uid="uid://xdbjdsxc57nu" path="res://assets/audio/levelfail.wav" id="14_styiq"]
 [ext_resource type="Texture2D" uid="uid://wow7id8p1xaf" path="res://assets/graphics/HowTo6.png" id="16_ouxi7"]
@@ -28,7 +28,6 @@ script = ExtResource("1_blkak")
 NUMBER_OF_OBJECTS_TO_DESTROY = 2
 RESPAWN_LIMIT = 4
 TIME_BEFORE_KIWI_DETONATES = 15
-time_limit_to_get_star = 20.0
 
 [node name="Player" parent="." instance=ExtResource("2_knipl")]
 position = Vector2(112, 40)
