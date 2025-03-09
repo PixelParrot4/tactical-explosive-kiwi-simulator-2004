@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca2wn34qaupk7"]
+[gd_scene load_steps=7 format=3 uid="uid://ca2wn34qaupk7"]
 
 [ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_texdu"]
 [ext_resource type="Texture2D" uid="uid://bisy7c0uhcdjh" path="res://assets/graphics/itchy.io proofil v2.png" id="2_igiyk"]
 [ext_resource type="AudioStream" uid="uid://d1dwg0tp7fce7" path="res://assets/audio/Title.ogg" id="3_vmpqe"]
 [ext_resource type="Script" uid="uid://ddhnic1bcn4n6" path="res://level-selection.gd" id="3_yvfd1"]
+[ext_resource type="AudioStream" uid="uid://bsb5ubamthypu" path="res://assets/audio/uihover.wav" id="5_mix47"]
+[ext_resource type="AudioStream" uid="uid://ccm1euwj63qwp" path="res://assets/audio/uiselect.wav" id="6_ixf42"]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_texdu")
@@ -38,7 +40,8 @@ New Zealand government forced them
 to cease using their cutest weapon."
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/Control"]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Control" node_paths=PackedStringArray("ui_hover_sfx", "ui_select_sfx")]
+layout_mode = 0
 offset_left = 296.0
 offset_top = 136.0
 offset_right = 856.0
@@ -47,8 +50,12 @@ max_value = 6.0
 value = 6.0
 tick_count = 7
 script = ExtResource("3_yvfd1")
+level_selected = 6
+ui_hover_sfx = NodePath("../../../UIHover")
+ui_select_sfx = NodePath("../../../UISelect")
 
 [node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 624.0
 offset_top = 92.0
 offset_right = 780.0
@@ -90,6 +97,14 @@ volume_db = -10.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="UIHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mix47")
+bus = &"Sound Effects"
+
+[node name="UISelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ixf42")
+bus = &"Sound Effects"
 
 [connection signal="value_changed" from="CanvasLayer/Control/HSlider" to="CanvasLayer/Control/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/HSlider" method="_on_button_pressed"]

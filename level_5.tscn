@@ -59,6 +59,7 @@ script = ExtResource("1_2o6w4")
 NUMBER_OF_OBJECTS_TO_DESTROY = 3
 RESPAWN_LIMIT = 6
 TIME_BEFORE_KIWI_DETONATES = 2
+time_limit_to_get_star = 21
 respawn_limit_to_get_star = 4
 
 [node name="LevelMusic" parent="." instance=ExtResource("3_5euup")]

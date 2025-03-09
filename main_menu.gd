@@ -6,6 +6,10 @@ var music_bus_index:int
 var sfx_bus_index:int
 @onready var MusicVolumeSlider:Slider=$MusicVolume
 @onready var SFXVolumeSlider:Slider=$SFXVolume
+@onready var PlayButtonAnimation=$Play/AnimatedSprite2D
+@onready var LoreButtonAnimation=$Lore/AnimatedSprite2D
+@onready var LevelSelector=$LevelSelector
+
 
 func _ready() -> void:
 	music_bus_index=AudioServer.get_bus_index("Music")
@@ -33,20 +37,25 @@ func _on_sfx_value_changed(value:float)-> void:
 
 #buttons
 func _on_mouse_entered_button() -> void:
-	$"../UIHover".play()
+	$"../UIHover".play() #sfx
 
-func _on_play_button_down() -> void:
-	$Play/AnimatedSprite2D.play("pressed")
-	$"../UISelect".play()
-func _on_play_button_up() -> void:
-	$Play/AnimatedSprite2D.play("default")
+func _on_play_button_toggled(toggled_on: bool) -> void:
+	$"../UISelect".play() #sfx
+	if toggled_on==true:
+		PlayButtonAnimation.play("pressed")
+		LevelSelector.visible=true
+		$LoreLabel.visible=false
+	else:
+		PlayButtonAnimation.play("default")
+		LevelSelector.visible=false
+
 
 
 func _on_lore_toggled(toggled_on: bool) -> void:
-	$"../UISelect".play()
+	$"../UISelect".play() #sfx
 	if toggled_on==true:
-		$Lore/AnimatedSprite2D.play("pressed")
+		LoreButtonAnimation.play("pressed")
 		$LoreLabel.visible=true
 	else:
-		$Lore/AnimatedSprite2D.play("default")
+		LoreButtonAnimation.play("default")
 		$LoreLabel.visible=false

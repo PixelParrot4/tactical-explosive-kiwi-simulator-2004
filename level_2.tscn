@@ -138,7 +138,6 @@ tile_map_data = PackedByteArray("AAAAAAUAAAACAAIAAAAAAAQAAAAEAAEAAAAAAAMAAAAEAAE
 position = Vector2(-400, 16)
 
 [node name="LevelMusic" parent="." instance=ExtResource("9_s5w0y")]
-parameters/looping = true
 
 [node name="Computer2" parent="." instance=ExtResource("8_q61ux")]
 position = Vector2(-1136, 304)
