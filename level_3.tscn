@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dr0lbub8tx4ig"]
+[gd_scene load_steps=24 format=4 uid="uid://dr0lbub8tx4ig"]
 
 [ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_blkak"]
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="2_knipl"]
@@ -16,12 +16,51 @@
 [ext_resource type="AudioStream" uid="uid://t0q487agrej1" path="res://assets/audio/levelwin.wav" id="13_c8f7v"]
 [ext_resource type="AudioStream" uid="uid://xdbjdsxc57nu" path="res://assets/audio/levelfail.wav" id="14_styiq"]
 [ext_resource type="Texture2D" uid="uid://wow7id8p1xaf" path="res://assets/graphics/HowTo6.png" id="16_ouxi7"]
+[ext_resource type="Texture2D" uid="uid://qc6uyfxxqgrg" path="res://assets/graphics/restartinstructions.png" id="17_joegk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8dgx"]
 size = Vector2(72.3637, 56.5657)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ju3k"]
 size = Vector2(0, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8gss"]
+atlas = ExtResource("17_joegk")
+region = Rect2(0, 0, 64, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnq0t"]
+atlas = ExtResource("17_joegk")
+region = Rect2(68, 0, 64, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra6nl"]
+atlas = ExtResource("17_joegk")
+region = Rect2(136, 0, 64, 92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxey3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8gss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnq0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra6nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8gss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8gss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8gss")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_blkak")
@@ -113,6 +152,21 @@ text = "don't get yourself seen by cameras"
 [node name="HowToIdentifyBorders" type="Sprite2D" parent="."]
 position = Vector2(-1240, -468)
 texture = ExtResource("16_ouxi7")
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+offset_left = -152.0
+offset_top = -56.0
+offset_right = -14.0
+offset_bottom = -7.0
+text = "press R to reset
+the level you're in"
+horizontal_alignment = 1
+
+[node name="HowToRestart" type="AnimatedSprite2D" parent="."]
+position = Vector2(216, -16)
+sprite_frames = SubResource("SpriteFrames_gxey3")
+autoplay = "default"
 
 [connection signal="body_entered" from="OutOfBounds" to="OutOfBounds" method="_on_body_entered"]
 [connection signal="timeout" from="OutOfBounds/Timer" to="OutOfBounds" method="_on_timer_timeout"]
