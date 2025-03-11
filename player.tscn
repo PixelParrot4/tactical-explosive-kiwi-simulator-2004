@@ -190,10 +190,10 @@ scale_amount_curve = SubResource("Curve_s1xdu")
 position = Vector2(-16, -5)
 emitting = false
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_yhdwe")
 one_shot = true
 explosiveness = 0.8
 randomness = 0.1
+process_material = SubResource("ParticleProcessMaterial_yhdwe")
 
 [node name="Fuse" type="Timer" parent="."]
 wait_time = 15.0
@@ -214,21 +214,26 @@ autostart = true
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_s7ib2")
 volume_db = -2.0
+bus = &"Sound Effects"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_abd7j")
 volume_db = 5.0
+bus = &"Sound Effects"
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_a0gbg")
 volume_db = -1.0
+bus = &"Sound Effects"
 
 [node name="Skid" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_r3nyc")
 volume_db = -8.0
+bus = &"Sound Effects"
 
 [node name="Sparks" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_aheo6")
+bus = &"Sound Effects"
 
 [connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]

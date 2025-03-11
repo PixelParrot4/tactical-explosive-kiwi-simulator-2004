@@ -163,8 +163,9 @@ min_value = 1.0
 max_value = 5.0
 value = 1.0
 rounded = true
-tick_count = 6
+tick_count = 5
 script = ExtResource("5_40rfo")
+level_selected = 1
 ui_hover_sfx = NodePath("../../../UIHover")
 ui_select_sfx = NodePath("../../../UISelect")
 
