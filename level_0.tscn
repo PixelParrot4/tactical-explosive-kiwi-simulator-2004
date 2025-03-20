@@ -126,6 +126,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_c4t0u")
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+z_index = -4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.301961, 0.301961, 0.301961, 1)
+
 [node name="Play" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -201,10 +211,10 @@ sprite_frames = SubResource("SpriteFrames_yyht2")
 visible = false
 layout_mode = 0
 offset_left = 112.0
-offset_top = 64.0
+offset_top = 90.0
 offset_right = 998.0
-offset_bottom = 87.0
-text = "It is the year 2004 (PotaJoe begs you to prentend that this game was made way earlier and  is predicting the future)
+offset_bottom = 191.0
+text = "It is the year 2004 (PotaJoe begs you to pretend that this game was made way earlier and is predicting the future)
 and the New Zealand government science team has made a breakthrough with mind control.
 
 The New Zealand military is going to use explosive kiwis to destroy a terrorist group's important infrastructure."
