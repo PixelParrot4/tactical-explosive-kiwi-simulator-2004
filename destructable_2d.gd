@@ -16,6 +16,7 @@ var in_blast_radius = false
 @onready var TimerNode = $Timer
 @export var GoalIsToDestroyThis = false
 @onready var Area = $Area2D
+@export var texture:Texture2D#to change a copy of a scene's texture (1/2)
 var collision
 var blown_up=false#to fix bug where computer can be blown up multiple times
 
@@ -34,6 +35,9 @@ func _ready() -> void:
 	elif $"../CollisionShape2D" != null:
 		collision=$"../CollisionShape2D"
 
+#to change a copy of a scene's texture (2/2)
+	if texture:
+		$Sprite2D.texture=texture
 
 #when Player's Area2D enters
 func _on_area_2d_area_entered(_area: Area2D) -> void:

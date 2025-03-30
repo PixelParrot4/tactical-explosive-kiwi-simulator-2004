@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dmwgdtrgfpnsa"]
+[gd_scene load_steps=17 format=4 uid="uid://dmwgdtrgfpnsa"]
 
 [ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_2o6w4"]
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="2_661dv"]
@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bsxsradwonl6o" path="res://computer1.tscn" id="6_y7kug"]
 [ext_resource type="PackedScene" uid="uid://clls4866wc4vi" path="res://gravity-affected_crate.tscn" id="10_pds8u"]
 [ext_resource type="PackedScene" uid="uid://7s75j456v5ec" path="res://pipe_fore.tscn" id="11_c8lic"]
+[ext_resource type="Texture2D" uid="uid://hb7ftuohcts7" path="res://assets/graphics/box-fore2.png" id="11_xxbfp"]
 [ext_resource type="PackedScene" uid="uid://cvp28h5i7cejg" path="res://camera_and_ui.tscn" id="12_b3v6c"]
+[ext_resource type="PackedScene" uid="uid://ir5t7037c2fd" path="res://background_2.tscn" id="15_0yqnl"]
 [ext_resource type="Script" uid="uid://b51tbia4ryir6" path="res://death.gd" id="15_j6au2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ju3k"]
@@ -57,6 +59,7 @@ position = Vector2(792, 432)
 
 [node name="Crate3" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(792, 360)
+texture = ExtResource("11_xxbfp")
 
 [node name="Crate4" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(792, 288)
@@ -84,6 +87,7 @@ position = Vector2(-144, 84)
 
 [node name="Crate8" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(72, 80)
+texture = ExtResource("11_xxbfp")
 
 [node name="CameraAndUI" parent="." instance=ExtResource("12_b3v6c")]
 
@@ -104,6 +108,7 @@ position = Vector2(648, 244)
 
 [node name="Crate15" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(360, 172)
+texture = ExtResource("11_xxbfp")
 
 [node name="Crate16" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(360, 100)
@@ -116,6 +121,7 @@ position = Vector2(432, 100)
 
 [node name="Crate19" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(360, 28)
+texture = ExtResource("11_xxbfp")
 
 [node name="Crate20" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(432, 28)
@@ -125,6 +131,7 @@ position = Vector2(504, 172)
 
 [node name="Crate22" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(504, 100)
+texture = ExtResource("11_xxbfp")
 
 [node name="Crate23" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(504, 28)
@@ -134,6 +141,7 @@ position = Vector2(648, 172)
 
 [node name="Crate25" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(576, 172)
+texture = ExtResource("11_xxbfp")
 
 [node name="Crate26" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(576, 100)
@@ -143,6 +151,7 @@ position = Vector2(576, 28)
 
 [node name="Crate28" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(648, 28)
+texture = ExtResource("11_xxbfp")
 
 [node name="Crate29" parent="." instance=ExtResource("10_pds8u")]
 position = Vector2(648, 100)
@@ -157,6 +166,8 @@ shape = SubResource("RectangleShape2D_8ju3k")
 
 [node name="Timer" type="Timer" parent="OutOfBounds"]
 one_shot = true
+
+[node name="Background2" parent="." instance=ExtResource("15_0yqnl")]
 
 [connection signal="body_entered" from="OutOfBounds" to="OutOfBounds" method="_on_body_entered"]
 [connection signal="timeout" from="OutOfBounds/Timer" to="OutOfBounds" method="_on_timer_timeout"]
