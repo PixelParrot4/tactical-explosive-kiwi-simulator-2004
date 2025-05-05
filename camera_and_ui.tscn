@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://cvp28h5i7cejg"]
+[gd_scene load_steps=89 format=3 uid="uid://cvp28h5i7cejg"]
 
 [ext_resource type="Script" uid="uid://bt7b61tmoyd8f" path="res://camera.gd" id="1_fv0yt"]
 [ext_resource type="Script" uid="uid://b3hdm8hnsprgr" path="res://ui.gd" id="2_4g4tb"]
@@ -709,6 +709,8 @@ point_count = 3
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.434066, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.30566), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ja6d"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmgkm"]
 atlas = ExtResource("4_fqviq")
 region = Rect2(0, 216, 180, 104)
@@ -987,6 +989,7 @@ alignment = 1
 [node name="Retry" type="Button" parent="UI/EndScreen/HBoxContainer"]
 custom_minimum_size = Vector2(180, 100)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ja6d")
 flat = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/EndScreen/HBoxContainer/Retry"]
@@ -996,6 +999,7 @@ sprite_frames = SubResource("SpriteFrames_arxs6")
 [node name="Next" type="Button" parent="UI/EndScreen/HBoxContainer"]
 custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ja6d")
 button_mask = 3
 flat = true
 
@@ -1006,6 +1010,7 @@ sprite_frames = SubResource("SpriteFrames_7rpg8")
 [node name="Back" type="Button" parent="UI/EndScreen/HBoxContainer"]
 custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ja6d")
 button_mask = 3
 flat = true
 
