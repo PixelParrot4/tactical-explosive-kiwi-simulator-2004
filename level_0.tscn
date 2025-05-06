@@ -39,6 +39,8 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eomlm"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nswxl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_plv27"]
@@ -103,8 +105,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eomlm"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_puvvf")
@@ -171,6 +171,7 @@ offset_right = 832.0
 offset_bottom = 177.0
 
 [node name="HSlider" type="HSlider" parent="Control/LevelSelector" node_paths=PackedStringArray("ui_hover_sfx", "ui_select_sfx")]
+visible = false
 layout_mode = 2
 min_value = 1.0
 max_value = 5.0
@@ -183,8 +184,16 @@ ui_hover_sfx = NodePath("../../../UIHover")
 ui_select_sfx = NodePath("../../../UISelect")
 
 [node name="Button" type="Button" parent="Control/LevelSelector"]
+visible = false
 layout_mode = 2
 text = "select level"
+
+[node name="Level Selecting Button" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eomlm")
+button_mask = 7
+flat = true
+level = 2
 
 [node name="Lore" type="Button" parent="Control"]
 layout_mode = 1
@@ -284,16 +293,6 @@ bus = &"Sound Effects"
 [node name="UISelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ijq0g")
 bus = &"Sound Effects"
-
-[node name="Level Selecting Button" parent="." instance=ExtResource("9_eomlm")]
-offset_left = 296.0
-offset_top = 244.0
-offset_right = 372.0
-offset_bottom = 308.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_eomlm")
-button_mask = 7
-flat = true
-level = 2
 
 [connection signal="mouse_entered" from="Control/Play" to="Control" method="_on_mouse_entered_button"]
 [connection signal="toggled" from="Control/Play" to="Control" method="_on_play_button_toggled"]
