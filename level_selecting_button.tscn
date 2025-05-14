@@ -1,35 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://u8evglkxtu2m"]
+[gd_scene load_steps=16 format=3 uid="uid://u8evglkxtu2m"]
 
 [ext_resource type="Script" uid="uid://crnktwcroy4oe" path="res://level_selecting_button.gd" id="1_i6ufu"]
-[ext_resource type="Texture2D" uid="uid://bgvwo0sl6b8wu" path="res://assets/graphics/level-selector_buttons.png" id="1_i18mk"]
+[ext_resource type="Texture2D" uid="uid://beem7147vby6v" path="res://assets/graphics/level-selector_button (1).png" id="1_weiux"]
+[ext_resource type="Texture2D" uid="uid://drab5u7tjw3sk" path="res://assets/graphics/level-selector_button (2).png" id="2_o60wl"]
 [ext_resource type="Texture2D" uid="uid://cq4788kw53h7g" path="res://assets/graphics/level-selector_numbers.png" id="3_1qh63"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i6ufu"]
-atlas = ExtResource("1_i18mk")
-region = Rect2(88, 0, 84, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x1wp2"]
-atlas = ExtResource("1_i18mk")
-region = Rect2(0, 0, 84, 80)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1qh63"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i6ufu")
-}],
-"loop": false,
-"name": &"pressed",
-"speed": 0.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x1wp2")
-}],
-"loop": false,
-"name": &"unpressed",
-"speed": 0.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sbqkt"]
 atlas = ExtResource("3_1qh63")
@@ -109,22 +83,19 @@ animations = [{
 "speed": 0.0
 }]
 
-[node name="Level Selecting Button" type="Button"]
+[node name="Level Selecting Button" type="TextureButton"]
 offset_right = 76.0
 offset_bottom = 64.0
+button_mask = 7
+texture_normal = ExtResource("1_weiux")
+texture_pressed = ExtResource("2_o60wl")
 script = ExtResource("1_i6ufu")
 
-[node name="button" type="AnimatedSprite2D" parent="."]
-position = Vector2(40, 40)
-sprite_frames = SubResource("SpriteFrames_1qh63")
-animation = &"pressed"
-autoplay = "unpressed"
-
 [node name="number_display" type="AnimatedSprite2D" parent="."]
-position = Vector2(38, 30)
+position = Vector2(36, 30)
 sprite_frames = SubResource("SpriteFrames_6s8un")
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
-[connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

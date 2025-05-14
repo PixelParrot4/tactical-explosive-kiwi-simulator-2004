@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://rkblyng5yuy3"]
+[gd_scene load_steps=22 format=3 uid="uid://rkblyng5yuy3"]
 
 [ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_puvvf"]
 [ext_resource type="Script" uid="uid://ddy4wed6lidxa" path="res://main_menu.gd" id="3_c4t0u"]
 [ext_resource type="AudioStream" uid="uid://d1dwg0tp7fce7" path="res://assets/audio/Title.ogg" id="3_fam5o"]
 [ext_resource type="Texture2D" uid="uid://8i3uq7nwttq0" path="res://assets/graphics/main_menu_buttons.png" id="4_wfcis"]
-[ext_resource type="Script" uid="uid://ddhnic1bcn4n6" path="res://level-selection.gd" id="5_40rfo"]
 [ext_resource type="Texture2D" uid="uid://dgftuf3k7kgx0" path="res://assets/graphics/bombless-idle.png" id="5_rvou8"]
 [ext_resource type="AudioStream" uid="uid://bsb5ubamthypu" path="res://assets/audio/uihover.wav" id="6_30xlq"]
 [ext_resource type="AudioStream" uid="uid://ccm1euwj63qwp" path="res://assets/audio/uiselect.wav" id="7_ijq0g"]
@@ -38,8 +37,6 @@ animations = [{
 "name": &"pressed",
 "speed": 0.0
 }]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eomlm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nswxl"]
 
@@ -162,38 +159,34 @@ flat = true
 position = Vector2(80, 48)
 sprite_frames = SubResource("SpriteFrames_dhgg6")
 
-[node name="LevelSelector" type="VBoxContainer" parent="Control"]
-visible = false
+[node name="LevelSelector" type="HBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 69.0
-offset_right = 832.0
-offset_bottom = 177.0
-
-[node name="HSlider" type="HSlider" parent="Control/LevelSelector" node_paths=PackedStringArray("ui_hover_sfx", "ui_select_sfx")]
-visible = false
-layout_mode = 2
-min_value = 1.0
-max_value = 5.0
-value = 1.0
-rounded = true
-tick_count = 5
-script = ExtResource("5_40rfo")
-level_selected = 1
-ui_hover_sfx = NodePath("../../../UIHover")
-ui_select_sfx = NodePath("../../../UISelect")
-
-[node name="Button" type="Button" parent="Control/LevelSelector"]
-visible = false
-layout_mode = 2
-text = "select level"
+offset_left = 368.0
+offset_top = 96.0
+offset_right = 728.0
+offset_bottom = 136.0
+theme_override_constants/separation = 20
+alignment = 1
 
 [node name="Level Selecting Button" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_eomlm")
-button_mask = 7
-flat = true
+level = 1
+
+[node name="Level Selecting Button2" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+layout_mode = 2
 level = 2
+
+[node name="Level Selecting Button3" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+layout_mode = 2
+level = 3
+
+[node name="Level Selecting Button4" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+layout_mode = 2
+level = 4
+
+[node name="Level Selecting Button5" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+layout_mode = 2
+level = 5
 
 [node name="Lore" type="Button" parent="Control"]
 layout_mode = 1
@@ -296,7 +289,5 @@ bus = &"Sound Effects"
 
 [connection signal="mouse_entered" from="Control/Play" to="Control" method="_on_mouse_entered_button"]
 [connection signal="toggled" from="Control/Play" to="Control" method="_on_play_button_toggled"]
-[connection signal="value_changed" from="Control/LevelSelector/HSlider" to="Control/LevelSelector/HSlider" method="_on_value_changed"]
-[connection signal="pressed" from="Control/LevelSelector/Button" to="Control/LevelSelector/HSlider" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Control/Lore" to="Control" method="_on_mouse_entered_button"]
 [connection signal="toggled" from="Control/Lore" to="Control" method="_on_lore_toggled"]

@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 @onready var button = $button
 @onready var number_display = $number_display
 @onready var UIHover:AudioStreamPlayer=$"/root/MainMenu/UIHover"
@@ -10,12 +10,13 @@ func _ready() -> void:
 
 #animation code
 func _on_button_down() -> void:
-	button.play("pressed")
-	number_display.position=Vector2(38,38)
+	number_display.position=Vector2(36,38)
 	$"/root/MainMenu/UISelect".play()#sfx code (1/2)
-func _on_button_up() -> void:
-	button.play("unpressed")
-	number_display.position=Vector2(38,30)
+
+#button_up signal is not emitted if the mouse exits but click button still held down
+func _on_mouse_exited() -> void:
+	number_display.position=Vector2(36,30)
+
 
 #sfx code (2/2)
 func _on_mouse_entered() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dr0lbub8tx4ig"]
+[gd_scene load_steps=23 format=4 uid="uid://dr0lbub8tx4ig"]
 
 [ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_blkak"]
 [ext_resource type="PackedScene" uid="uid://68egir1faxek" path="res://player.tscn" id="2_knipl"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://clls4866wc4vi" path="res://gravity-affected_crate.tscn" id="8_157rd"]
 [ext_resource type="Texture2D" uid="uid://hb7ftuohcts7" path="res://assets/graphics/box-fore2.png" id="9_4hpui"]
 [ext_resource type="PackedScene" uid="uid://7s75j456v5ec" path="res://pipe_fore.tscn" id="9_iw62d"]
-[ext_resource type="Texture2D" uid="uid://cikdd5dnqggi6" path="res://assets/graphics/pipe-fore.png" id="9_kaaah"]
 [ext_resource type="PackedScene" uid="uid://dxjssjil3ab16" path="res://LevelMusic.tscn" id="10_v07d4"]
 [ext_resource type="PackedScene" uid="uid://c1uqf707mmgoo" path="res://ladder.tscn" id="11_hmgbi"]
 [ext_resource type="Script" uid="uid://b51tbia4ryir6" path="res://death.gd" id="12_rkepe"]
@@ -18,9 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://wow7id8p1xaf" path="res://assets/graphics/HowTo6.png" id="16_ouxi7"]
 [ext_resource type="Texture2D" uid="uid://qc6uyfxxqgrg" path="res://assets/graphics/restartinstructions.png" id="17_joegk"]
 [ext_resource type="PackedScene" uid="uid://ir5t7037c2fd" path="res://background_2.tscn" id="18_m8gss"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhf26"]
-size = Vector2(72.3637, 56.5657)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ju3k"]
 size = Vector2(0, 212)
@@ -97,20 +93,11 @@ position = Vector2(-144, 0)
 [node name="Crate4" parent="." instance=ExtResource("8_157rd")]
 position = Vector2(-88, -144)
 
-[node name="Pipe-Fore" type="StaticBody2D" parent="."]
-position = Vector2(72, -248)
-
-[node name="Sprite2D" type="Sprite2D" parent="Pipe-Fore"]
-position = Vector2(36, 36)
-texture = ExtResource("9_kaaah")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe-Fore"]
-position = Vector2(36, 36)
-scale = Vector2(0.99, 0.99)
-shape = SubResource("RectangleShape2D_dhf26")
-
 [node name="Pipe-Fore2" parent="." instance=ExtResource("9_iw62d")]
 position = Vector2(-504, -752)
+
+[node name="Pipe-Fore3" parent="." instance=ExtResource("9_iw62d")]
+position = Vector2(72, -248)
 
 [node name="LevelMusic" parent="." instance=ExtResource("10_v07d4")]
 
