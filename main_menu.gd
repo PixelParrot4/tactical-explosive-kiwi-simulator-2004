@@ -9,6 +9,7 @@ var sfx_bus_index:int
 @onready var PlayButtonAnimation=$Play/AnimatedSprite2D
 @onready var LoreButtonAnimation=$Lore/AnimatedSprite2D
 @onready var LevelSelector=$LevelSelector
+@onready var UIHover=$"../UIHover"
 
 
 func _ready() -> void:
@@ -19,7 +20,6 @@ func _ready() -> void:
 	sfx_bus_index=AudioServer.get_bus_index("Sound Effects")
 	SFXVolumeSlider.value_changed.connect(_on_sfx_value_changed)
 	SFXVolumeSlider.value=db_to_linear(AudioServer.get_bus_volume_db(sfx_bus_index))
-
 
 func _on_music_value_changed(value:float)-> void:
 	AudioServer.set_bus_volume_db(
@@ -37,7 +37,7 @@ func _on_sfx_value_changed(value:float)-> void:
 
 #buttons
 func _on_mouse_entered_button() -> void:
-	$"../UIHover".play() #sfx
+	UIHover.play() #sfx
 
 func _on_play_button_toggled(toggled_on: bool) -> void:
 	$"../UISelect".play() #sfx

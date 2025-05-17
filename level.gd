@@ -28,6 +28,7 @@ var has_level_been_completed = false
 #without it, levelwin sfx plays twice if last available kiwi completes the level
 var level_completed_check_done_already = false
 var PlayerSpawnPoint:Marker2D
+var levels_unlocked = GlobalScene.highest_level_completed+1#used to determine which level-switching buttons to enable (1/3)
 
 signal main_objective_completed #recieved by ui.gd
 
@@ -64,8 +65,22 @@ func _ready() -> void:
 		add_child(PlayerSpawnPoint)
 		PlayerSpawnPoint.global_position=Player.global_position
 
-
-
+#used to determine which level-switching buttons to enable (2/3)
+	if level_number==0:
+		if levels_unlocked >= 2:
+			$"Control/LevelSelector/Level Selecting Button".visible=true
+			$"Control/LevelSelector/Level Selecting Button2".visible=true
+			if levels_unlocked >= 3:
+				$"Control/LevelSelector/Level Selecting Button3".visible=true
+				if levels_unlocked >= 4:
+					$"Control/LevelSelector/Level Selecting Button4".visible=true
+					if levels_unlocked >=5:
+						$"Control/LevelSelector/Level Selecting Button5".visible=true
+#if only level one unlocked, skip level-selecting process
+		if levels_unlocked==1:
+			var PlayButton=$Control/Play
+			PlayButton.toggle_mode=false
+			PlayButton.pressed.connect(switch_to_next_level)
 
 
 
@@ -130,6 +145,7 @@ func level_complete_or_failed():
 		$LevelComplete.play()
 		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".visible = true #failsafe
 		main_objective_completed.emit()
+		GlobalScene.highest_level_completed=level_number#used to determine which level-switching buttons to enable (3/3)
 
 	else:
 		$LevelFailed.play()

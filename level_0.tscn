@@ -160,6 +160,7 @@ position = Vector2(80, 48)
 sprite_frames = SubResource("SpriteFrames_dhgg6")
 
 [node name="LevelSelector" type="HBoxContainer" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 368.0
 offset_top = 96.0
@@ -169,22 +170,27 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Level Selecting Button" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+visible = false
 layout_mode = 2
 level = 1
 
 [node name="Level Selecting Button2" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+visible = false
 layout_mode = 2
 level = 2
 
 [node name="Level Selecting Button3" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+visible = false
 layout_mode = 2
 level = 3
 
 [node name="Level Selecting Button4" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+visible = false
 layout_mode = 2
 level = 4
 
 [node name="Level Selecting Button5" parent="Control/LevelSelector" instance=ExtResource("9_eomlm")]
+visible = false
 layout_mode = 2
 level = 5
 
