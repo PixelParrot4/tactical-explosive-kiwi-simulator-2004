@@ -162,9 +162,10 @@ func _on_fuse_timeout() -> void:
 		Fuse.start(WARNING_BEFORE_DETONATION)
 
 	elif times_timer_timedout == 2:
+		GlobalScene.player_detonated.emit() #recieved by destructibles
+#move and slide fixes bug where SignOfExplosion.tscn floats when kiwi explodes on destructible
+		move_and_slide() #updates is_on_floor() used when spawning SignOfExplosion.tscn
 		explode()
-		#recieved by destructibles
-		GlobalScene.player_detonated.emit()
 
 
 	elif times_timer_timedout == 3:

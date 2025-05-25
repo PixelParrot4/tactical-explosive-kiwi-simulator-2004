@@ -3,10 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://btisah1djyfpj" path="res://assets/graphics/explosion_mark.png" id="1_n8k1a"]
 [ext_resource type="Script" uid="uid://bdn1gq52m731" path="res://sign_of_explosion.gd" id="2_nrdd1"]
 
-[node name="SignOfExplosion" type="Node2D"]
-script = ExtResource("2_nrdd1")
-metadata/_custom_type_script = "uid://b1nf6kl4jbtrg"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 45)
+[node name="SignOfExplosion" type="Sprite2D"]
 texture = ExtResource("1_n8k1a")
+offset = Vector2(0, 45)
+script = ExtResource("2_nrdd1")
