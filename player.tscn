@@ -189,10 +189,11 @@ scale_amount_curve = SubResource("Curve_s1xdu")
 [node name="Explosion" type="GPUParticles2D" parent="."]
 position = Vector2(-16, -5)
 emitting = false
-amount = 10
+amount = 30
 one_shot = true
 explosiveness = 0.8
 randomness = 0.1
+fixed_fps = 5
 process_material = SubResource("ParticleProcessMaterial_yhdwe")
 
 [node name="Fuse" type="Timer" parent="."]
