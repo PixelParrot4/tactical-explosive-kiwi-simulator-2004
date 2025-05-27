@@ -119,6 +119,10 @@ func level_complete_or_failed():
 		return
 	level_completed_check_done_already = true
 
+
+	var Star2 = $CameraAndUI/UI/Star2
+	var Star3 = $CameraAndUI/UI/Star3
+	
 	$"CameraAndUI/UI/EndScreen".visible = true
 	$"CameraAndUI/UI/EndScreenUnderlay".visible = true
 	$"CameraAndUI/UI/ColorRect".visible = true
@@ -128,25 +132,27 @@ func level_complete_or_failed():
 	$"CameraAndUI/UI/StopwatchTimer".stop()
 	$CameraAndUI/UI/Stopwatch.visible = false
 	$CameraAndUI/UI/Star1.visible=true
-	$CameraAndUI/UI/Star2.visible=true
+	Star2.visible=true
 	
 	var number = RESPAWN_LIMIT-respawn_limit_to_get_star
 	if number != 1:
 		if number < 0:
 			number = 0
-		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwis" 
+		Star2.text="save "+str(number)+" kiwis" 
 	else:
-		$CameraAndUI/UI/Star2.text="save "+str(number)+" kiwi"
-	$CameraAndUI/UI/Star3.visible=true
-	$CameraAndUI/UI/Star3.text+=str(time_limit_to_get_star)+" secs"
+		Star2.text="save "+str(number)+" kiwi"
+	Star3.visible=true
+	Star3.text+=str(time_limit_to_get_star)+" secs"
 
 
 	if has_level_been_completed == true:
 		$LevelComplete.play()
 		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".visible = true #failsafe
 		main_objective_completed.emit()
-		GlobalScene.highest_level_completed=level_number#used to determine which level-switching buttons to enable (3/3)
-
+		#used to determine which level-switching buttons to enable (3/3)
+		if GlobalScene.highest_level_completed<level_number:
+			GlobalScene.highest_level_completed=level_number
+	
 	else:
 		$LevelFailed.play()
 		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".visible = false
