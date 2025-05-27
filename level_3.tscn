@@ -65,6 +65,7 @@ NUMBER_OF_OBJECTS_TO_DESTROY = 2
 RESPAWN_LIMIT = 4
 TIME_BEFORE_KIWI_DETONATES = 15
 time_limit_to_get_star = 16
+DEV_HIGHSCORE = "14.9"
 
 [node name="Player" parent="." instance=ExtResource("2_knipl")]
 position = Vector2(112, 40)

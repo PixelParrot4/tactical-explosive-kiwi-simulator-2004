@@ -61,6 +61,7 @@ RESPAWN_LIMIT = 6
 TIME_BEFORE_KIWI_DETONATES = 2
 time_limit_to_get_star = 21
 respawn_limit_to_get_star = 4
+DEV_HIGHSCORE = "20.6"
 
 [node name="LevelMusic" parent="." instance=ExtResource("3_5euup")]
 

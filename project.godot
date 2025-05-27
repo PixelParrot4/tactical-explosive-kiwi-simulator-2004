@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="tactical explosive kiwi simulator 2004"
-config/version="1.0.2, pride: 2.0.x"
+config/version="1.0.2.x, pride: 2.0.x"
 run/main_scene="res://level_0.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://assets/graphics/icon.svg"

@@ -1,4 +1,4 @@
-#parts of script adapted from Untitled Game (unreleased yet)
+#initially, parts of script adapted from Untitled Game (unreleased yet)
 
 #INSTRUCTIONS TO ADD NEW LEVEL
 #1. Create new scene named level_[number] with the only node being a Level2D
@@ -9,6 +9,7 @@
 #4. Add some computers scenes
 #5. Set level's export variables with 'Inspector' tab in editor
 #6. Add any additional Destructable2D's and Sprite2D's
+##7. Add Node2D named 'Level-Specific Endscreen' under CameraAndUI if needed
 
 extends Node2D
 class_name Level2D
@@ -20,6 +21,7 @@ var Player:CharacterBody2D #not @onready since main menu has no player scene
 @export var TIME_BEFORE_KIWI_DETONATES = 5#must be over Player.WARNING_BEFORE_DETONATION
 @export var time_limit_to_get_star:int
 @export var respawn_limit_to_get_star:int=2
+@export var DEV_HIGHSCORE = "unknown"
 
 var level_number:int
 var important_objects_destroyed = 0
@@ -149,7 +151,10 @@ func level_complete_or_failed():
 		$LevelComplete.play()
 		$"CameraAndUI/UI/EndScreen/HBoxContainer/Next".visible = true #failsafe
 		main_objective_completed.emit()
-		#used to determine which level-switching buttons to enable (3/3)
+	#currently does nothin
+		#if $"CameraAndUI/Level-Specific Endscreen" != null:
+			#$"CameraAndUI/Level-Specific Endscreen".visible=true
+	#used to determine which level-switching buttons to enable (3/3)
 		if GlobalScene.highest_level_completed<level_number:
 			GlobalScene.highest_level_completed=level_number
 	

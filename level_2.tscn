@@ -141,6 +141,7 @@ sources/0 = SubResource("TileSetAtlasSource_00ld1")
 script = ExtResource("1_3h2h8")
 NUMBER_OF_OBJECTS_TO_DESTROY = 2
 time_limit_to_get_star = 8
+DEV_HIGHSCORE = "7.7"
 
 [node name="Player" parent="." instance=ExtResource("1_cksvk")]
 

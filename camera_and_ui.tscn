@@ -1018,6 +1018,18 @@ flat = true
 position = Vector2(77, 48)
 sprite_frames = SubResource("SpriteFrames_otlb7")
 
+[node name="Dev Highscore" type="Label" parent="UI"]
+visible = false
+z_index = 2
+layout_mode = 2
+offset_left = 266.0
+offset_top = 300.0
+offset_right = 886.0
+offset_bottom = 342.0
+theme_override_font_sizes/font_size = 25
+text = "Developer's Highscore: "
+horizontal_alignment = 1
+
 [node name="Objective" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 32.0

@@ -22,6 +22,7 @@ func _on_stopwatch_timer_timeout() -> void:
 func _on_mouse_entered_button() -> void:
 	$UIHover.play()
 
+#AnimatedSrite2Ds can be replaced with TextureButtons
 func _on_retry_button_down() -> void:
 	Retry.play("pressed")
 	SelectSFX.play()
@@ -47,22 +48,29 @@ func _ready():
 
 func _on_main_objective_completed():
 	StarSystem.play("level_complete")
-	$EndScreen/Stars/MainObjectiveStar.visible=true
-	$EndScreen/Stars/MainObjectiveStar.play("default")
+	var MainObjectiveStar = $EndScreen/Stars/MainObjectiveStar
+	MainObjectiveStar.visible=true
+	MainObjectiveStar.play("default")
 	print("main objective success")
 	StarSystemTimer.start()
 
 
 func _on_star_system_timer_timeout() -> void:
 	if Level.kiwi_death_count <= Level.respawn_limit_to_get_star and efficiency_star_visible!=true:
-		$EndScreen/Stars/EfficiencyStar.visible=true
+		var EfficiencyStar=$EndScreen/Stars/EfficiencyStar
+		EfficiencyStar.visible=true
 		StarSystem.play("efficiency_success")
-		$EndScreen/Stars/EfficiencyStar.play("default")
+		EfficiencyStar.play("default")
 		print("efficiency success")
 		efficiency_star_visible=true
 	if time_spent_in_level <= Level.time_limit_to_get_star and StarSystem.is_playing()==false and time_trial_star_visible!=true:
-		$EndScreen/Stars/TimeTrialStar.visible=true
+		var TimeTrialStar=$EndScreen/Stars/TimeTrialStar
+		TimeTrialStar.visible=true
 		StarSystem.play("time_trial_success")
-		$EndScreen/Stars/TimeTrialStar.play("default")
+		TimeTrialStar.play("default")
 		print("time trial success")
 		time_trial_star_visible=true
+
+		var DevHighscore = $"Dev Highscore"
+		DevHighscore.text+=str(Level.DEV_HIGHSCORE)+" seconds"
+		DevHighscore.visible=true

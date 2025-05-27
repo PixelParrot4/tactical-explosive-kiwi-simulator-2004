@@ -24,6 +24,7 @@ NUMBER_OF_OBJECTS_TO_DESTROY = 2
 RESPAWN_LIMIT = 4
 time_limit_to_get_star = 18
 respawn_limit_to_get_star = 4
+DEV_HIGHSCORE = "16.6"
 
 [node name="Player" parent="." instance=ExtResource("2_661dv")]
 position = Vector2(-104, 52)
