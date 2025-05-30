@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca2wn34qaupk7"]
+[gd_scene load_steps=8 format=3 uid="uid://ca2wn34qaupk7"]
 
 [ext_resource type="Script" uid="uid://bl45kmmui0qha" path="res://level.gd" id="1_texdu"]
 [ext_resource type="Texture2D" uid="uid://bisy7c0uhcdjh" path="res://assets/graphics/itchy.io proofil v2.png" id="2_igiyk"]
 [ext_resource type="AudioStream" uid="uid://d1dwg0tp7fce7" path="res://assets/audio/Title.ogg" id="3_vmpqe"]
 [ext_resource type="Script" uid="uid://ddhnic1bcn4n6" path="res://level-selection.gd" id="3_yvfd1"]
+[ext_resource type="Texture2D" uid="uid://dv21rumatamks" path="res://assets/graphics/potajoe.PNG" id="4_ixf42"]
 [ext_resource type="AudioStream" uid="uid://bsb5ubamthypu" path="res://assets/audio/uihover.wav" id="5_mix47"]
 [ext_resource type="AudioStream" uid="uid://ccm1euwj63qwp" path="res://assets/audio/uiselect.wav" id="6_ixf42"]
 
@@ -62,24 +63,51 @@ offset_right = 780.0
 offset_bottom = 123.0
 text = "go to selected level"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 112.0
-offset_top = 520.0
-offset_right = 274.0
-offset_bottom = 543.0
-text = "UAvain - coder, artist"
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 864.0
+[node name="UA 1" type="Label" parent="."]
+offset_left = 152.0
 offset_top = 516.0
+offset_right = 238.0
+offset_bottom = 551.0
+theme_override_font_sizes/font_size = 25
+text = "UAvain"
+
+[node name="UA 2" type="Label" parent="."]
+offset_left = 112.0
+offset_top = 552.0
+offset_right = 278.0
+offset_bottom = 627.0
+text = "game designer
+code wizard
+pixel artist"
+horizontal_alignment = 1
+
+[node name="PJ 1" type="Label" parent="."]
+offset_left = 912.0
+offset_top = 516.0
+offset_right = 1004.0
+offset_bottom = 551.0
+theme_override_font_sizes/font_size = 25
+text = "PotaJoe"
+
+[node name="PJ 2" type="Label" parent="."]
+offset_left = 864.0
+offset_top = 552.0
 offset_right = 1057.0
-offset_bottom = 539.0
-text = "PotaJoe - sound engineer"
+offset_bottom = 627.0
+text = "game designer
+master of sound
+3D modeller"
+horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(192, 448)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_igiyk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(960, 448)
+scale = Vector2(0.609524, 0.61244)
+texture = ExtResource("4_ixf42")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 
